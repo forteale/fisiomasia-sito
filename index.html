@@ -78,8 +78,9 @@
 .about-text .h2{margin-bottom:1.4rem}
 .about-text p{color:var(--mid);font-size:.95rem;margin-bottom:1.05rem;line-height:1.85}
 .about-text p strong{color:var(--ink);font-weight:600}
-.about-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem;align-items:center}
-.pill-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:600;color:var(--ink);margin-right:.3rem;font-style:italic}
+.about-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem;align-items:center}
+.about-pills + .about-pills{margin-top:.8rem}
+.pill-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);font-style:italic;flex:0 0 100%;margin-bottom:.1rem}
 .pill{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.32rem .8rem;border-radius:999px}
 .about-ctas{display:flex;gap:.9rem;margin-top:1.8rem;flex-wrap:wrap}
 
@@ -97,44 +98,44 @@
 /* — TRATTAMENTI (Carosello) — */
 #trattamenti{padding:6rem 7vw 5rem;background:var(--off);overflow:hidden}
 .tratt-inner{max-width:1200px;margin:0 auto;position:relative}
-.tratt-viewport{overflow:hidden;margin:0 -.5rem;padding:.5rem;position:relative}
-.tratt-track{display:flex;gap:1.2rem;transition:transform .65s cubic-bezier(.4,.0,.2,1);will-change:transform}
+.tratt-viewport{overflow:hidden;position:relative;padding:.5rem 0}
+.tratt-track{display:flex;transition:transform .65s cubic-bezier(.4,.0,.2,1);will-change:transform;touch-action:pan-y}
 .tratt-card{
   background:var(--white);border:1px solid var(--border);border-radius:var(--r);
   padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;
   transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;
-  flex:0 0 calc((100% - 3.6rem) / 4); /* 4 card desktop con 3 gap da 1.2rem */
-  min-height:230px;cursor:default
+  flex:0 0 calc(25% - .9rem); /* 4 col */
+  margin-right:1.2rem;
+  min-height:230px;cursor:default;box-sizing:border-box
 }
+.tratt-card:last-child{margin-right:0}
 .tratt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--plum),var(--mint));opacity:0;transition:opacity .22s}
 .tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}
 .tratt-card:hover::after{opacity:1}
-.tratt-icon{width:46px;height:46px;border-radius:50%;background:var(--plum-l);display:flex;align-items:center;justify-content:center;font-size:1.35rem;line-height:1;transition:background .22s}
+.tratt-icon{width:46px;height:46px;border-radius:50%;background:var(--plum-l);display:flex;align-items:center;justify-content:center;font-size:1.35rem;line-height:1;transition:background .22s;flex-shrink:0}
 .tratt-card:hover .tratt-icon{background:var(--mint-l)}
 .tratt-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3}
 .tratt-card p{font-size:.84rem;color:var(--mid);line-height:1.7;flex:1}
 .tratt-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.2rem .55rem;border-radius:999px;width:fit-content}
 
-/* Frecce */
+/* Frecce — sopra il viewport, non dentro */
+.tratt-controls{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:calc(100% + 80px);left:-40px;pointer-events:none;z-index:10}
 .tratt-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:46px;height:46px;border-radius:50%;
+  width:48px;height:48px;border-radius:50%;
   background:var(--white);border:1.5px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:10;transition:all .2s;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);color:var(--plum);
-  font-size:1.1rem;font-weight:600
+  cursor:pointer;transition:all .2s;pointer-events:auto;
+  box-shadow:0 4px 16px rgba(139,77,110,.12);color:var(--plum);
+  font-size:1.2rem;font-weight:600
 }
-.tratt-arrow:hover{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 6px 20px rgba(139,77,110,.25)}
-.tratt-arrow.prev{left:-22px}
-.tratt-arrow.next{right:-22px}
+.tratt-arrow:hover{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 6px 24px rgba(139,77,110,.3);transform:scale(1.08)}
 
 /* Dots */
 .tratt-dots{display:flex;justify-content:center;gap:.55rem;margin-top:2rem}
 .tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
 .tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
 
-/* Hint swipe mobile (solo prima visualizzazione) */
+/* Hint swipe mobile */
 .swipe-hint{display:none;position:absolute;bottom:.6rem;left:50%;
   pointer-events:none;font-size:.72rem;color:var(--mid);font-weight:600;
   background:rgba(255,255,255,.95);padding:.5rem 1rem;border-radius:999px;
@@ -155,13 +156,18 @@
   50%{transform:translateX(10px)}
 }
 
+@media(max-width:1180px){
+  .tratt-controls{width:100%;left:0}
+  .tratt-arrow{box-shadow:0 6px 20px rgba(0,0,0,.15)}
+}
 @media(max-width:1000px){
-  .tratt-card{flex:0 0 calc((100% - 1.2rem) / 2)} /* 2 card */
+  .tratt-card{flex:0 0 calc(50% - .6rem)} /* 2 col tablet */
 }
 @media(max-width:680px){
-  .tratt-card{flex:0 0 100%;min-height:auto} /* 1 card */
-  .tratt-arrow{display:none}
-  #trattamenti{padding:4.5rem 6vw 4rem}
+  .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto}
+  .tratt-controls{display:none}
+  #trattamenti{padding:4.5rem 6vw 4rem;overflow:hidden}
+  .tratt-viewport{margin:0;padding:.5rem 0}
 }
 
 /* — PILATES — */
@@ -249,9 +255,9 @@
   .serv-grid,.blog-grid{grid-template-columns:1fr}
   .strip-dom{flex-direction:column;gap:1.2rem;text-align:center}
   /* Pill chi sono più piccoli e ordinati */
-  .about-pills{gap:.35rem;margin-top:1rem}
-  .pill{font-size:.68rem;padding:.28rem .7rem;letter-spacing:.08em}
-  .pill-title{font-size:.95rem;display:block;width:100%;margin:0 0 .3rem 0}
+  .about-pills{gap:.4rem;margin-top:1.2rem}
+  .pill{font-size:.7rem;padding:.3rem .75rem;letter-spacing:.08em}
+  .pill-title{font-size:.95rem;flex:0 0 100%;margin:0 0 .15rem 0}
 }
 </style>
 <!-- Netlify Identity: gestisce recovery/invite token anche dalla homepage -->
@@ -347,7 +353,7 @@
       <span class="pill">Pavimento Pelvico</span>
       <span class="pill">Domiciliare</span>
     </div>
-    <div class="about-pills" style="margin-top:.6rem">
+    <div class="about-pills">
       <span class="pill-title">Terapie</span>
       <span class="pill">Clinical Pilates</span>
       <span class="pill">Tecarterapia</span>
@@ -384,8 +390,6 @@
       <p>Dal primo colloquio alla fine del percorso, ogni terapia è costruita sulla persona — non sulla patologia. Metodologie basate sull'evidenza scientifica per garantire i migliori risultati.</p>
     </div>
       <div class="tratt-viewport">
-        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
-        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
         <div class="tratt-track" id="tratt-track">
         <div class="tratt-card">
           <div class="tratt-icon">🦴</div>
@@ -458,6 +462,10 @@
         </div><!-- /track -->
         <div class="swipe-hint" id="swipe-hint"><span class="swipe-hand">👆</span> Trascina per scoprire altri servizi</div>
       </div><!-- /viewport -->
+      <div class="tratt-controls">
+        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
+        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
+      </div>
       <div class="tratt-dots" id="tratt-dots"></div>
   </div>
 </section>
@@ -645,17 +653,27 @@ loadPosts(posts=>{
 /* ══ CAROSELLO TRATTAMENTI ══ */
 (function(){
   const track = document.getElementById('tratt-track');
+  const viewport = track ? track.parentElement : null;
   const dotsWrap = document.getElementById('tratt-dots');
   const prev = document.getElementById('tratt-prev');
   const next = document.getElementById('tratt-next');
   const hint = document.getElementById('swipe-hint');
-  if(!track) return;
+  if(!track || !viewport) return;
 
   const cards = Array.from(track.children);
   const total = cards.length;
   let perView = 4, page = 0, autoTimer, isHover = false;
+  let cardWidth = 0, gap = 0;
 
-  // Calcola card visibili in base al viewport
+  function measure(){
+    if(cards.length < 2) return;
+    const r1 = cards[0].getBoundingClientRect();
+    const r2 = cards[1].getBoundingClientRect();
+    cardWidth = r1.width;
+    gap = r2.left - r1.right;
+    if(gap < 0) gap = 0;
+  }
+
   function updatePerView(){
     const w = window.innerWidth;
     if(w <= 680) perView = 1;
@@ -663,7 +681,7 @@ loadPosts(posts=>{
     else perView = 4;
   }
 
-  function totalPages(){ return Math.ceil(total / perView); }
+  function totalPages(){ return Math.max(1, Math.ceil(total / perView)); }
 
   function buildDots(){
     dotsWrap.innerHTML = '';
@@ -683,9 +701,11 @@ loadPosts(posts=>{
 
   function goTo(p, manual){
     const pages = totalPages();
-    page = ((p % pages) + pages) % pages; // wrap-around infinito
-    const offset = -(page * 100);
-    track.style.transform = `translateX(${offset}%)`;
+    page = ((p % pages) + pages) % pages;
+    measure();
+    const offset = page * perView * (cardWidth + gap);
+    track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
+    track.style.transform = `translateX(${-offset}px)`;
     updateDots();
     if(manual) restartAuto();
   }
@@ -699,61 +719,107 @@ loadPosts(posts=>{
   }
   function restartAuto(){ startAuto(); }
 
-  // Pause on hover (desktop)
-  track.addEventListener('mouseenter', ()=> isHover = true);
-  track.addEventListener('mouseleave', ()=> isHover = false);
+  // Mouse hover (desktop) — pause autoscroll
+  viewport.addEventListener('mouseenter', ()=> isHover = true);
+  viewport.addEventListener('mouseleave', ()=> isHover = false);
 
   // Frecce
-  prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
-  next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
+  if(prev) prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
+  if(next) next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
 
-  // Swipe touch
-  let touchStartX = 0, touchEndX = 0;
+  // ── Touch swipe LIVE (con feedback durante il drag) ──
+  let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, dragOffset = 0, isVerticalScroll = false;
+
   track.addEventListener('touchstart', e=>{
-    touchStartX = e.changedTouches[0].screenX;
-    isHover = true; // pausa autoscroll durante swipe
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchCurrentX = touchStartX;
+    isDragging = true;
+    isVerticalScroll = false;
+    isHover = true;
+    measure();
+    track.style.transition = 'none';
   },{passive:true});
+
+  track.addEventListener('touchmove', e=>{
+    if(!isDragging) return;
+    touchCurrentX = e.touches[0].clientX;
+    const dx = touchCurrentX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+
+    // Determina se l'utente sta scorrendo verticalmente
+    if(!isVerticalScroll && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10){
+      isVerticalScroll = true;
+    }
+    if(isVerticalScroll) return;
+
+    const baseOffset = page * perView * (cardWidth + gap);
+    track.style.transform = `translateX(${-baseOffset + dx}px)`;
+  },{passive:true});
+
   track.addEventListener('touchend', e=>{
-    touchEndX = e.changedTouches[0].screenX;
-    const dx = touchEndX - touchStartX;
-    if(Math.abs(dx) > 40){
+    if(!isDragging) return;
+    isDragging = false;
+    const dx = touchCurrentX - touchStartX;
+
+    if(isVerticalScroll){
+      goTo(page); // ritorna alla posizione corretta
+      isHover = false;
+      return;
+    }
+
+    if(Math.abs(dx) > 50){
       if(dx < 0) nextPage();
       else prevPage();
-      restartAuto();
+    } else {
+      goTo(page); // snap back
     }
+    restartAuto();
     isHover = false;
   },{passive:true});
 
-  // Reagisce al resize
+  // Resize
   let resizeTimer;
   window.addEventListener('resize', ()=>{
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(()=>{
       const oldPerView = perView;
       updatePerView();
+      measure();
       if(oldPerView !== perView){
         page = 0;
         buildDots();
-        goTo(0);
       }
+      goTo(page);
     }, 150);
   });
 
-  // Mostra swipe hint solo su mobile e solo la prima volta
   function maybeShowHint(){
     if(window.innerWidth > 680) return;
     if(localStorage.getItem('fm_swipe_hint_shown')) return;
     setTimeout(()=>{
-      hint.classList.add('show');
-      localStorage.setItem('fm_swipe_hint_shown','1');
+      if(hint){
+        hint.classList.add('show');
+        localStorage.setItem('fm_swipe_hint_shown','1');
+      }
     }, 1200);
   }
 
-  // Init
-  updatePerView();
-  buildDots();
-  startAuto();
-  maybeShowHint();
+  // Init: aspetta render
+  function init(){
+    updatePerView();
+    measure();
+    buildDots();
+    goTo(0);
+    startAuto();
+    maybeShowHint();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 50);
+  }
 })();
 </script>
 </body>
