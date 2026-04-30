@@ -98,8 +98,8 @@
 /* — TRATTAMENTI (Carosello) — */
 #trattamenti{padding:6rem 7vw 5rem;background:var(--off);overflow:hidden}
 .tratt-inner{max-width:1200px;margin:0 auto;position:relative}
-.tratt-viewport{overflow:hidden;position:relative;padding:.5rem 0}
-.tratt-track{display:flex;transition:transform .65s cubic-bezier(.4,.0,.2,1);will-change:transform;touch-action:pan-y}
+.tratt-viewport{overflow:hidden;position:relative;padding:.5rem 0;touch-action:pan-y}
+.tratt-track{display:flex;will-change:transform;transition:transform .65s cubic-bezier(.4,.0,.2,1)}
 .tratt-card{
   background:var(--white);border:1px solid var(--border);border-radius:var(--r);
   padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;
@@ -135,25 +135,25 @@
 .tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
 .tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
 
-/* Hint swipe mobile */
-.swipe-hint{display:none;position:absolute;bottom:.6rem;left:50%;
-  pointer-events:none;font-size:.72rem;color:var(--mid);font-weight:600;
-  background:rgba(255,255,255,.95);padding:.5rem 1rem;border-radius:999px;
-  box-shadow:0 4px 16px rgba(0,0,0,.12);
-  align-items:center;gap:.45rem;
-  white-space:nowrap;z-index:5;opacity:0;
-  transform:translateX(-50%)}
-.swipe-hint.show{display:flex;animation:swipeHintFade 4.5s ease-out forwards}
-.swipe-hand{display:inline-block;animation:swipeHandMove 1.4s ease-in-out infinite;font-size:1rem}
+/* Hint swipe mobile - sotto i controlli, non sopra le card */
+.swipe-hint{display:none;font-size:.78rem;color:var(--plum);font-weight:600;
+  background:var(--white);padding:.55rem 1.1rem;border-radius:999px;
+  border:1.5px solid var(--plum-l);
+  box-shadow:0 4px 16px rgba(139,77,110,.15);
+  align-items:center;gap:.5rem;
+  white-space:nowrap;margin:1.2rem auto 0;width:fit-content;
+  opacity:0;pointer-events:none}
+.swipe-hint.show{display:flex;animation:swipeHintFade 5s ease-out forwards}
+.swipe-hand{display:inline-block;animation:swipeHandMove 1.2s ease-in-out infinite;font-size:1.1rem}
 @keyframes swipeHintFade{
-  0%{opacity:0;transform:translate(-50%,8px)}
-  15%{opacity:1;transform:translate(-50%,0)}
-  75%{opacity:1;transform:translate(-50%,0)}
-  100%{opacity:0;transform:translate(-50%,-4px)}
+  0%{opacity:0;transform:translateY(8px)}
+  10%{opacity:1;transform:translateY(0)}
+  85%{opacity:1;transform:translateY(0)}
+  100%{opacity:0;transform:translateY(-4px)}
 }
 @keyframes swipeHandMove{
-  0%,100%{transform:translateX(-10px)}
-  50%{transform:translateX(10px)}
+  0%,100%{transform:translateX(-12px)}
+  50%{transform:translateX(12px)}
 }
 
 @media(max-width:1180px){
@@ -475,7 +475,6 @@
           <p>Drenaggio manuale per ritenzione idrica, edemi post-chirurgici e gambe pesanti.</p>
         </div>
         </div><!-- /track -->
-        <div class="swipe-hint" id="swipe-hint"><span class="swipe-hand">👆</span> Trascina per scoprire altri servizi</div>
       </div><!-- /viewport -->
       <div class="tratt-controls">
         <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
@@ -486,6 +485,7 @@
         <div class="tratt-dots" id="tratt-dots"></div>
         <button class="tratt-mobile-arrow" id="tratt-next-m" aria-label="Successivo">→</button>
       </div>
+      <div class="swipe-hint" id="swipe-hint"><span class="swipe-hand">👆</span> Trascina le schede per scoprire altri servizi</div>
   </div>
 </section>
 
@@ -685,12 +685,19 @@ loadPosts(posts=>{
   let cardWidth = 0, gap = 0;
 
   function measure(){
-    if(cards.length < 2) return;
+    if(cards.length < 1) return;
     const r1 = cards[0].getBoundingClientRect();
-    const r2 = cards[1].getBoundingClientRect();
     cardWidth = r1.width;
-    gap = r2.left - r1.right;
-    if(gap < 0) gap = 0;
+    if(cards.length >= 2){
+      const r2 = cards[1].getBoundingClientRect();
+      gap = Math.max(0, r2.left - r1.right);
+    } else {
+      gap = 0;
+    }
+    // fallback
+    if(cardWidth === 0){
+      cardWidth = viewport.getBoundingClientRect().width;
+    }
   }
 
   function updatePerView(){
@@ -750,10 +757,11 @@ loadPosts(posts=>{
   if(prevM) prevM.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
   if(nextM) nextM.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
 
-  // ── Touch swipe LIVE (con feedback durante il drag) ──
+  // ── Touch swipe LIVE (sul viewport, più affidabile di track) ──
   let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, isVerticalScroll = false, isHorizontalSwipe = false;
 
-  track.addEventListener('touchstart', e=>{
+  viewport.addEventListener('touchstart', e=>{
+    if(e.touches.length !== 1) return;
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
     touchCurrentX = touchStartX;
@@ -765,16 +773,15 @@ loadPosts(posts=>{
     track.style.transition = 'none';
   },{passive:true});
 
-  // touchmove NON passive così posso chiamare preventDefault quando swipe è orizzontale
-  track.addEventListener('touchmove', e=>{
-    if(!isDragging) return;
+  // touchmove non passive: serve preventDefault per swipe orizzontale
+  viewport.addEventListener('touchmove', e=>{
+    if(!isDragging || e.touches.length !== 1) return;
     touchCurrentX = e.touches[0].clientX;
     const dx = touchCurrentX - touchStartX;
     const dy = e.touches[0].clientY - touchStartY;
 
-    // Determina la direzione al primo movimento sostanziale
     if(!isHorizontalSwipe && !isVerticalScroll){
-      if(Math.abs(dx) > 8 || Math.abs(dy) > 8){
+      if(Math.abs(dx) > 6 || Math.abs(dy) > 6){
         if(Math.abs(dx) > Math.abs(dy)){
           isHorizontalSwipe = true;
         } else {
@@ -786,16 +793,16 @@ loadPosts(posts=>{
     if(isVerticalScroll) return;
 
     if(isHorizontalSwipe){
-      // Blocca lo scroll verticale del browser durante swipe orizzontale
-      e.preventDefault();
+      e.preventDefault(); // blocca scroll pagina
       const baseOffset = page * perView * (cardWidth + gap);
       track.style.transform = `translateX(${-baseOffset + dx}px)`;
     }
   },{passive:false});
 
-  track.addEventListener('touchend', e=>{
+  viewport.addEventListener('touchend', e=>{
     if(!isDragging) return;
     isDragging = false;
+    track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
     const dx = touchCurrentX - touchStartX;
 
     if(isVerticalScroll || !isHorizontalSwipe){
@@ -814,9 +821,10 @@ loadPosts(posts=>{
     isHover = false;
   },{passive:true});
 
-  track.addEventListener('touchcancel', ()=>{
+  viewport.addEventListener('touchcancel', ()=>{
     if(isDragging){
       isDragging = false;
+      track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
       goTo(page);
       isHover = false;
     }
