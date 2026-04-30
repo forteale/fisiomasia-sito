@@ -119,26 +119,27 @@
 .tratt-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.22rem .6rem;border-radius:999px;width:fit-content}
 
 /* Frecce — sopra il viewport, non dentro */
-.tratt-controls{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:calc(100% + 80px);left:-40px;pointer-events:none;z-index:10}
+/* Frecce — ora in basso, dentro tratt-dots-wrap */
+.tratt-controls{display:none} /* il wrapper position:absolute non serve più */
 .tratt-arrow{
-  width:48px;height:48px;border-radius:50%;
+  width:40px;height:40px;border-radius:50%;
   background:var(--white);border:1.5px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;pointer-events:auto;
-  box-shadow:0 4px 16px rgba(139,77,110,.12);color:var(--plum);
-  font-size:1.2rem;font-weight:600
+  cursor:pointer;transition:all .2s;
+  box-shadow:0 3px 10px rgba(139,77,110,.1);color:var(--plum);
+  font-size:1rem;font-weight:600;-webkit-appearance:none;font-family:inherit;flex-shrink:0
 }
-.tratt-arrow:hover{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 6px 24px rgba(139,77,110,.3);transform:scale(1.08)}
+.tratt-arrow:hover,.tratt-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 5px 18px rgba(139,77,110,.28)}
 
 /* Dots */
-.tratt-dots{display:flex;justify-content:center;gap:.55rem}
+.tratt-dots{display:flex;justify-content:center;gap:.55rem;align-items:center}
 .tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
 .tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
-.tratt-dots-wrap{margin-top:2rem}
+/* Wrapper frecce + dots in linea */
+.tratt-dots-wrap{margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:1rem}
 
-@media(max-width:1180px){
-  .tratt-controls{width:100%;left:0}
-  .tratt-arrow{box-shadow:0 6px 20px rgba(0,0,0,.15)}
+@media(max-width:680px){
+  .tratt-dots-wrap{margin-top:1.3rem;gap:.8rem}
 }
 @media(max-width:1000px){
   .tratt-card{flex:0 0 calc(50% - .6rem)} /* 2 col tablet */
@@ -149,7 +150,8 @@
   .tratt-card p{font-size:.92rem}
   /* Niente frecce su mobile, solo swipe + dots */
   .tratt-controls{display:none}
-  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.3rem}
+  .tratt-arrow{display:none}
+  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.3rem;gap:0}
   #trattamenti{padding:3.2rem 6vw 3.5rem;overflow:hidden}
   .tratt-viewport{margin:0;padding:.5rem 0;position:relative}
   /* Hint trascina sopra la card - solo prima del primo swipe */
@@ -490,12 +492,10 @@
         </div><!-- /track -->
         <div class="swipe-hint-mobile" id="swipe-hint-mobile"><span class="swipe-hand-mobile">👆</span> Trascina per scoprire</div>
       </div><!-- /viewport -->
-      <div class="tratt-controls">
-        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
-        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
-      </div>
       <div class="tratt-dots-wrap">
+        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
         <div class="tratt-dots" id="tratt-dots"></div>
+        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
       </div>
   </div>
 </section>
@@ -597,7 +597,7 @@
       <div class="fg"><label for="f-msg">Messaggio</label><textarea id="f-msg" name="messaggio" placeholder="Descrivi brevemente il tuo problema o la tua richiesta..."></textarea></div>
       <label class="form-privacy">
         <input type="checkbox" name="privacy_consenso" required/>
-        <span>Ho letto l'informativa e <strong>autorizzo il trattamento dei miei dati personali</strong> ai sensi del Reg. UE 2016/679 (GDPR) per essere ricontattata/o dallo studio in merito alla mia richiesta. *</span>
+        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e <strong>autorizzo il trattamento dei miei dati personali</strong> ai sensi del Reg. UE 2016/679 (GDPR) per essere ricontattata/o dallo studio in merito alla mia richiesta. *</span>
       </label>
       <button type="submit" class="form-btn">Invia messaggio</button>
       <p class="form-note">I tuoi dati non saranno condivisi con terze parti e verranno utilizzati esclusivamente per rispondere alla tua richiesta. Form protetto da anti-spam.</p>
@@ -637,7 +637,7 @@
       </div>
     </div>
   </div>
-  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><a href="#">Privacy Policy</a></div>
+  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><a href="privacy.html">Informativa Privacy</a></div>
 </footer>
 
 <script>
