@@ -63,8 +63,8 @@
 .eyebrow-loc{white-space:nowrap}
 .hero-desc{max-width:430px;color:var(--ink);opacity:.78;font-size:.98rem;line-height:1.85}
 .hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
-.hero-badges{display:flex;gap:.6rem;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--white);border:1.5px solid var(--border);border-radius:999px;padding:.42rem .9rem;font-size:.78rem;font-weight:600;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.hero-badges{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);border:1.5px solid var(--border);border-radius:999px;padding:.4rem .85rem;font-size:.78rem;font-weight:600;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.05);white-space:nowrap}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0}
 .hero-photo-col{position:relative;overflow:hidden;background:var(--warm)}
 .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
@@ -94,20 +94,75 @@
 .studio-info p{font-size:.92rem;color:var(--mid);line-height:1.75;margin-bottom:.6rem}
 .studio-info p strong{color:var(--ink);font-weight:600}
 
-/* — TRATTAMENTI — */
-#trattamenti{padding:6rem 7vw;background:var(--off)}
-.tratt-inner{max-width:1100px;margin:0 auto}
-.tratt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem}
-.tratt-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;cursor:default}
+/* — TRATTAMENTI (Carosello) — */
+#trattamenti{padding:6rem 7vw 5rem;background:var(--off);overflow:hidden}
+.tratt-inner{max-width:1200px;margin:0 auto;position:relative}
+.tratt-viewport{overflow:hidden;margin:0 -.5rem;padding:.5rem;position:relative}
+.tratt-track{display:flex;gap:1.2rem;transition:transform .65s cubic-bezier(.4,.0,.2,1);will-change:transform}
+.tratt-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;
+  transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;
+  flex:0 0 calc((100% - 3.6rem) / 4); /* 4 card desktop con 3 gap da 1.2rem */
+  min-height:230px;cursor:default
+}
 .tratt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--plum),var(--mint));opacity:0;transition:opacity .22s}
-.tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}.tratt-card:hover::after{opacity:1}
+.tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}
+.tratt-card:hover::after{opacity:1}
 .tratt-icon{width:46px;height:46px;border-radius:50%;background:var(--plum-l);display:flex;align-items:center;justify-content:center;font-size:1.35rem;line-height:1;transition:background .22s}
 .tratt-card:hover .tratt-icon{background:var(--mint-l)}
 .tratt-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3}
 .tratt-card p{font-size:.84rem;color:var(--mid);line-height:1.7;flex:1}
 .tratt-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.2rem .55rem;border-radius:999px;width:fit-content}
-@media(max-width:1000px){.tratt-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.tratt-grid{grid-template-columns:1fr;gap:1rem}.tratt-card{padding:1.4rem 1.3rem}}
+
+/* Frecce */
+.tratt-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:var(--white);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:10;transition:all .2s;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);color:var(--plum);
+  font-size:1.1rem;font-weight:600
+}
+.tratt-arrow:hover{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 6px 20px rgba(139,77,110,.25)}
+.tratt-arrow.prev{left:-22px}
+.tratt-arrow.next{right:-22px}
+
+/* Dots */
+.tratt-dots{display:flex;justify-content:center;gap:.55rem;margin-top:2rem}
+.tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
+.tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
+
+/* Hint swipe mobile (solo prima visualizzazione) */
+.swipe-hint{display:none;position:absolute;bottom:.6rem;left:50%;
+  pointer-events:none;font-size:.72rem;color:var(--mid);font-weight:600;
+  background:rgba(255,255,255,.95);padding:.5rem 1rem;border-radius:999px;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+  align-items:center;gap:.45rem;
+  white-space:nowrap;z-index:5;opacity:0;
+  transform:translateX(-50%)}
+.swipe-hint.show{display:flex;animation:swipeHintFade 4.5s ease-out forwards}
+.swipe-hand{display:inline-block;animation:swipeHandMove 1.4s ease-in-out infinite;font-size:1rem}
+@keyframes swipeHintFade{
+  0%{opacity:0;transform:translate(-50%,8px)}
+  15%{opacity:1;transform:translate(-50%,0)}
+  75%{opacity:1;transform:translate(-50%,0)}
+  100%{opacity:0;transform:translate(-50%,-4px)}
+}
+@keyframes swipeHandMove{
+  0%,100%{transform:translateX(-10px)}
+  50%{transform:translateX(10px)}
+}
+
+@media(max-width:1000px){
+  .tratt-card{flex:0 0 calc((100% - 1.2rem) / 2)} /* 2 card */
+}
+@media(max-width:680px){
+  .tratt-card{flex:0 0 100%;min-height:auto} /* 1 card */
+  .tratt-arrow{display:none}
+  #trattamenti{padding:4.5rem 6vw 4rem}
+}
 
 /* — PILATES — */
 #pilates{padding:6rem 7vw;background:var(--plum-pale);display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center}
@@ -328,7 +383,10 @@
       <h2 class="h2">Un approccio completo alla riabilitazione</h2>
       <p>Dal primo colloquio alla fine del percorso, ogni terapia è costruita sulla persona — non sulla patologia. Metodologie basate sull'evidenza scientifica per garantire i migliori risultati.</p>
     </div>
-      <div class="tratt-grid" id="tratt-grid">
+      <div class="tratt-viewport">
+        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
+        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
+        <div class="tratt-track" id="tratt-track">
         <div class="tratt-card">
           <div class="tratt-icon">🦴</div>
           <span class="tratt-tag">Ortopedica</span>
@@ -397,7 +455,10 @@
           <h4>Linfodrenaggio</h4>
           <p>Drenaggio manuale per ritenzione idrica, edemi post-chirurgici e gambe pesanti.</p>
         </div>
-      </div>
+        </div><!-- /track -->
+        <div class="swipe-hint" id="swipe-hint"><span class="swipe-hand">👆</span> Trascina per scoprire altri servizi</div>
+      </div><!-- /viewport -->
+      <div class="tratt-dots" id="tratt-dots"></div>
   </div>
 </section>
 
@@ -580,6 +641,120 @@ function cardHTML(p){return`<a href="blog.html#${p.id}" class="blog-card">${thum
 loadPosts(posts=>{
   document.getElementById('blog-preview').innerHTML=posts.slice(0,3).map(cardHTML).join('');
 });
+
+/* ══ CAROSELLO TRATTAMENTI ══ */
+(function(){
+  const track = document.getElementById('tratt-track');
+  const dotsWrap = document.getElementById('tratt-dots');
+  const prev = document.getElementById('tratt-prev');
+  const next = document.getElementById('tratt-next');
+  const hint = document.getElementById('swipe-hint');
+  if(!track) return;
+
+  const cards = Array.from(track.children);
+  const total = cards.length;
+  let perView = 4, page = 0, autoTimer, isHover = false;
+
+  // Calcola card visibili in base al viewport
+  function updatePerView(){
+    const w = window.innerWidth;
+    if(w <= 680) perView = 1;
+    else if(w <= 1000) perView = 2;
+    else perView = 4;
+  }
+
+  function totalPages(){ return Math.ceil(total / perView); }
+
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    const pages = totalPages();
+    for(let i=0; i<pages; i++){
+      const d = document.createElement('button');
+      d.className = 'tratt-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label','Vai a pagina '+(i+1));
+      d.addEventListener('click', ()=> goTo(i, true));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots(){
+    Array.from(dotsWrap.children).forEach((d,i)=> d.classList.toggle('active', i === page));
+  }
+
+  function goTo(p, manual){
+    const pages = totalPages();
+    page = ((p % pages) + pages) % pages; // wrap-around infinito
+    const offset = -(page * 100);
+    track.style.transform = `translateX(${offset}%)`;
+    updateDots();
+    if(manual) restartAuto();
+  }
+
+  function nextPage(){ goTo(page + 1); }
+  function prevPage(){ goTo(page - 1); }
+
+  function startAuto(){
+    clearInterval(autoTimer);
+    autoTimer = setInterval(()=>{ if(!isHover) nextPage(); }, 4500);
+  }
+  function restartAuto(){ startAuto(); }
+
+  // Pause on hover (desktop)
+  track.addEventListener('mouseenter', ()=> isHover = true);
+  track.addEventListener('mouseleave', ()=> isHover = false);
+
+  // Frecce
+  prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
+  next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
+
+  // Swipe touch
+  let touchStartX = 0, touchEndX = 0;
+  track.addEventListener('touchstart', e=>{
+    touchStartX = e.changedTouches[0].screenX;
+    isHover = true; // pausa autoscroll durante swipe
+  },{passive:true});
+  track.addEventListener('touchend', e=>{
+    touchEndX = e.changedTouches[0].screenX;
+    const dx = touchEndX - touchStartX;
+    if(Math.abs(dx) > 40){
+      if(dx < 0) nextPage();
+      else prevPage();
+      restartAuto();
+    }
+    isHover = false;
+  },{passive:true});
+
+  // Reagisce al resize
+  let resizeTimer;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{
+      const oldPerView = perView;
+      updatePerView();
+      if(oldPerView !== perView){
+        page = 0;
+        buildDots();
+        goTo(0);
+      }
+    }, 150);
+  });
+
+  // Mostra swipe hint solo su mobile e solo la prima volta
+  function maybeShowHint(){
+    if(window.innerWidth > 680) return;
+    if(localStorage.getItem('fm_swipe_hint_shown')) return;
+    setTimeout(()=>{
+      hint.classList.add('show');
+      localStorage.setItem('fm_swipe_hint_shown','1');
+    }, 1200);
+  }
+
+  // Init
+  updatePerView();
+  buildDots();
+  startAuto();
+  maybeShowHint();
+})();
 </script>
 </body>
 </html>
