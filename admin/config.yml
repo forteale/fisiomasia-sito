@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Cartella dove vengono salvati i file caricati (immagini)
+media_folder: "uploads"
+public_folder: "/uploads"
+
+# Lingua interfaccia
+locale: 'it'
+
+# Logo nel CMS
+site_url: https://www.fisiomasia.it
+display_url: https://www.fisiomasia.it
+logo_url: https://www.fisiomasia.it/fabiana.jpg
+
+collections:
+  - name: "articoli"
+    label: "Articoli del blog"
+    label_singular: "Articolo"
+    folder: "articoli"
+    create: true
+    slug: "{{slug}}"
+    extension: "html"
+    format: "frontmatter"
+    summary: "{{title}} — {{cat}} ({{date | date('DD/MM/YYYY')}})"
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Data di pubblicazione", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+      - label: "Categoria"
+        name: "cat"
+        widget: "select"
+        options: ["Riabilitazione", "Pavimento Pelvico", "Pilates", "Prevenzione", "Postura", "Fisioterapia Sportiva", "Consigli", "News"]
+      - {label: "Estratto (max 160 caratteri)", name: "excerpt", widget: "string", pattern: ['.{1,160}', "Massimo 160 caratteri"]}
+      - {label: "Immagine di copertina", name: "image", widget: "image", required: false, hint: "Suggerito 1200×800 px. Se vuota, viene usata l'icona della categoria."}
+      - {label: "Contenuto", name: "body", widget: "markdown"}

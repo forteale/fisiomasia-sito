@@ -1,0 +1,8 @@
+# Configurazione Netlify per fisiomasia.it
+# Alla pubblicazione di un articolo dal CMS, viene rigenerato articoli/index.json
+
+[build]
+  command = "node build-articoli.js"
+  publish = "."
+
+# I redirect SEO sono nel file _redirects (priorità maggiore)
