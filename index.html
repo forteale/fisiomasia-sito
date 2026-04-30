@@ -165,9 +165,24 @@
 }
 @media(max-width:680px){
   .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto}
-  .tratt-controls{display:none}
+  /* Frecce restano visibili su mobile, ma più piccole e in linea con i dots */
+  .tratt-controls{position:static;transform:none;width:auto;left:auto;display:none}
+  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.6rem}
+  .tratt-mobile-arrow{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--white);border:1.5px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;-webkit-appearance:none;
+    color:var(--plum);font-size:1rem;font-weight:600;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);font-family:inherit
+  }
+  .tratt-mobile-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum)}
   #trattamenti{padding:4.5rem 6vw 4rem;overflow:hidden}
   .tratt-viewport{margin:0;padding:.5rem 0}
+}
+@media(min-width:681px){
+  .tratt-mobile-arrow{display:none}
+  .tratt-dots-wrap{display:block}
 }
 
 /* — PILATES — */
@@ -466,7 +481,11 @@
         <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
         <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
       </div>
-      <div class="tratt-dots" id="tratt-dots"></div>
+      <div class="tratt-dots-wrap">
+        <button class="tratt-mobile-arrow" id="tratt-prev-m" aria-label="Precedente">←</button>
+        <div class="tratt-dots" id="tratt-dots"></div>
+        <button class="tratt-mobile-arrow" id="tratt-next-m" aria-label="Successivo">→</button>
+      </div>
   </div>
 </section>
 
@@ -726,9 +745,13 @@ loadPosts(posts=>{
   // Frecce
   if(prev) prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
   if(next) next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
+  const prevM = document.getElementById('tratt-prev-m');
+  const nextM = document.getElementById('tratt-next-m');
+  if(prevM) prevM.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
+  if(nextM) nextM.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
 
   // ── Touch swipe LIVE (con feedback durante il drag) ──
-  let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, dragOffset = 0, isVerticalScroll = false;
+  let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, isVerticalScroll = false, isHorizontalSwipe = false;
 
   track.addEventListener('touchstart', e=>{
     touchStartX = e.touches[0].clientX;
@@ -736,34 +759,47 @@ loadPosts(posts=>{
     touchCurrentX = touchStartX;
     isDragging = true;
     isVerticalScroll = false;
+    isHorizontalSwipe = false;
     isHover = true;
     measure();
     track.style.transition = 'none';
   },{passive:true});
 
+  // touchmove NON passive così posso chiamare preventDefault quando swipe è orizzontale
   track.addEventListener('touchmove', e=>{
     if(!isDragging) return;
     touchCurrentX = e.touches[0].clientX;
     const dx = touchCurrentX - touchStartX;
     const dy = e.touches[0].clientY - touchStartY;
 
-    // Determina se l'utente sta scorrendo verticalmente
-    if(!isVerticalScroll && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10){
-      isVerticalScroll = true;
+    // Determina la direzione al primo movimento sostanziale
+    if(!isHorizontalSwipe && !isVerticalScroll){
+      if(Math.abs(dx) > 8 || Math.abs(dy) > 8){
+        if(Math.abs(dx) > Math.abs(dy)){
+          isHorizontalSwipe = true;
+        } else {
+          isVerticalScroll = true;
+        }
+      }
     }
+
     if(isVerticalScroll) return;
 
-    const baseOffset = page * perView * (cardWidth + gap);
-    track.style.transform = `translateX(${-baseOffset + dx}px)`;
-  },{passive:true});
+    if(isHorizontalSwipe){
+      // Blocca lo scroll verticale del browser durante swipe orizzontale
+      e.preventDefault();
+      const baseOffset = page * perView * (cardWidth + gap);
+      track.style.transform = `translateX(${-baseOffset + dx}px)`;
+    }
+  },{passive:false});
 
   track.addEventListener('touchend', e=>{
     if(!isDragging) return;
     isDragging = false;
     const dx = touchCurrentX - touchStartX;
 
-    if(isVerticalScroll){
-      goTo(page); // ritorna alla posizione corretta
+    if(isVerticalScroll || !isHorizontalSwipe){
+      goTo(page);
       isHover = false;
       return;
     }
@@ -772,10 +808,18 @@ loadPosts(posts=>{
       if(dx < 0) nextPage();
       else prevPage();
     } else {
-      goTo(page); // snap back
+      goTo(page);
     }
     restartAuto();
     isHover = false;
+  },{passive:true});
+
+  track.addEventListener('touchcancel', ()=>{
+    if(isDragging){
+      isDragging = false;
+      goTo(page);
+      isHover = false;
+    }
   },{passive:true});
 
   // Resize
@@ -795,14 +839,23 @@ loadPosts(posts=>{
   });
 
   function maybeShowHint(){
-    if(window.innerWidth > 680) return;
-    if(localStorage.getItem('fm_swipe_hint_shown')) return;
-    setTimeout(()=>{
-      if(hint){
-        hint.classList.add('show');
-        localStorage.setItem('fm_swipe_hint_shown','1');
-      }
-    }, 1200);
+    if(window.innerWidth > 680 || !hint) return;
+    // Mostra hint quando la sezione entra nel viewport
+    if('IntersectionObserver' in window){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting && !hint.dataset.shown){
+            hint.classList.add('show');
+            hint.dataset.shown = '1';
+            setTimeout(()=> hint.classList.remove('show'), 5000);
+          }
+        });
+      },{threshold: 0.3});
+      const section = document.getElementById('trattamenti');
+      if(section) obs.observe(section);
+    } else {
+      setTimeout(()=> hint.classList.add('show'), 1200);
+    }
   }
 
   // Init: aspetta render
