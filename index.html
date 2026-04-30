@@ -102,21 +102,21 @@
 .tratt-track{display:flex;will-change:transform;transition:transform .65s cubic-bezier(.4,.0,.2,1)}
 .tratt-card{
   background:var(--white);border:1px solid var(--border);border-radius:var(--r);
-  padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;
+  padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:.8rem;
   transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;
-  flex:0 0 calc(25% - .9rem); /* 4 col */
+  flex:0 0 calc(25% - .9rem);
   margin-right:1.2rem;
-  min-height:230px;cursor:default;box-sizing:border-box
+  min-height:260px;cursor:default;box-sizing:border-box
 }
 .tratt-card:last-child{margin-right:0}
 .tratt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--plum),var(--mint));opacity:0;transition:opacity .22s}
 .tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}
 .tratt-card:hover::after{opacity:1}
-.tratt-icon{width:46px;height:46px;border-radius:50%;background:var(--plum-l);display:flex;align-items:center;justify-content:center;font-size:1.35rem;line-height:1;transition:background .22s;flex-shrink:0}
+.tratt-icon{width:46px;height:46px;border-radius:50%;background:var(--plum-l);display:flex;align-items:center;justify-content:center;font-size:1.4rem;line-height:1;transition:background .22s;flex-shrink:0}
 .tratt-card:hover .tratt-icon{background:var(--mint-l)}
-.tratt-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3}
-.tratt-card p{font-size:.84rem;color:var(--mid);line-height:1.7;flex:1}
-.tratt-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.2rem .55rem;border-radius:999px;width:fit-content}
+.tratt-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;line-height:1.35;color:var(--ink)}
+.tratt-card p{font-size:.9rem;color:var(--mid);line-height:1.65;flex:1}
+.tratt-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.22rem .6rem;border-radius:999px;width:fit-content}
 
 /* Frecce — sopra il viewport, non dentro */
 .tratt-controls{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:calc(100% + 80px);left:-40px;pointer-events:none;z-index:10}
@@ -144,11 +144,13 @@
   .tratt-card{flex:0 0 calc(50% - .6rem)} /* 2 col tablet */
 }
 @media(max-width:680px){
-  .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto}
+  .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto;aspect-ratio:1/1;padding:1.5rem 1.4rem;justify-content:flex-start}
+  .tratt-card h4{font-size:1.05rem}
+  .tratt-card p{font-size:.92rem}
   /* Niente frecce su mobile, solo swipe + dots */
   .tratt-controls{display:none}
-  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.6rem}
-  #trattamenti{padding:4.5rem 6vw 4rem;overflow:hidden}
+  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.3rem}
+  #trattamenti{padding:3.2rem 6vw 3.5rem;overflow:hidden}
   .tratt-viewport{margin:0;padding:.5rem 0;position:relative}
   /* Hint trascina sopra la card - solo prima del primo swipe */
   .swipe-hint-mobile{
@@ -195,11 +197,11 @@
 .pilates-left p{color:var(--mid);font-size:.94rem;margin-bottom:.95rem;line-height:1.85}
 .pilates-left p strong{color:var(--ink);font-weight:600}
 .pilates-feats{display:flex;flex-direction:column;gap:.85rem}
-.pf{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:1.2rem 1.4rem;display:flex;gap:.95rem;align-items:flex-start;transition:box-shadow .2s}
-.pf:hover{box-shadow:0 4px 20px rgba(139,77,110,.08)}
-.pf-icon{width:34px;height:34px;border-radius:50%;background:var(--mint-l);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;line-height:1}
-.pf h5{font-size:.9rem;font-weight:600;margin-bottom:.22rem;color:var(--ink)}
-.pf p{font-size:.82rem;color:var(--mid);line-height:1.65}
+.pf{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:1.3rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:box-shadow .2s}
+.pf:hover{box-shadow:0 8px 24px rgba(139,77,110,.08)}
+.pf-icon{width:38px;height:38px;border-radius:50%;background:var(--mint-l);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;line-height:1}
+.pf h5{font-size:1rem;font-weight:600;margin-bottom:.3rem;color:var(--ink)}
+.pf p{font-size:.9rem;color:var(--mid);line-height:1.6}
 
 /* — STRIP DOMICILIARE — */
 .strip-dom{padding:2.6rem 7vw;background:var(--plum-l);border-top:1px solid #dcc8d8;border-bottom:1px solid #dcc8d8;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
