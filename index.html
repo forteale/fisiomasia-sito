@@ -276,6 +276,11 @@
   .about-pills{gap:.4rem;margin-top:1.2rem}
   .pill{font-size:.7rem;padding:.3rem .75rem;letter-spacing:.08em}
   .pill-title{font-size:.95rem;flex:0 0 100%;margin:0 0 .15rem 0}
+  /* Bottoni isolati centrati su mobile */
+  .pilates-left > .btn,
+  .dove-info > .btn{display:block;margin-left:auto;margin-right:auto;width:fit-content;text-align:center}
+  /* Logo header più compatto su mobile */
+  .nav-logo-img{width:36px;height:36px}
 }
 </style>
 <!-- Netlify Identity: gestisce recovery/invite token anche dalla homepage -->
@@ -299,8 +304,11 @@
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">
-    <strong>Fabiana Masia</strong>
-    <span>Fisioterapista</span>
+    <img src="logo.png" alt="Logo Fisiomasia" class="nav-logo-img"/>
+    <div class="nav-logo-text">
+      <strong>Fabiana Masia</strong>
+      <span>Fisioterapista</span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#chi-sono">Chi sono</a></li>
@@ -585,8 +593,12 @@
         </select>
       </div>
       <div class="fg"><label for="f-msg">Messaggio</label><textarea id="f-msg" name="messaggio" placeholder="Descrivi brevemente il tuo problema o la tua richiesta..."></textarea></div>
+      <label class="form-privacy">
+        <input type="checkbox" name="privacy_consenso" required/>
+        <span>Ho letto l'informativa e <strong>autorizzo il trattamento dei miei dati personali</strong> ai sensi del Reg. UE 2016/679 (GDPR) per essere ricontattata/o dallo studio in merito alla mia richiesta. *</span>
+      </label>
       <button type="submit" class="form-btn">Invia messaggio</button>
-      <p class="form-note">I tuoi dati non saranno condivisi con terze parti. Form protetto da anti-spam Formspree + honeypot.</p>
+      <p class="form-note">I tuoi dati non saranno condivisi con terze parti e verranno utilizzati esclusivamente per rispondere alla tua richiesta. Form protetto da anti-spam.</p>
       <div id="form-ok">✓ Messaggio inviato! Ti risponderò al più presto.</div>
     </form>
   </div>
@@ -596,7 +608,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="nav-logo"><strong>Fabiana Masia</strong><span>Fisioterapista</span></a>
+      <a href="#hero" class="nav-logo"><img src="logo.png" alt="Logo Fisiomasia" class="nav-logo-img" style="filter:brightness(0) invert(1) opacity(.95)"/><div class="nav-logo-text"><strong>Fabiana Masia</strong><span>Fisioterapista</span></div></a>
       <p>Studio di fisioterapia a Livorno Ferraris (VC). Trattamenti personalizzati per il tuo benessere fisico, con professionalità e cura.</p>
     </div>
     <div>

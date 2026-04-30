@@ -38,7 +38,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);l
 /* — NAV — */
 #nav{position:fixed;top:0;left:0;right:0;z-index:300;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-l);transition:box-shadow .3s}
 #nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07)}
-.nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1.2}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:.7rem;line-height:1.2}
+.nav-logo-img{width:42px;height:42px;object-fit:contain;flex-shrink:0}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
 .nav-logo strong{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);letter-spacing:-.005em}
 .nav-logo span{font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-top:1px}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
@@ -80,6 +82,11 @@ footer h5{font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:u
 .form-btn{width:100%;padding:1rem;background:var(--plum);color:#fff;border:none;border-radius:999px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .2s}
 .form-btn:hover{background:var(--plum-d)}
 .form-note{font-size:.73rem;color:var(--light);margin-top:.75rem;line-height:1.5}
+.form-privacy{display:flex;align-items:flex-start;gap:.7rem;margin:.5rem 0 1.2rem;cursor:pointer;font-size:.78rem;color:var(--mid);line-height:1.55}
+.form-privacy input[type="checkbox"]{flex-shrink:0;width:18px;height:18px;margin-top:.1rem;accent-color:var(--plum);cursor:pointer}
+.form-privacy span{flex:1}
+.form-privacy strong{color:var(--ink);font-weight:600}
+.form-privacy:hover span{color:var(--ink)}
 .honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;visibility:hidden}
 
 /* — RESPONSIVE COMUNE — */
