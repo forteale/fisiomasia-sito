@@ -182,6 +182,21 @@
   .strip-dom{flex-direction:column;gap:1.2rem;text-align:center}
 }
 </style>
+<!-- Netlify Identity: gestisce recovery/invite token anche dalla homepage -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if(window.netlifyIdentity){
+    window.netlifyIdentity.on('init',user=>{
+      if(!user){
+        window.netlifyIdentity.on('login',()=>{ document.location.href='/admin/'; });
+      }
+    });
+    // Se c'è un token nell'URL (recovery, invite) apri il widget automaticamente
+    if(window.location.hash.includes('recovery_token') || window.location.hash.includes('invite_token')){
+      window.netlifyIdentity.open();
+    }
+  }
+</script>
 </head>
 <body>
 
