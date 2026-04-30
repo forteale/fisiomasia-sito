@@ -58,8 +58,9 @@
 /* — HERO — */
 #hero{padding-top:68px;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5vw 4vw 5vw 7vw;gap:1.2rem}
-.hero-eyebrow{display:flex;align-items:center;gap:.85rem;color:var(--mint);font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.hero-eyebrow{display:flex;align-items:center;gap:.85rem;color:var(--mint);font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;flex-wrap:wrap}
 .hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--mint);flex-shrink:0}
+.eyebrow-loc{white-space:nowrap}
 .hero-desc{max-width:430px;color:var(--ink);opacity:.78;font-size:.98rem;line-height:1.85}
 .hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
 .hero-badges{display:flex;gap:.6rem;flex-wrap:wrap}
@@ -96,7 +97,7 @@
 /* — TRATTAMENTI — */
 #trattamenti{padding:6rem 7vw;background:var(--off)}
 .tratt-inner{max-width:1100px;margin:0 auto}
-.tratt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.tratt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem}
 .tratt-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;cursor:default}
 .tratt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--plum),var(--mint));opacity:0;transition:opacity .22s}
 .tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}.tratt-card:hover::after{opacity:1}
@@ -105,6 +106,17 @@
 .tratt-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3}
 .tratt-card p{font-size:.84rem;color:var(--mid);line-height:1.7;flex:1}
 .tratt-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.2rem .55rem;border-radius:999px;width:fit-content}
+/* dots carosello mobile */
+.tratt-dots{display:none;justify-content:center;gap:.5rem;margin-top:1.2rem}
+.tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}
+.tratt-dot.active{background:var(--plum);transform:scale(1.3)}
+@media(max-width:860px){
+  .tratt-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding-bottom:.5rem;scrollbar-width:none;margin-top:2rem}
+  .tratt-grid::-webkit-scrollbar{display:none}
+  .tratt-card{flex:0 0 75vw;max-width:300px;scroll-snap-align:start}
+  .tratt-dots{display:flex}
+}
+@media(max-width:500px){.tratt-card{flex:0 0 82vw}}
 
 /* — PILATES — */
 #pilates{padding:6rem 7vw;background:var(--plum-pale);display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center}
@@ -174,12 +186,45 @@
   .studio-info{padding:2rem 2rem}
   #pilates{grid-template-columns:1fr}
   .serv-grid,.blog-grid{grid-template-columns:1fr 1fr}
-  .tratt-grid{grid-template-columns:repeat(2,1fr)}
   .dove-grid{grid-template-columns:1fr}
 }
+@media(max-width:860px){
+  /* carosello trattamenti */
+  .tratt-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:1rem;
+    padding-bottom:.5rem;
+    scrollbar-width:none;
+    margin-top:2rem;
+    grid-template-columns:none !important;
+  }
+  .tratt-grid::-webkit-scrollbar{display:none}
+  .tratt-card{flex:0 0 78vw !important;max-width:320px;scroll-snap-align:start;width:auto !important}
+  .tratt-dots{display:flex}
+}
 @media(max-width:640px){
-  .serv-grid,.blog-grid,.tratt-grid{grid-template-columns:1fr}
+  /* font generale più grande su mobile */
+  body{font-size:17px}
+  .hero-eyebrow{font-size:.72rem;letter-spacing:.16em;flex-direction:column;align-items:flex-start;gap:.3rem;line-height:1.5}
+  .hero-eyebrow::before{display:none}
+  .eyebrow-loc{white-space:nowrap}
+  .h1{font-size:clamp(2.6rem,11vw,3.8rem)}
+  .hero-desc{font-size:1rem}
+  .badge{font-size:.82rem;padding:.48rem 1rem}
+  .serv-grid,.blog-grid{grid-template-columns:1fr}
   .strip-dom{flex-direction:column;gap:1.2rem;text-align:center}
+  .tratt-card{flex:0 0 84vw !important}
+  /* card trattamenti più grandi su mobile */
+  .tratt-card h4{font-size:1.15rem}
+  .tratt-card p{font-size:.92rem}
+  .tratt-icon{width:52px;height:52px;font-size:1.5rem}
+  .tratt-tag{font-size:.65rem}
+  /* pill chi sono */
+  .pill{font-size:.75rem;padding:.35rem .9rem}
+  .pill-title{font-size:1rem}
 }
 </style>
 <!-- Netlify Identity: gestisce recovery/invite token anche dalla homepage -->
@@ -233,7 +278,7 @@
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Studio di Fisioterapia · Livorno Ferraris (VC)</div>
+    <div class="hero-eyebrow">Studio di Fisioterapia&nbsp;·&nbsp;<span class="eyebrow-loc">Livorno Ferraris (VC)</span></div>
     <h1 class="display">La tua salute<br>è la mia <em>priorità</em></h1>
     <p class="hero-desc">Trattamenti personalizzati per migliorare la mobilità, ridurre il dolore e aiutarti a recuperare al meglio le tue funzionalità.</p>
     <div class="hero-actions">
@@ -311,71 +356,73 @@
       <h2 class="h2">Un approccio completo alla riabilitazione</h2>
       <p>Dal primo colloquio alla fine del percorso, ogni terapia è costruita sulla persona — non sulla patologia. Metodologie basate sull'evidenza scientifica per garantire i migliori risultati.</p>
     </div>
-    <div class="tratt-grid">
-      <div class="tratt-card">
-        <div class="tratt-icon">🦴</div>
-        <span class="tratt-tag">Ortopedica</span>
-        <h4>Riabilitazione Ortopedica</h4>
-        <p>Traumi, dolori articolari, post-operatorio (anca, spalla, ginocchio), patologie della colonna.</p>
+      <div class="tratt-grid" id="tratt-grid">
+        <div class="tratt-card">
+          <div class="tratt-icon">🦴</div>
+          <span class="tratt-tag">Ortopedica</span>
+          <h4>Riabilitazione Ortopedica</h4>
+          <p>Traumi, dolori articolari, post-operatorio (anca, spalla, ginocchio), patologie della colonna.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🧠</div>
+          <span class="tratt-tag">Neurologica</span>
+          <h4>Riabilitazione Neurologica</h4>
+          <p>Recupero motorio dopo ictus, sclerosi multipla, Parkinson, paralisi periferiche, vertigini.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🌸</div>
+          <span class="tratt-tag">Specializzazione</span>
+          <h4>Pavimento Pelvico e Diastasi</h4>
+          <p>Incontinenza, prolasso, diastasi, preparazione e recupero dal parto.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🤲</div>
+          <span class="tratt-tag">Certificazione</span>
+          <h4>Terapia Manuale Maitland</h4>
+          <p>Mobilizzazione articolare per cervicalgia, lombalgia e dolori articolari.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🧘</div>
+          <span class="tratt-tag">Corsi in gruppo</span>
+          <h4>Clinical Pilates e Ipopressiva</h4>
+          <p>Rieducazione posturale, rinforzo del core, tono del pavimento pelvico.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">⚡</div>
+          <span class="tratt-tag">Strumentale</span>
+          <h4>Tecarterapia</h4>
+          <p>Energia endogena per ridurre dolore, infiammazione e accelerare la guarigione dei tessuti.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🔊</div>
+          <span class="tratt-tag">Strumentale</span>
+          <h4>Ultrasuoni</h4>
+          <p>Per tendiniti, borsiti, lesioni muscolo-tendinee e gestione del dolore cronico.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">💆</div>
+          <h4>Massoterapia e Miofasciale</h4>
+          <p>Tensioni muscolari, trigger point e restrizioni fasciali con tecniche manuali.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🏃</div>
+          <h4>Chinesiterapia</h4>
+          <p>Esercizi terapeutici per recupero di mobilità, forza e resistenza muscolare.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">⚽</div>
+          <h4>Fisioterapia Sportiva</h4>
+          <p>Prevenzione e recupero da infortuni per ogni disciplina e livello atletico.</p>
+        </div>
+        <div class="tratt-card">
+          <div class="tratt-icon">🏠</div>
+          <span class="tratt-tag">Domicilio</span>
+          <h4>Fisioterapia Domiciliare</h4>
+          <p>Trattamenti a casa tua, per chi non può spostarsi o preferisce il proprio ambiente.</p>
+        </div>
       </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🧠</div>
-        <span class="tratt-tag">Neurologica</span>
-        <h4>Riabilitazione Neurologica</h4>
-        <p>Recupero motorio dopo ictus, sclerosi multipla, Parkinson, paralisi periferiche, vertigini.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🌸</div>
-        <span class="tratt-tag">Specializzazione</span>
-        <h4>Pavimento Pelvico e Diastasi</h4>
-        <p>Incontinenza, prolasso, diastasi, preparazione e recupero dal parto.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🤲</div>
-        <span class="tratt-tag">Certificazione</span>
-        <h4>Terapia Manuale Maitland</h4>
-        <p>Mobilizzazione articolare per cervicalgia, lombalgia e dolori articolari.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🧘</div>
-        <span class="tratt-tag">Corsi in gruppo</span>
-        <h4>Clinical Pilates e Ipopressiva</h4>
-        <p>Rieducazione posturale, rinforzo del core, tono del pavimento pelvico.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">⚡</div>
-        <span class="tratt-tag">Strumentale</span>
-        <h4>Tecarterapia</h4>
-        <p>Energia endogena per ridurre dolore, infiammazione e accelerare la guarigione dei tessuti.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🔊</div>
-        <span class="tratt-tag">Strumentale</span>
-        <h4>Ultrasuoni ed Elettroterapia</h4>
-        <p>Per tendiniti, borsiti, lesioni muscolo-tendinee e gestione del dolore cronico.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">💆</div>
-        <h4>Massoterapia e Miofasciale</h4>
-        <p>Tensioni muscolari, trigger point e restrizioni fasciali con tecniche manuali.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🏃</div>
-        <h4>Chinesiterapia</h4>
-        <p>Esercizi terapeutici per recupero di mobilità, forza e resistenza muscolare.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">⚽</div>
-        <h4>Fisioterapia Sportiva</h4>
-        <p>Prevenzione e recupero da infortuni per ogni disciplina e livello atletico.</p>
-      </div>
-      <div class="tratt-card">
-        <div class="tratt-icon">🏠</div>
-        <span class="tratt-tag">Domicilio</span>
-        <h4>Fisioterapia Domiciliare</h4>
-        <p>Trattamenti a casa tua, per chi non può spostarsi o preferisce il proprio ambiente.</p>
-      </div>
-    </div>
+      <!-- dots carosello mobile -->
+      <div class="tratt-dots" id="tratt-dots"></div>
   </div>
 </section>
 
@@ -554,6 +601,66 @@ function thumb(p){
   return`<div class="bc-thumb" style="background:${s.bg}"><div class="bc-thumb-emoji">${s.e}</div><div class="bc-thumb-label" style="color:${s.c}">${p.cat}</div></div>`;
 }
 function cardHTML(p){return`<a href="blog.html#${p.id}" class="blog-card">${thumb(p)}<div class="bc-body"><span class="bc-cat">${p.cat}</span><h3>${p.title}</h3><p>${p.excerpt}</p><div class="bc-foot"><span class="bc-date">${fd(p.date)}</span><span class="bc-link">Leggi →</span></div></div></a>`}
+/* carosello trattamenti */
+(function(){
+  const grid=document.getElementById('tratt-grid');
+  const dotsWrap=document.getElementById('tratt-dots');
+  if(!grid||!dotsWrap)return;
+  const cards=grid.querySelectorAll('.tratt-card');
+  let autoTimer,current=0;
+
+  function isMobile(){return window.innerWidth<=860}
+
+  // Crea dots
+  cards.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='tratt-dot'+(i===0?' active':'');
+    d.setAttribute('aria-label','Card '+(i+1));
+    d.onclick=()=>goTo(i);
+    dotsWrap.appendChild(d);
+  });
+
+  function getDots(){return dotsWrap.querySelectorAll('.tratt-dot')}
+
+  function goTo(idx){
+    if(!isMobile())return;
+    current=idx;
+    const card=cards[idx];
+    grid.scrollTo({left:card.offsetLeft-16,behavior:'smooth'});
+    getDots().forEach((d,i)=>d.classList.toggle('active',i===idx));
+  }
+
+  function next(){goTo((current+1)%cards.length)}
+
+  function startAuto(){
+    if(!isMobile())return;
+    clearInterval(autoTimer);
+    autoTimer=setInterval(next,3000);
+  }
+
+  // Pausa al touch
+  grid.addEventListener('touchstart',()=>clearInterval(autoTimer),{passive:true});
+  grid.addEventListener('touchend',()=>startAuto(),{passive:true});
+
+  // Aggiorna dot allo scroll manuale
+  grid.addEventListener('scroll',()=>{
+    if(!isMobile())return;
+    const scrollX=grid.scrollLeft;
+    let closest=0,minDist=Infinity;
+    cards.forEach((c,i)=>{
+      const dist=Math.abs(c.offsetLeft-16-scrollX);
+      if(dist<minDist){minDist=dist;closest=i}
+    });
+    if(closest!==current){
+      current=closest;
+      getDots().forEach((d,i)=>d.classList.toggle('active',i===closest));
+    }
+  },{passive:true});
+
+  window.addEventListener('resize',()=>{
+    if(isMobile())startAuto(); else clearInterval(autoTimer);
+  });
+
 loadPosts(posts=>{
   document.getElementById('blog-preview').innerHTML=posts.slice(0,3).map(cardHTML).join('');
 });

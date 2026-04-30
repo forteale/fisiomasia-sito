@@ -90,4 +90,11 @@ footer h5{font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:u
   .nav-links,.nav-tel{display:none}.hbg{display:flex}
   .footer-grid{grid-template-columns:1fr}
   .fg-2{grid-template-columns:1fr}
+  /* font base più grande su mobile */
+  html{font-size:17px}
+  .eyebrow{font-size:.72rem}
+  .section-intro p{font-size:1rem}
+  .lead{font-size:1.05rem}
+  .btn{font-size:.86rem}
+  .h2{font-size:clamp(1.9rem,7vw,2.6rem)}
 }
