@@ -131,30 +131,10 @@
 .tratt-arrow:hover{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 6px 24px rgba(139,77,110,.3);transform:scale(1.08)}
 
 /* Dots */
-.tratt-dots{display:flex;justify-content:center;gap:.55rem;margin-top:2rem}
+.tratt-dots{display:flex;justify-content:center;gap:.55rem}
 .tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
 .tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
-
-/* Hint swipe mobile - sotto i controlli, non sopra le card */
-.swipe-hint{display:none;font-size:.78rem;color:var(--plum);font-weight:600;
-  background:var(--white);padding:.55rem 1.1rem;border-radius:999px;
-  border:1.5px solid var(--plum-l);
-  box-shadow:0 4px 16px rgba(139,77,110,.15);
-  align-items:center;gap:.5rem;
-  white-space:nowrap;margin:1.2rem auto 0;width:fit-content;
-  opacity:0;pointer-events:none}
-.swipe-hint.show{display:flex;animation:swipeHintFade 5s ease-out forwards}
-.swipe-hand{display:inline-block;animation:swipeHandMove 1.2s ease-in-out infinite;font-size:1.1rem}
-@keyframes swipeHintFade{
-  0%{opacity:0;transform:translateY(8px)}
-  10%{opacity:1;transform:translateY(0)}
-  85%{opacity:1;transform:translateY(0)}
-  100%{opacity:0;transform:translateY(-4px)}
-}
-@keyframes swipeHandMove{
-  0%,100%{transform:translateX(-12px)}
-  50%{transform:translateX(12px)}
-}
+.tratt-dots-wrap{margin-top:2rem}
 
 @media(max-width:1180px){
   .tratt-controls{width:100%;left:0}
@@ -165,24 +145,30 @@
 }
 @media(max-width:680px){
   .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto}
-  /* Frecce restano visibili su mobile, ma più piccole e in linea con i dots */
-  .tratt-controls{position:static;transform:none;width:auto;left:auto;display:none}
-  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.6rem}
-  .tratt-mobile-arrow{
-    width:38px;height:38px;border-radius:50%;
-    background:var(--white);border:1.5px solid var(--border);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;-webkit-appearance:none;
-    color:var(--plum);font-size:1rem;font-weight:600;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);font-family:inherit
+  /* Frecce mobile: ai lati delle card, sovrapposte */
+  .tratt-controls{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:100%;left:0;
+    display:flex;justify-content:space-between;
+    pointer-events:none;z-index:10;
+    padding:0 .3rem
   }
-  .tratt-mobile-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum)}
+  .tratt-arrow{
+    width:40px;height:40px;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
+    border:1px solid var(--border);
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+    pointer-events:auto;color:var(--plum);font-size:1rem
+  }
+  .tratt-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum);transform:scale(.95)}
+  /* Wrap dots solo con dots, niente frecce mobile */
+  .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.6rem}
+  .tratt-mobile-arrow{display:none}
   #trattamenti{padding:4.5rem 6vw 4rem;overflow:hidden}
   .tratt-viewport{margin:0;padding:.5rem 0}
 }
 @media(min-width:681px){
   .tratt-mobile-arrow{display:none}
-  .tratt-dots-wrap{display:block}
 }
 
 /* — PILATES — */
@@ -481,11 +467,8 @@
         <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
       </div>
       <div class="tratt-dots-wrap">
-        <button class="tratt-mobile-arrow" id="tratt-prev-m" aria-label="Precedente">←</button>
         <div class="tratt-dots" id="tratt-dots"></div>
-        <button class="tratt-mobile-arrow" id="tratt-next-m" aria-label="Successivo">→</button>
       </div>
-      <div class="swipe-hint" id="swipe-hint"><span class="swipe-hand">👆</span> Trascina le schede per scoprire altri servizi</div>
   </div>
 </section>
 
@@ -676,7 +659,6 @@ loadPosts(posts=>{
   const dotsWrap = document.getElementById('tratt-dots');
   const prev = document.getElementById('tratt-prev');
   const next = document.getElementById('tratt-next');
-  const hint = document.getElementById('swipe-hint');
   if(!track || !viewport) return;
 
   const cards = Array.from(track.children);
@@ -752,10 +734,6 @@ loadPosts(posts=>{
   // Frecce
   if(prev) prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
   if(next) next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
-  const prevM = document.getElementById('tratt-prev-m');
-  const nextM = document.getElementById('tratt-next-m');
-  if(prevM) prevM.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
-  if(nextM) nextM.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
 
   // ── Touch swipe LIVE (sul viewport, più affidabile di track) ──
   let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, isVerticalScroll = false, isHorizontalSwipe = false;
@@ -846,26 +824,6 @@ loadPosts(posts=>{
     }, 150);
   });
 
-  function maybeShowHint(){
-    if(window.innerWidth > 680 || !hint) return;
-    // Mostra hint quando la sezione entra nel viewport
-    if('IntersectionObserver' in window){
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting && !hint.dataset.shown){
-            hint.classList.add('show');
-            hint.dataset.shown = '1';
-            setTimeout(()=> hint.classList.remove('show'), 5000);
-          }
-        });
-      },{threshold: 0.3});
-      const section = document.getElementById('trattamenti');
-      if(section) obs.observe(section);
-    } else {
-      setTimeout(()=> hint.classList.add('show'), 1200);
-    }
-  }
-
   // Init: aspetta render
   function init(){
     updatePerView();
@@ -873,7 +831,6 @@ loadPosts(posts=>{
     buildDots();
     goTo(0);
     startAuto();
-    maybeShowHint();
   }
 
   if(document.readyState === 'loading'){
