@@ -145,30 +145,47 @@
 }
 @media(max-width:680px){
   .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto}
-  /* Frecce mobile: ai lati delle card, sovrapposte */
-  .tratt-controls{
-    position:absolute;top:50%;transform:translateY(-50%);
-    width:100%;left:0;
-    display:flex;justify-content:space-between;
-    pointer-events:none;z-index:10;
-    padding:0 .3rem
-  }
-  .tratt-arrow{
-    width:40px;height:40px;
-    background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
-    border:1px solid var(--border);
-    box-shadow:0 3px 12px rgba(0,0,0,.12);
-    pointer-events:auto;color:var(--plum);font-size:1rem
-  }
-  .tratt-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum);transform:scale(.95)}
-  /* Wrap dots solo con dots, niente frecce mobile */
+  /* Niente frecce su mobile, solo swipe + dots */
+  .tratt-controls{display:none}
   .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.6rem}
-  .tratt-mobile-arrow{display:none}
   #trattamenti{padding:4.5rem 6vw 4rem;overflow:hidden}
-  .tratt-viewport{margin:0;padding:.5rem 0}
+  .tratt-viewport{margin:0;padding:.5rem 0;position:relative}
+  /* Hint trascina sopra la card - solo prima del primo swipe */
+  .swipe-hint-mobile{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(139,77,110,.92);
+    color:var(--white);
+    padding:.7rem 1.3rem;
+    border-radius:999px;
+    font-size:.82rem;font-weight:600;
+    box-shadow:0 6px 24px rgba(139,77,110,.35);
+    pointer-events:none;
+    z-index:5;
+    display:flex;align-items:center;gap:.55rem;
+    white-space:nowrap;
+    animation:hintPulse 1.8s ease-in-out infinite
+  }
+  .swipe-hint-mobile.hidden{
+    animation:hintFadeOut .4s ease-out forwards;
+    pointer-events:none
+  }
+  .swipe-hand-mobile{display:inline-block;animation:swipeHandMove 1.2s ease-in-out infinite;font-size:1rem}
+  @keyframes hintPulse{
+    0%,100%{box-shadow:0 6px 24px rgba(139,77,110,.35)}
+    50%{box-shadow:0 6px 32px rgba(139,77,110,.55)}
+  }
+  @keyframes hintFadeOut{
+    to{opacity:0;transform:translate(-50%,-50%) scale(.85)}
+  }
+  @keyframes swipeHandMove{
+    0%,100%{transform:translateX(-10px)}
+    50%{transform:translateX(10px)}
+  }
 }
 @media(min-width:681px){
-  .tratt-mobile-arrow{display:none}
+  .swipe-hint-mobile{display:none !important}
 }
 
 /* — PILATES — */
@@ -461,6 +478,7 @@
           <p>Drenaggio manuale per ritenzione idrica, edemi post-chirurgici e gambe pesanti.</p>
         </div>
         </div><!-- /track -->
+        <div class="swipe-hint-mobile" id="swipe-hint-mobile"><span class="swipe-hand-mobile">👆</span> Trascina per scoprire</div>
       </div><!-- /viewport -->
       <div class="tratt-controls">
         <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
@@ -762,6 +780,11 @@ loadPosts(posts=>{
       if(Math.abs(dx) > 6 || Math.abs(dy) > 6){
         if(Math.abs(dx) > Math.abs(dy)){
           isHorizontalSwipe = true;
+          // Nascondi hint al primo swipe orizzontale
+          const hintM = document.getElementById('swipe-hint-mobile');
+          if(hintM && !hintM.classList.contains('hidden')){
+            hintM.classList.add('hidden');
+          }
         } else {
           isVerticalScroll = true;
         }
@@ -771,7 +794,7 @@ loadPosts(posts=>{
     if(isVerticalScroll) return;
 
     if(isHorizontalSwipe){
-      e.preventDefault(); // blocca scroll pagina
+      e.preventDefault();
       const baseOffset = page * perView * (cardWidth + gap);
       track.style.transform = `translateX(${-baseOffset + dx}px)`;
     }
