@@ -12,7 +12,9 @@
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.fisiomasia.it/patologie-trattate.html"/>
 <link rel="canonical" href="https://www.fisiomasia.it/patologie-trattate.html"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238b4d6e'/><text x='16' y='22' font-family='Georgia' font-size='18' font-weight='600' fill='white' text-anchor='middle'>F</text></svg>"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MedicalWebPage",
@@ -86,8 +88,7 @@
   <a href="index.html" class="nav-logo"><strong>Fabiana Masia</strong><span>Fisioterapista</span></a>
   <ul class="nav-links">
     <li><a href="index.html#chi-sono">Chi sono</a></li>
-    <li><a href="index.html#servizi">Servizi</a></li>
-    <li><a href="index.html#trattamenti">Trattamenti</a></li>
+    <li><a href="index.html#trattamenti">Servizi</a></li>
     <li><a href="patologie-trattate.html" class="active">Patologie</a></li>
     <li><a href="index.html#pilates">Pilates</a></li>
     <li><a href="blog.html">Blog</a></li>
@@ -101,8 +102,7 @@
 </nav>
 <div class="mob-menu" id="mob">
   <a href="index.html#chi-sono">Chi sono</a>
-  <a href="index.html#servizi">Servizi</a>
-  <a href="index.html#trattamenti">Trattamenti</a>
+  <a href="index.html#trattamenti">Servizi</a>
   <a href="patologie-trattate.html">Patologie</a>
   <a href="index.html#pilates">Pilates</a>
   <a href="blog.html">Blog</a>
@@ -259,10 +259,6 @@
       <summary>Le prestazioni sono detraibili fiscalmente?</summary>
       <div class="faq-body">Sì, le prestazioni fisioterapiche svolte da professionisti abilitati sono detraibili al 19% nella dichiarazione dei redditi (730 o Modello Redditi), nei limiti previsti dalla normativa fiscale. Rilascio sempre fattura sanitaria con i dati corretti per la detrazione.</div>
     </details>
-    <details class="faq">
-      <summary>Lavori in convenzione con il Servizio Sanitario Nazionale?</summary>
-      <div class="faq-body">No, lo studio è privato e non è convenzionato con il SSN. Tuttavia, considerando la detraibilità fiscale e la qualità del percorso individuale, il costo finale è spesso paragonabile a quello di strutture private convenzionate.</div>
-    </details>
   </div>
 </section>
 
@@ -277,8 +273,7 @@
       <h5>Navigazione</h5>
       <ul class="foot-links">
         <li><a href="index.html#chi-sono">Chi sono</a></li>
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#trattamenti">Trattamenti</a></li>
+        <li><a href="index.html#trattamenti">Servizi e trattamenti</a></li>
         <li><a href="patologie-trattate.html">Patologie trattate</a></li>
         <li><a href="index.html#pilates">Clinical Pilates</a></li>
         <li><a href="blog.html">Blog</a></li>
@@ -298,11 +293,24 @@
       </div>
     </div>
   </div>
-  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><a href="#">Privacy Policy</a></div>
+  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
 </footer>
+
+<!-- ══ COOKIE BANNER ══ -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p>Questo sito utilizza solo cookie tecnici essenziali per il suo funzionamento. Nessun cookie di profilazione o marketing. <a href="cookie-policy.html">Cookie Policy</a></p>
+    <div class="cookie-btns">
+      <button onclick="closeCookieBanner()" class="cookie-ok">Ho capito</button>
+      <a href="cookie-policy.html" class="cookie-more">Maggiori info</a>
+    </div>
+  </div>
+</div>
 
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
+(function(){if(!localStorage.getItem('cookie_ok')){document.getElementById('cookie-banner').style.display='block';}})();
+function closeCookieBanner(){localStorage.setItem('cookie_ok','1');document.getElementById('cookie-banner').style.display='none';}
 </script>
 </body>
 </html>

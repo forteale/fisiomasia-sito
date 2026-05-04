@@ -20,7 +20,9 @@
 <meta property="og:locale" content="it_IT"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="https://www.fisiomasia.it/"/>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238b4d6e'/><text x='16' y='22' font-family='Georgia' font-size='18' font-weight='600' fill='white' text-anchor='middle'>F</text></svg>"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Physiotherapist",
@@ -405,7 +407,7 @@
     <div class="studio-info">
       <span class="eyebrow">Lo Studio</span>
       <h3>Uno spazio pensato per metterti a tuo agio</h3>
-      <p>Lo studio si trova nel <strong>centro di Livorno Ferraris</strong>, in Corso Leone Giordano 5, ed è attrezzato con strumentazione professionale per ortopedia, neurologia, Tecarterapia e riabilitazione del pavimento pelvico.</p>
+      <p>Lo studio si trova a <strong>Livorno Ferraris (VC)</strong>, in Corso Leone Giordano 5, ed è attrezzato con strumentazione professionale per ortopedia, neurologia, Tecarterapia e riabilitazione del pavimento pelvico.</p>
       <p>L'ambiente è luminoso, accogliente e curato in ogni dettaglio: un luogo in cui ti sentirai accolto fin dal primo incontro.</p>
     </div>
   </div>
@@ -476,7 +478,7 @@
         <div class="tratt-card">
           <div class="tratt-icon">⚽</div>
           <h4>Fisioterapia Sportiva</h4>
-          <p>Prevenzione e recupero da infortuni per ogni disciplina e livello atletico.</p>
+          <p>Prevenzione e recupero da infortuni sportivi per ogni disciplina: ti aiuto a tornare in campo più forte di prima.</p>
         </div>
         <div class="tratt-card">
           <div class="tratt-icon">🏠</div>
@@ -590,6 +592,7 @@
           <option>Prima visita / valutazione</option>
           <option>Continuazione terapia</option>
           <option>Clinical Pilates / Ipopressiva</option>
+          <option>Pavimento Pelvico</option>
           <option>Trattamento domiciliare</option>
           <option>Informazioni generali</option>
         </select>
@@ -610,7 +613,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="nav-logo"><img src="logo.png" alt="Logo Fisiomasia" class="nav-logo-img" style="filter:brightness(0) invert(1) opacity(.95)"/><div class="nav-logo-text"><strong>Fabiana Masia</strong><span>Fisioterapista</span></div></a>
+      <a href="#hero" class="nav-logo"><div class="nav-logo-text"><strong>Fabiana Masia</strong><span>Fisioterapista</span></div></a>
       <p>Studio di fisioterapia a Livorno Ferraris (VC). Trattamenti personalizzati per il tuo benessere fisico, con professionalità e cura.</p>
     </div>
     <div>
@@ -637,8 +640,19 @@
       </div>
     </div>
   </div>
-  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><a href="privacy.html">Informativa Privacy</a></div>
+  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
 </footer>
+
+<!-- ══ COOKIE BANNER ══ -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p>Questo sito utilizza solo cookie tecnici essenziali per il suo funzionamento. Nessun cookie di profilazione o marketing. <a href="cookie-policy.html">Cookie Policy</a></p>
+    <div class="cookie-btns">
+      <button onclick="closeCookieBanner()" class="cookie-ok">Ho capito</button>
+      <a href="cookie-policy.html" class="cookie-more">Maggiori info</a>
+    </div>
+  </div>
+</div>
 
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
@@ -876,6 +890,16 @@ loadPosts(posts=>{
     setTimeout(init, 50);
   }
 })();
+
+(function(){
+  if(!localStorage.getItem('cookie_ok')){
+    document.getElementById('cookie-banner').style.display='block';
+  }
+})();
+function closeCookieBanner(){
+  localStorage.setItem('cookie_ok','1');
+  document.getElementById('cookie-banner').style.display='none';
+}
 </script>
 </body>
 </html>
