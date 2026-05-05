@@ -1,5 +1,19 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /indexb.html
+
+# AI crawlers — accesso consentito per indicizzazione
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
 
 Sitemap: https://www.fisiomasia.it/sitemap.xml

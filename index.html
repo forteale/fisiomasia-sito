@@ -54,6 +54,7 @@
   {"@type":"MedicalTherapy","name":"Fisioterapia domiciliare"}
 ],
 "hasMap":"https://maps.google.com/?q=Corso+Leone+Giordano+5+Livorno+Ferraris",
+"sameAs":["https://g.page/r/CVKlRummLPsQEBM"],
 "priceRange":"€€"}
 </script>
 
@@ -71,7 +72,7 @@
 .eyebrow-loc{white-space:nowrap}
 .hero-desc{max-width:430px;color:var(--ink);opacity:.78;font-size:.98rem;line-height:1.85}
 .hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
-.hero-badges{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.hero-badges{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;border-top:1px solid var(--border);padding-top:1rem;margin-top:-.1rem}
 .badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--white);border:1.5px solid var(--border);border-radius:999px;padding:.4rem .85rem;font-size:.78rem;font-weight:600;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.05);white-space:nowrap}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);flex-shrink:0}
 .hero-photo-col{position:relative;overflow:hidden;background:var(--warm)}
@@ -89,7 +90,8 @@
 .about-text p strong{color:var(--ink);font-weight:600}
 .about-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem;align-items:center}
 .about-pills + .about-pills{margin-top:.8rem}
-.pill-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);font-style:italic;flex:0 0 100%;margin-bottom:.1rem}
+.pill-title{display:flex;align-items:center;flex:0 0 100%;font-size:.68rem;font-weight:700;color:var(--plum);letter-spacing:.22em;text-transform:uppercase;margin:0 0 .8rem;gap:.7rem}
+.pill-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .pill{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.32rem .8rem;border-radius:999px}
 .about-ctas{display:flex;gap:.9rem;margin-top:1.8rem;flex-wrap:wrap}
 
@@ -263,13 +265,11 @@
 @media(max-width:1000px){
   #hero{grid-template-columns:1fr;min-height:auto}
   .hero-photo-col{display:none}
-  .hero-left{padding:2rem 6vw 2.5rem;align-items:center;text-align:center}
+  .hero-left{padding:2rem 6vw 2.5rem}
   .hero-photo-mobile{display:block;width:100%;height:280px;overflow:hidden;border-radius:var(--r);margin:.25rem 0}
   .hero-photo-mobile .hero-photo{border-radius:var(--r)}
-  .hero-actions{justify-content:center;width:100%}
+  .hero-actions{justify-content:center}
   .hero-badges{justify-content:center}
-  .hero-eyebrow{justify-content:center}
-  .hero-desc{margin:0 auto}
   #chi-sono{grid-template-columns:1fr}
   .about-photo-wrap{max-width:340px;margin:0 auto 2.5rem}
   .studio-row{grid-template-columns:1fr}
@@ -296,7 +296,8 @@
   /* Pill chi sono più piccoli e ordinati */
   .about-pills{gap:.4rem;margin-top:1.2rem}
   .pill{font-size:.7rem;padding:.3rem .75rem;letter-spacing:.08em}
-  .pill-title{font-size:.95rem;flex:0 0 100%;margin:0 0 .15rem 0}
+  .pill-title{font-size:.65rem;margin:0 0 .6rem}
+  .about-ctas{justify-content:center}
   /* Bottoni isolati centrati su mobile */
   .pilates-left > .btn,
   .dove-info > .btn{display:block;margin-left:auto;margin-right:auto;width:fit-content;text-align:center}
@@ -372,10 +373,9 @@
       <a href="#chi-sono" class="btn btn-outline">Scopri chi sono</a>
     </div>
     <div class="hero-badges">
-      <span class="badge"><span class="badge-dot"></span>Riabilitazione ortopedica e neurologica</span>
-      <span class="badge"><span class="badge-dot"></span>Riabilitazione del pavimento pelvico</span>
-      <span class="badge"><span class="badge-dot"></span>Anche a domicilio</span>
-      <span class="badge"><span class="badge-dot"></span>Pilates in piccoli gruppi</span>
+      <span class="badge"><span class="badge-dot"></span>15+ anni di esperienza</span>
+      <span class="badge"><span class="badge-dot"></span>Studio a Livorno Ferraris</span>
+      <span class="badge"><span class="badge-dot"></span>Iscritta all'Albo</span>
     </div>
   </div>
   <div class="hero-photo-col">
@@ -652,6 +652,7 @@
         <li><a href="tel:+393493174624">349 317 4624</a></li>
         <li><a href="mailto:fabiana.masia@gmail.com">fabiana.masia@gmail.com</a></li>
         <li style="color:rgba(255,255,255,.4);font-size:.83rem;line-height:1.7">Corso Leone Giordano 5<br>13046 Livorno Ferraris (VC)</li>
+        <li><a href="https://g.page/r/CVKlRummLPsQEBM/review" target="_blank" rel="noopener">Lascia una recensione su Google ↗</a></li>
       </ul>
       <div style="margin-top:1.4rem">
         <h5>Area Privata</h5>
@@ -659,7 +660,7 @@
       </div>
     </div>
   </div>
-  <div class="foot-bot"><p>© 2025 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
+  <div class="foot-bot"><p>© 2026 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
 </footer>
 
 <!-- ══ COOKIE BANNER ══ -->

@@ -18,8 +18,8 @@
 # Approfondimenti → blog
 /approfondimenti            /blog.html                 301
 
-# Sitemap (pagina leggibile per utenti) → nuova sitemap html
-/sitemap                    /sitemap.html              301
+# Sitemap URL testuale → file XML
+/sitemap                    /sitemap.xml               301
 
 # Dicono di me → sezione contatti con anchor (manca pagina recensioni)
 /dicono-di-me               /                          301
