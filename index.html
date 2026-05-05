@@ -91,8 +91,9 @@
 /* — STUDIO PHOTO — */
 #studio-photo{padding:0 7vw 6rem;background:var(--off)}
 .studio-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.studio-photo-frame{height:100%;min-height:280px;overflow:hidden}
-.studio-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.studio-photo-frame{position:relative;height:100%;min-height:460px;overflow:hidden}
+.studio-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 1s ease}
+.studio-photo-frame img.slide-active{opacity:1}
 .studio-info{padding:2rem 2.5rem 2rem 0}
 .studio-info .eyebrow{display:block;margin-bottom:.7rem}
 .studio-info h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:.6rem;line-height:1.2}
@@ -370,7 +371,7 @@
 <section id="chi-sono">
   <div class="about-photo-wrap">
     <div class="about-photo-frame">
-      <img class="about-photo" src="fabiana.jpg" alt="Dott.ssa Fabiana Masia, fisioterapista" loading="lazy"/>
+      <img class="about-photo" src="fabiana_studio.jpg" alt="Dott.ssa Fabiana Masia nel suo studio di fisioterapia" loading="lazy" style="object-position:center 35%"/>
     </div>
   </div>
   <div class="about-text">
@@ -404,7 +405,8 @@
 <section id="studio-photo">
   <div class="studio-row">
     <div class="studio-photo-frame">
-      <img src="studio.jpg" alt="Lo studio di fisioterapia in Corso Leone Giordano 5, Livorno Ferraris" loading="lazy"/>
+      <img src="studio.jpg" alt="Lo studio di fisioterapia in Corso Leone Giordano 5, Livorno Ferraris" loading="lazy" class="slide-active"/>
+      <img src="studiosala.jpg" alt="La sala trattamenti dello studio Fisiomasia" loading="lazy"/>
     </div>
     <div class="studio-info">
       <span class="eyebrow">Lo Studio</span>
@@ -902,6 +904,18 @@ function closeCookieBanner(){
   localStorage.setItem('cookie_ok','1');
   document.getElementById('cookie-banner').style.display='none';
 }
+
+// Studio slideshow
+(function(){
+  var imgs = document.querySelectorAll('.studio-photo-frame img');
+  if(imgs.length < 2) return;
+  var cur = 0;
+  setInterval(function(){
+    imgs[cur].classList.remove('slide-active');
+    cur = (cur + 1) % imgs.length;
+    imgs[cur].classList.add('slide-active');
+  }, 5000);
+})();
 </script>
 </body>
 </html>
