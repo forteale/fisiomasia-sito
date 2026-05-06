@@ -107,6 +107,7 @@ footer h5{font-size:.65rem;font-weight:700;letter-spacing:.22em;text-transform:u
 }
 @media(max-width:640px){
   .nav-links,.nav-tel{display:none}.hbg{display:flex}
+  .nav-logo-img{width:36px;height:36px}
   .footer-grid{grid-template-columns:1fr}
   .fg-2{grid-template-columns:1fr}
   /* font base più grande su mobile */
