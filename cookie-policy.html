@@ -76,7 +76,13 @@
         <td><code>cookie_consent_v2</code></td>
         <td>localStorage</td>
         <td>Memorizza la scelta dell'utente sul banner cookie (accettato / rifiutato), per non mostrare il banner ad ogni visita</td>
-        <td>Persistente</td>
+        <td>12 mesi (poi il banner viene ripresentato)</td>
+      </tr>
+      <tr>
+        <td><code>cookie_consent_expiry</code></td>
+        <td>localStorage</td>
+        <td>Memorizza la data di scadenza del consenso espresso, per richiedere nuovamente il consenso dopo 12 mesi</td>
+        <td>12 mesi</td>
       </tr>
       <tr>
         <td><code>fisiomasia_sid</code></td>
@@ -118,37 +124,42 @@
 <div class="table-wrap">
   <table>
     <thead>
-      <tr><th>Servizio</th><th>Finalità</th><th>Cookie</th><th>Informativa</th></tr>
+      <tr><th>Servizio</th><th>Finalità</th><th>Cookie</th><th>Note privacy</th><th>Informativa</th></tr>
     </thead>
     <tbody>
       <tr>
         <td><strong>Google Fonts</strong></td>
-        <td>Caricamento dei caratteri tipografici del sito. Google può registrare la richiesta HTTP (indirizzo IP), ma non imposta cookie di tracciamento.</td>
+        <td>Caricamento dei caratteri tipografici del sito.</td>
         <td>Nessuno</td>
+        <td>Google può registrare la richiesta HTTP (indirizzo IP) nei propri log di sistema.</td>
         <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
       </tr>
       <tr>
         <td><strong>Google Maps</strong></td>
-        <td>Mappa interattiva per indicare la posizione dello studio. Il caricamento può comportare l'invio dell'indirizzo IP a Google.</td>
+        <td>Mappa interattiva per indicare la posizione dello studio.</td>
         <td>Possibili cookie tecnici Google</td>
+        <td>Il caricamento può comportare l'invio dell'indirizzo IP a Google.</td>
         <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
       </tr>
       <tr>
         <td><strong>Netlify</strong></td>
-        <td>Hosting del sito e gestione dei moduli (form di contatto e log consensi). I log dei consensi sono conservati in forma anonima (nessun dato personale, solo ID sessione casuale + timestamp + scelta).</td>
+        <td>Hosting del sito e gestione dei moduli (form di contatto e log consensi). I log dei consensi sono conservati in forma anonima (ID sessione casuale + timestamp + scelta + versione policy, senza dati personali identificativi).</td>
         <td>Nessuno per i visitatori normali</td>
+        <td>Netlify registra automaticamente l'indirizzo IP del mittente nei propri log di sistema per ogni submission ricevuta tramite Forms. Tali log sono gestiti da Netlify secondo la propria privacy policy e non sono accessibili al titolare del sito come dato strutturato.</td>
         <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
       </tr>
       <tr>
         <td><strong>Netlify Identity</strong></td>
         <td>Autenticazione per l'area di gestione interna (accessibile solo allo staff). Non coinvolge i visitatori del sito.</td>
         <td>Solo per utenti autenticati</td>
+        <td>—</td>
         <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
       </tr>
       <tr>
         <td><strong>Formspree</strong></td>
         <td>Gestione e inoltro dei messaggi inviati tramite il modulo di contatto. I dati vengono trattati come descritto nella <a href="privacy.html">Privacy Policy</a>.</td>
         <td>Nessuno</td>
+        <td>—</td>
         <td><a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></td>
       </tr>
     </tbody>
@@ -161,10 +172,10 @@
   <li><strong>Accettare</strong> tutti i cookie, inclusi quelli di misurazione di Google Ads</li>
   <li><strong>Rifiutare</strong> i cookie non essenziali, mantenendo attivi solo i cookie tecnici</li>
 </ul>
-<p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive. Puoi revocare o modificare il tuo consenso in qualsiasi momento cancellando i dati di navigazione del tuo browser (localStorage e cookie) per il dominio <strong>fisiomasia.it</strong>: alla visita successiva il banner apparirà nuovamente.</p>
+<p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive per un periodo di <strong>12 mesi</strong>, trascorsi i quali il banner viene nuovamente presentato. Puoi revocare o modificare il tuo consenso in qualsiasi momento cancellando i dati di navigazione del tuo browser (localStorage e cookie) per il dominio <strong>fisiomasia.it</strong>: alla visita successiva il banner apparirà nuovamente.</p>
 
 <h2>5. Log dei consensi</h2>
-<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata in forma anonima con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina. Nessun dato personale viene raccolto in questo registro.</p>
+<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata in forma anonima con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina, versione della cookie policy in vigore al momento della scelta. Nessun dato personale identificativo viene raccolto in questo registro dal titolare.</p>
 
 <h2>6. Come gestire i cookie dal browser</h2>
 <p>Puoi controllare e gestire i cookie attraverso le impostazioni del tuo browser. Di seguito i link alle guide dei principali browser:</p>

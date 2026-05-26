@@ -97,7 +97,6 @@
 .hero-photo-col{position:relative;overflow:hidden;background:var(--warm)}
 .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .hero-photo-mobile{display:none}
-
 /* — CHI SONO — */
 #chi-sono{padding:6rem 7vw;background:var(--off);display:grid;grid-template-columns:1.05fr 1.2fr;gap:6vw;align-items:center}
 .about-photo-wrap{max-width:430px}
@@ -113,7 +112,6 @@
 .pill-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .pill{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.32rem .8rem;border-radius:999px}
 .about-ctas{display:flex;gap:.9rem;margin-top:1.8rem;flex-wrap:wrap}
-
 /* — STUDIO PHOTO — */
 #studio-photo{padding:0 7vw 6rem;background:var(--off)}
 .studio-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
@@ -125,20 +123,12 @@
 .studio-info h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:.6rem;line-height:1.2}
 .studio-info p{font-size:.92rem;color:var(--mid);line-height:1.75;margin-bottom:.6rem}
 .studio-info p strong{color:var(--ink);font-weight:600}
-
-/* — TRATTAMENTI (Carosello) — */
+/* — TRATTAMENTI — */
 #trattamenti{padding:6rem 7vw 5rem;background:var(--off);overflow:hidden}
 .tratt-inner{max-width:1200px;margin:0 auto;position:relative}
 .tratt-viewport{overflow:hidden;position:relative;padding:.5rem 0;touch-action:pan-y}
 .tratt-track{display:flex;will-change:transform;transition:transform .65s cubic-bezier(.4,.0,.2,1)}
-.tratt-card{
-  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
-  padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:.8rem;
-  transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;
-  flex:0 0 calc(25% - .9rem);
-  margin-right:1.2rem;
-  min-height:260px;cursor:default;box-sizing:border-box
-}
+.tratt-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:.8rem;transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;flex:0 0 calc(25% - .9rem);margin-right:1.2rem;min-height:260px;cursor:default;box-sizing:border-box}
 .tratt-card:last-child{margin-right:0}
 .tratt-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--plum),var(--mint));opacity:0;transition:opacity .22s}
 .tratt-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(139,77,110,.1)}
@@ -148,81 +138,36 @@
 .tratt-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;line-height:1.35;color:var(--ink)}
 .tratt-card p{font-size:.9rem;color:var(--mid);line-height:1.65;flex:1}
 .tratt-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--mint-l);color:var(--mint-d);padding:.22rem .6rem;border-radius:999px;width:fit-content}
-
-/* Frecce — sopra il viewport, non dentro */
-/* Frecce — ora in basso, dentro tratt-dots-wrap */
-.tratt-controls{display:none} /* il wrapper position:absolute non serve più */
-.tratt-arrow{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--white);border:1.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all .2s;
-  box-shadow:0 3px 10px rgba(139,77,110,.1);color:var(--plum);
-  font-size:1rem;font-weight:600;-webkit-appearance:none;font-family:inherit;flex-shrink:0
-}
+.tratt-controls{display:none}
+.tratt-arrow{width:40px;height:40px;border-radius:50%;background:var(--white);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 3px 10px rgba(139,77,110,.1);color:var(--plum);font-size:1rem;font-weight:600;-webkit-appearance:none;font-family:inherit;flex-shrink:0}
 .tratt-arrow:hover,.tratt-arrow:active{background:var(--plum);color:var(--white);border-color:var(--plum);box-shadow:0 5px 18px rgba(139,77,110,.28)}
-
-/* Dots */
 .tratt-dots{display:flex;justify-content:center;gap:.55rem;align-items:center}
 .tratt-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .25s;-webkit-appearance:none}
 .tratt-dot.active{background:var(--plum);width:24px;border-radius:4px}
-/* Wrapper frecce + dots in linea */
 .tratt-dots-wrap{margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:1rem}
-
 @media(max-width:680px){
   .tratt-dots-wrap{margin-top:1.3rem;gap:.8rem}
 }
 @media(max-width:1000px){
-  .tratt-card{flex:0 0 calc(50% - .6rem)} /* 2 col tablet */
+  .tratt-card{flex:0 0 calc(50% - .6rem)}
 }
 @media(max-width:680px){
   .tratt-card{flex:0 0 100%;margin-right:0;min-height:auto;aspect-ratio:1/1;padding:1.5rem 1.4rem;justify-content:flex-start}
   .tratt-card h4{font-size:1.05rem}
   .tratt-card p{font-size:.92rem}
-  /* Niente frecce su mobile, solo swipe + dots */
   .tratt-controls{display:none}
   .tratt-arrow{display:none}
   .tratt-dots-wrap{display:flex;align-items:center;justify-content:center;margin-top:1.3rem;gap:0}
   #trattamenti{padding:3.2rem 6vw 3.5rem;overflow:hidden}
   .tratt-viewport{margin:0;padding:.5rem 0;position:relative}
-  /* Hint trascina sopra la card - solo prima del primo swipe */
-  .swipe-hint-mobile{
-    position:absolute;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    background:rgba(139,77,110,.92);
-    color:var(--white);
-    padding:.7rem 1.3rem;
-    border-radius:999px;
-    font-size:.82rem;font-weight:600;
-    box-shadow:0 6px 24px rgba(139,77,110,.35);
-    pointer-events:none;
-    z-index:5;
-    display:flex;align-items:center;gap:.55rem;
-    white-space:nowrap;
-    animation:hintPulse 1.8s ease-in-out infinite
-  }
-  .swipe-hint-mobile.hidden{
-    animation:hintFadeOut .4s ease-out forwards;
-    pointer-events:none
-  }
+  .swipe-hint-mobile{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(139,77,110,.92);color:var(--white);padding:.7rem 1.3rem;border-radius:999px;font-size:.82rem;font-weight:600;box-shadow:0 6px 24px rgba(139,77,110,.35);pointer-events:none;z-index:5;display:flex;align-items:center;gap:.55rem;white-space:nowrap;animation:hintPulse 1.8s ease-in-out infinite}
+  .swipe-hint-mobile.hidden{animation:hintFadeOut .4s ease-out forwards;pointer-events:none}
   .swipe-hand-mobile{display:inline-block;animation:swipeHandMove 1.2s ease-in-out infinite;font-size:1rem}
-  @keyframes hintPulse{
-    0%,100%{box-shadow:0 6px 24px rgba(139,77,110,.35)}
-    50%{box-shadow:0 6px 32px rgba(139,77,110,.55)}
-  }
-  @keyframes hintFadeOut{
-    to{opacity:0;transform:translate(-50%,-50%) scale(.85)}
-  }
-  @keyframes swipeHandMove{
-    0%,100%{transform:translateX(-10px)}
-    50%{transform:translateX(10px)}
-  }
+  @keyframes hintPulse{0%,100%{box-shadow:0 6px 24px rgba(139,77,110,.35)}50%{box-shadow:0 6px 32px rgba(139,77,110,.55)}}
+  @keyframes hintFadeOut{to{opacity:0;transform:translate(-50%,-50%) scale(.85)}}
+  @keyframes swipeHandMove{0%,100%{transform:translateX(-10px)}50%{transform:translateX(10px)}}
 }
-@media(min-width:681px){
-  .swipe-hint-mobile{display:none !important}
-}
-
+@media(min-width:681px){.swipe-hint-mobile{display:none !important}}
 /* — PILATES — */
 #pilates{padding:6rem 7vw;background:var(--plum-pale);display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center}
 #pilates .eyebrow{display:block;margin-bottom:.85rem}
@@ -235,13 +180,11 @@
 .pf-icon{width:38px;height:38px;border-radius:50%;background:var(--mint-l);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;line-height:1}
 .pf h5{font-size:1rem;font-weight:600;margin-bottom:.3rem;color:var(--ink)}
 .pf p{font-size:.9rem;color:var(--mid);line-height:1.6}
-
 /* — STRIP DOMICILIARE — */
 .strip-dom{padding:2.6rem 7vw;background:var(--plum-l);border-top:1px solid #dcc8d8;border-bottom:1px solid #dcc8d8;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
 .strip-dom-text h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:.3rem}
 .strip-dom-text p{font-size:.88rem;color:var(--mid);max-width:480px}
-
-/* — APPROFONDIMENTI / BLOG PREVIEW — */
+/* — BLOG PREVIEW — */
 #approfondimenti{padding:6rem 7vw;background:var(--white)}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto}
 .blog-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;text-decoration:none;color:inherit}
@@ -256,8 +199,7 @@
 .bc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--border-l)}
 .bc-date{font-size:.72rem;color:var(--light)}
 .bc-link{font-size:.78rem;font-weight:600;color:var(--plum);text-decoration:none}
-
-/* — DOVE SIAMO + MAPPA — */
+/* — DOVE SIAMO — */
 #dove-siamo{padding:6rem 7vw;background:var(--off)}
 .dove-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:stretch}
 .dove-info .eyebrow{display:block;margin-bottom:.85rem}
@@ -272,14 +214,12 @@
 .dove-txt a:hover{color:var(--plum)}
 .dove-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);min-height:380px;background:var(--warm)}
 .dove-map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
-
 /* — CONTATTI — */
 #contatti{padding:6rem 7vw;background:var(--white)}
 .cont-wrap{max-width:760px;margin:0 auto}
 .cont-form{background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;margin-top:2.5rem}
 .cont-form h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;margin-bottom:1.7rem}
 #form-ok{display:none;margin-top:1rem;padding:.95rem 1rem;background:var(--mint-l);color:var(--mint-d);border:1px solid var(--mint);border-radius:var(--rx);font-size:.88rem;font-weight:500}
-
 /* — RESPONSIVE — */
 @media(max-width:1000px){
   #hero{grid-template-columns:1fr;min-height:auto}
@@ -299,65 +239,74 @@
   .dove-grid{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  /* font generale più grande su mobile */
   body{font-size:17px}
   .hero-eyebrow{font-size:.72rem;letter-spacing:.16em;flex-direction:column;align-items:flex-start;gap:.3rem;line-height:1.5}
   .hero-eyebrow::before{display:none}
   .eyebrow-loc{white-space:nowrap}
   .h1{font-size:clamp(2.6rem,11vw,3.8rem)}
   .hero-desc{font-size:1rem}
-  /* Badge hero più compatti e disposti meglio */
   .hero-badges{gap:.4rem}
   .badge{font-size:.72rem;padding:.32rem .7rem;font-weight:500}
   .badge-dot{width:5px;height:5px}
   .serv-grid,.blog-grid{grid-template-columns:1fr}
   .strip-dom{flex-direction:column;gap:1.2rem;text-align:center}
-  /* Pill chi sono più piccoli e ordinati */
   .about-pills{gap:.4rem;margin-top:1.2rem}
   .pill{font-size:.7rem;padding:.3rem .75rem;letter-spacing:.08em}
   .pill-title{font-size:.65rem;margin:0 0 .6rem}
   .about-ctas{justify-content:center}
-  /* Bottoni isolati centrati su mobile */
-  .pilates-left > .btn,
-  .dove-info > .btn{display:block;margin-left:auto;margin-right:auto;width:fit-content;text-align:center}
-  /* Logo header più compatto su mobile */
+  .pilates-left > .btn,.dove-info > .btn{display:block;margin-left:auto;margin-right:auto;width:fit-content;text-align:center}
   .nav-logo-img{width:36px;height:36px}
 }
+/* ── FIX 1: Cookie reject button – pari dignità visiva ── */
+.cookie-reject{
+  background:transparent;
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  padding:.5rem 1.4rem;
+  font-family:'DM Sans',sans-serif;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:border-color .2s, background .2s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.cookie-reject:hover{border-color:rgba(255,255,255,.9);background:rgba(255,255,255,.08)}
 </style>
-<!-- Netlify Identity: gestisce recovery/invite token anche dalla homepage -->
+<!-- Netlify Identity -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
   if(window.netlifyIdentity){
     window.netlifyIdentity.on('init',user=>{
-      if(!user){
-        window.netlifyIdentity.on('login',()=>{ document.location.href='/admin/'; });
-      }
+      if(!user){window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';})}
     });
-    // Se c'è un token nell'URL (recovery, invite) apri il widget automaticamente
-    if(window.location.hash.includes('recovery_token') || window.location.hash.includes('invite_token')){
+    if(window.location.hash.includes('recovery_token')||window.location.hash.includes('invite_token')){
       window.netlifyIdentity.open();
     }
   }
 </script>
 </head>
 <body>
+
 <!-- Form nascosto per log consensi – elaborato da Netlify Forms -->
 <form name="cookie-consent-log" data-netlify="true" netlify-honeypot="bot-field" style="display:none" aria-hidden="true">
-  <input type="hidden" name="form-name"   value="cookie-consent-log"/>
+  <input type="hidden" name="form-name"      value="cookie-consent-log"/>
   <input type="hidden" name="scelta"/>
   <input type="hidden" name="timestamp"/>
   <input type="hidden" name="sessione_id"/>
   <input type="hidden" name="pagina"/>
+  <input type="hidden" name="policy_version"/>
   <input type="hidden" name="bot-field"/>
 </form>
+
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="#hero" class="nav-logo">
     <img src="logo.png" alt="Logo Fisiomasia" class="nav-logo-img"/>
-    <div class="nav-logo-text">
-      <strong>Fabiana Masia</strong>
-      <span>Fisioterapista</span>
-    </div>
+    <div class="nav-logo-text"><strong>Fabiana Masia</strong><span>Fisioterapista</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#chi-sono">Chi sono</a></li>
@@ -374,12 +323,12 @@
   <button class="hbg" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mob">
-  <a href="#chi-sono"               onclick="document.getElementById('mob').classList.remove('open')">Chi sono</a>
-  <a href="#trattamenti" onclick="document.getElementById(&apos;mob&apos;).classList.remove(&apos;open&apos;)">Servizi</a>
+  <a href="#chi-sono"      onclick="document.getElementById('mob').classList.remove('open')">Chi sono</a>
+  <a href="#trattamenti"   onclick="document.getElementById('mob').classList.remove('open')">Servizi</a>
   <a href="patologie-trattate.html">Patologie</a>
-  <a href="#pilates"                onclick="document.getElementById('mob').classList.remove('open')">Pilates</a>
+  <a href="#pilates"       onclick="document.getElementById('mob').classList.remove('open')">Pilates</a>
   <a href="blog.html">Blog</a>
-  <a href="#contatti"               onclick="document.getElementById('mob').classList.remove('open')">Contatti</a>
+  <a href="#contatti"      onclick="document.getElementById('mob').classList.remove('open')">Contatti</a>
   <a href="tel:+393493174624" class="btn btn-primary">☎ 349 317 4624</a>
 </div>
 
@@ -425,17 +374,11 @@
     <p>Offro trattamenti personalizzati per migliorare la mobilità, ridurre il dolore e aiutarti a recuperare al meglio le tue funzionalità. Grazie alla mia formazione e all'esperienza maturata nel settore, offro un approccio professionale e attento alle esigenze di ogni persona.</p>
     <div class="about-pills">
       <span class="pill-title">Riabilitazione</span>
-      <span class="pill">Ortopedica</span>
-      <span class="pill">Neurologica</span>
-      <span class="pill">Post-infortunio</span>
-      <span class="pill">Pavimento Pelvico</span>
-      <span class="pill">Domiciliare</span>
+      <span class="pill">Ortopedica</span><span class="pill">Neurologica</span><span class="pill">Post-infortunio</span><span class="pill">Pavimento Pelvico</span><span class="pill">Domiciliare</span>
     </div>
     <div class="about-pills">
       <span class="pill-title">Terapie</span>
-      <span class="pill">Clinical Pilates</span>
-      <span class="pill">Tecarterapia</span>
-      <span class="pill">Ultrasuoni</span>
+      <span class="pill">Clinical Pilates</span><span class="pill">Tecarterapia</span><span class="pill">Ultrasuoni</span>
     </div>
     <div class="about-ctas">
       <a href="#contatti" class="btn btn-primary">Prenota ora</a>
@@ -444,7 +387,7 @@
   </div>
 </section>
 
-<!-- ══ FOTO STUDIO sotto presentazione ══ -->
+<!-- ══ FOTO STUDIO ══ -->
 <section id="studio-photo">
   <div class="studio-row">
     <div class="studio-photo-frame">
@@ -460,7 +403,7 @@
   </div>
 </section>
 
-<!-- ══ SERVIZI E TRATTAMENTI (sezione unica) ══ -->
+<!-- ══ TRATTAMENTI ══ -->
 <section id="trattamenti">
   <div class="tratt-inner">
     <div class="section-intro">
@@ -468,84 +411,28 @@
       <h2 class="h2">Un approccio completo alla riabilitazione</h2>
       <p>Dal primo colloquio alla fine del percorso, ogni terapia è costruita sulla persona — non sulla patologia. Metodologie basate sull'evidenza scientifica per garantire i migliori risultati.</p>
     </div>
-      <div class="tratt-viewport">
-        <div class="tratt-track" id="tratt-track">
-        <div class="tratt-card">
-          <div class="tratt-icon">🦴</div>
-          <span class="tratt-tag">Ortopedica</span>
-          <h4>Riabilitazione Ortopedica</h4>
-          <p>Traumi, dolori articolari, post-operatorio (anca, spalla, ginocchio), patologie della colonna.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🧠</div>
-          <span class="tratt-tag">Neurologica</span>
-          <h4>Riabilitazione Neurologica</h4>
-          <p>Recupero motorio dopo ictus, sclerosi multipla, Parkinson, paralisi periferiche, vertigini.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🌸</div>
-          <span class="tratt-tag">Specializzazione</span>
-          <h4>Pavimento Pelvico e Diastasi</h4>
-          <p>Incontinenza, prolasso, diastasi, preparazione e recupero dal parto.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🤲</div>
-          <span class="tratt-tag">Certificazione</span>
-          <h4>Terapia Manuale Maitland</h4>
-          <p>Mobilizzazione articolare per cervicalgia, lombalgia e dolori articolari.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🧘</div>
-          <span class="tratt-tag">Corsi in gruppo</span>
-          <h4>Clinical Pilates e Ipopressiva</h4>
-          <p>Rieducazione posturale, rinforzo del core, tono del pavimento pelvico.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">⚡</div>
-          <span class="tratt-tag">Strumentale</span>
-          <h4>Tecarterapia</h4>
-          <p>Energia endogena per ridurre dolore, infiammazione e accelerare la guarigione dei tessuti.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🔊</div>
-          <span class="tratt-tag">Strumentale</span>
-          <h4>Ultrasuoni</h4>
-          <p>Per tendiniti, borsiti, lesioni muscolo-tendinee e gestione del dolore cronico.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">💆</div>
-          <h4>Massoterapia e Miofasciale</h4>
-          <p>Tensioni muscolari, trigger point e restrizioni fasciali con tecniche manuali.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🏃</div>
-          <h4>Chinesiterapia</h4>
-          <p>Esercizi terapeutici per recupero di mobilità, forza e resistenza muscolare.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">⚽</div>
-          <h4>Fisioterapia Sportiva</h4>
-          <p>Prevenzione e recupero da infortuni sportivi per ogni disciplina: ti aiuto a tornare in campo più forte di prima.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">🏠</div>
-          <span class="tratt-tag">Domicilio</span>
-          <h4>Fisioterapia Domiciliare</h4>
-          <p>Trattamenti a casa tua, per chi non può spostarsi o preferisce il proprio ambiente.</p>
-        </div>
-        <div class="tratt-card">
-          <div class="tratt-icon">💧</div>
-          <h4>Linfodrenaggio</h4>
-          <p>Drenaggio manuale per ritenzione idrica, edemi post-chirurgici e gambe pesanti.</p>
-        </div>
-        </div><!-- /track -->
-        <div class="swipe-hint-mobile" id="swipe-hint-mobile"><span class="swipe-hand-mobile">👆</span> Trascina per scoprire</div>
-      </div><!-- /viewport -->
-      <div class="tratt-dots-wrap">
-        <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
-        <div class="tratt-dots" id="tratt-dots"></div>
-        <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
+    <div class="tratt-viewport">
+      <div class="tratt-track" id="tratt-track">
+        <div class="tratt-card"><div class="tratt-icon">🦴</div><span class="tratt-tag">Ortopedica</span><h4>Riabilitazione Ortopedica</h4><p>Traumi, dolori articolari, post-operatorio (anca, spalla, ginocchio), patologie della colonna.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🧠</div><span class="tratt-tag">Neurologica</span><h4>Riabilitazione Neurologica</h4><p>Recupero motorio dopo ictus, sclerosi multipla, Parkinson, paralisi periferiche, vertigini.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🌸</div><span class="tratt-tag">Specializzazione</span><h4>Pavimento Pelvico e Diastasi</h4><p>Incontinenza, prolasso, diastasi, preparazione e recupero dal parto.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🤲</div><span class="tratt-tag">Certificazione</span><h4>Terapia Manuale Maitland</h4><p>Mobilizzazione articolare per cervicalgia, lombalgia e dolori articolari.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🧘</div><span class="tratt-tag">Corsi in gruppo</span><h4>Clinical Pilates e Ipopressiva</h4><p>Rieducazione posturale, rinforzo del core, tono del pavimento pelvico.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">⚡</div><span class="tratt-tag">Strumentale</span><h4>Tecarterapia</h4><p>Energia endogena per ridurre dolore, infiammazione e accelerare la guarigione dei tessuti.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🔊</div><span class="tratt-tag">Strumentale</span><h4>Ultrasuoni</h4><p>Per tendiniti, borsiti, lesioni muscolo-tendinee e gestione del dolore cronico.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">💆</div><h4>Massoterapia e Miofasciale</h4><p>Tensioni muscolari, trigger point e restrizioni fasciali con tecniche manuali.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🏃</div><h4>Chinesiterapia</h4><p>Esercizi terapeutici per recupero di mobilità, forza e resistenza muscolare.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">⚽</div><h4>Fisioterapia Sportiva</h4><p>Prevenzione e recupero da infortuni sportivi per ogni disciplina: ti aiuto a tornare in campo più forte di prima.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">🏠</div><span class="tratt-tag">Domicilio</span><h4>Fisioterapia Domiciliare</h4><p>Trattamenti a casa tua, per chi non può spostarsi o preferisce il proprio ambiente.</p></div>
+        <div class="tratt-card"><div class="tratt-icon">💧</div><h4>Linfodrenaggio</h4><p>Drenaggio manuale per ritenzione idrica, edemi post-chirurgici e gambe pesanti.</p></div>
       </div>
+      <div class="swipe-hint-mobile" id="swipe-hint-mobile"><span class="swipe-hand-mobile">👆</span> Trascina per scoprire</div>
+    </div>
+    <div class="tratt-dots-wrap">
+      <button class="tratt-arrow prev" id="tratt-prev" aria-label="Precedente">←</button>
+      <div class="tratt-dots" id="tratt-dots"></div>
+      <button class="tratt-arrow next" id="tratt-next" aria-label="Successivo">→</button>
+    </div>
   </div>
 </section>
 
@@ -582,12 +469,10 @@
     <p>Articoli per capire la fisioterapia, prevenire i dolori e prenderti cura del tuo corpo.</p>
   </div>
   <div class="blog-grid" id="blog-preview"></div>
-  <div style="text-align:center;margin-top:3rem">
-    <a href="blog.html" class="btn btn-outline">Tutti gli articoli →</a>
-  </div>
+  <div style="text-align:center;margin-top:3rem"><a href="blog.html" class="btn btn-outline">Tutti gli articoli →</a></div>
 </section>
 
-<!-- ══ DOVE SIAMO + MAPPA ══ -->
+<!-- ══ DOVE SIAMO ══ -->
 <section id="dove-siamo">
   <div class="dove-grid">
     <div class="dove-info">
@@ -620,9 +505,7 @@
     </div>
     <form id="contactForm" class="cont-form" action="https://formspree.io/f/mvzlpeag" method="POST">
       <h3>Invia un messaggio</h3>
-
       <div class="honeypot"><label>Non compilare<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/></label></div>
-
       <div class="fg-2">
         <div class="fg"><label for="f-nome">Nome *</label><input id="f-nome" type="text" name="nome" required autocomplete="given-name"/></div>
         <div class="fg"><label for="f-cog">Cognome *</label><input id="f-cog" type="text" name="cognome" required autocomplete="family-name"/></div>
@@ -696,7 +579,7 @@
     <p>Questo sito usa cookie tecnici e, con il tuo consenso, cookie di Google Ads per misurare le conversioni degli annunci. Nessuna profilazione personale. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy.html">Privacy</a></p>
     <div class="cookie-btns">
       <button id="cookie-btn-accetta" class="cookie-ok">Accetta</button>
-      <button id="cookie-btn-rifiuta" class="cookie-more" style="cursor:pointer;background:transparent;border:none;font:inherit">Rifiuta</button>
+      <button id="cookie-btn-rifiuta" class="cookie-reject">Rifiuta</button>
     </div>
   </div>
 </div>
@@ -704,17 +587,10 @@
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
 
-const SK='fisiomasia_v4_blog';
 const SEED=[
-  {id:1,cat:'Pavimento Pelvico',date:'2024-11-20',image:'',
-   title:'Pavimento pelvico: cos\'è e quando rivolgersi alla fisioterapista',
-   excerpt:'Incontinenza, diastasi, dolori pelvici: il pavimento pelvico è spesso trascurato finché non dà problemi. Scopri quando la fisioterapia può fare la differenza.'},
-  {id:2,cat:'Riabilitazione',date:'2024-10-10',image:'',
-   title:'Mal di schiena: cause, prevenzione e il ruolo della fisioterapia',
-   excerpt:'Il mal di schiena colpisce 8 italiani su 10. Scopri come nasce, come si previene e quando la fisioterapia può davvero aiutare.'},
-  {id:3,cat:'Pilates',date:'2024-09-05',image:'',
-   title:'Clinical Pilates: perché è diverso dal Pilates tradizionale',
-   excerpt:'Non è semplice fitness. È uno strumento terapeutico supervisionato dal fisioterapista. Scopri per chi è indicato e come funziona.'}
+  {id:1,cat:'Pavimento Pelvico',date:'2024-11-20',image:'',title:'Pavimento pelvico: cos\'è e quando rivolgersi alla fisioterapista',excerpt:'Incontinenza, diastasi, dolori pelvici: il pavimento pelvico è spesso trascurato finché non dà problemi. Scopri quando la fisioterapia può fare la differenza.'},
+  {id:2,cat:'Riabilitazione',date:'2024-10-10',image:'',title:'Mal di schiena: cause, prevenzione e il ruolo della fisioterapia',excerpt:'Il mal di schiena colpisce 8 italiani su 10. Scopri come nasce, come si previene e quando la fisioterapia può davvero aiutare.'},
+  {id:3,cat:'Pilates',date:'2024-09-05',image:'',title:'Clinical Pilates: perché è diverso dal Pilates tradizionale',excerpt:'Non è semplice fitness. È uno strumento terapeutico supervisionato dal fisioterapista. Scopri per chi è indicato e come funziona.'}
 ];
 function loadPosts(cb){
   fetch('articoli/index.json',{cache:'no-store'})
@@ -722,291 +598,175 @@ function loadPosts(cb){
     .then(data=>cb(data.sort((a,b)=>new Date(b.date)-new Date(a.date))))
     .catch(()=>cb(SEED));
 }
-
 const CAT={
   'Pavimento Pelvico':{bg:'#f2ecf6',e:'🌸',c:'#6a3554'},
-  'Riabilitazione':   {bg:'#e8f4f0',e:'💪',c:'#2d7a65'},
-  'Pilates':          {bg:'#faf0f4',e:'🧘',c:'#8b4d6e'},
-  'Prevenzione':      {bg:'#e8f4f0',e:'🛡️',c:'#2d7a65'},
-  'Postura':          {bg:'#f2ecf6',e:'🏃',c:'#6a3554'},
+  'Riabilitazione':{bg:'#e8f4f0',e:'💪',c:'#2d7a65'},
+  'Pilates':{bg:'#faf0f4',e:'🧘',c:'#8b4d6e'},
+  'Prevenzione':{bg:'#e8f4f0',e:'🛡️',c:'#2d7a65'},
+  'Postura':{bg:'#f2ecf6',e:'🏃',c:'#6a3554'},
   'Fisioterapia Sportiva':{bg:'#e8f4f0',e:'⚽',c:'#2d7a65'},
-  'Consigli':         {bg:'#fff5e8',e:'💡',c:'#8b6030'},
-  'News':             {bg:'#f0f4f8',e:'📢',c:'#3a5a7a'}
+  'Consigli':{bg:'#fff5e8',e:'💡',c:'#8b6030'},
+  'News':{bg:'#f0f4f8',e:'📢',c:'#3a5a7a'}
 };
 function fd(d){return new Date(d).toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}
 function thumb(p){
-  if(p.image){return `<div class="bc-thumb" style="background:#f0ebe6;padding:0;overflow:hidden"><img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>`}
+  if(p.image){return`<div class="bc-thumb" style="background:#f0ebe6;padding:0;overflow:hidden"><img src="${p.image}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>`}
   const s=CAT[p.cat]||{bg:'#f2ecf6',e:'📖',c:'#6a3554'};
   return`<div class="bc-thumb" style="background:${s.bg}"><div class="bc-thumb-emoji">${s.e}</div><div class="bc-thumb-label" style="color:${s.c}">${p.cat}</div></div>`;
 }
 function cardHTML(p){return`<a href="blog.html#${p.id}" class="blog-card">${thumb(p)}<div class="bc-body"><span class="bc-cat">${p.cat}</span><h3>${p.title}</h3><p>${p.excerpt}</p><div class="bc-foot"><span class="bc-date">${fd(p.date)}</span><span class="bc-link">Leggi →</span></div></div></a>`}
-
-loadPosts(posts=>{
-  document.getElementById('blog-preview').innerHTML=posts.slice(0,3).map(cardHTML).join('');
-});
+loadPosts(posts=>{document.getElementById('blog-preview').innerHTML=posts.slice(0,3).map(cardHTML).join('');});
 
 /* ══ CAROSELLO TRATTAMENTI ══ */
 (function(){
-  const track = document.getElementById('tratt-track');
-  const viewport = track ? track.parentElement : null;
-  const dotsWrap = document.getElementById('tratt-dots');
-  const prev = document.getElementById('tratt-prev');
-  const next = document.getElementById('tratt-next');
-  if(!track || !viewport) return;
-
-  const cards = Array.from(track.children);
-  const total = cards.length;
-  let perView = 4, page = 0, autoTimer, isHover = false;
-  let cardWidth = 0, gap = 0;
-
+  const track=document.getElementById('tratt-track');
+  const viewport=track?track.parentElement:null;
+  const dotsWrap=document.getElementById('tratt-dots');
+  const prev=document.getElementById('tratt-prev');
+  const next=document.getElementById('tratt-next');
+  if(!track||!viewport)return;
+  const cards=Array.from(track.children);
+  const total=cards.length;
+  let perView=4,page=0,autoTimer,isHover=false,cardWidth=0,gap=0;
   function measure(){
-    if(cards.length < 1) return;
-    const r1 = cards[0].getBoundingClientRect();
-    cardWidth = r1.width;
-    if(cards.length >= 2){
-      const r2 = cards[1].getBoundingClientRect();
-      gap = Math.max(0, r2.left - r1.right);
-    } else {
-      gap = 0;
-    }
-    // fallback
-    if(cardWidth === 0){
-      cardWidth = viewport.getBoundingClientRect().width;
-    }
+    if(cards.length<1)return;
+    const r1=cards[0].getBoundingClientRect();
+    cardWidth=r1.width;
+    if(cards.length>=2){const r2=cards[1].getBoundingClientRect();gap=Math.max(0,r2.left-r1.right);}
+    else gap=0;
+    if(cardWidth===0)cardWidth=viewport.getBoundingClientRect().width;
   }
-
-  function updatePerView(){
-    const w = window.innerWidth;
-    if(w <= 680) perView = 1;
-    else if(w <= 1000) perView = 2;
-    else perView = 4;
-  }
-
-  function totalPages(){ return Math.max(1, Math.ceil(total / perView)); }
-
+  function updatePerView(){const w=window.innerWidth;if(w<=680)perView=1;else if(w<=1000)perView=2;else perView=4;}
+  function totalPages(){return Math.max(1,Math.ceil(total/perView));}
   function buildDots(){
-    dotsWrap.innerHTML = '';
-    const pages = totalPages();
-    for(let i=0; i<pages; i++){
-      const d = document.createElement('button');
-      d.className = 'tratt-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label','Vai a pagina '+(i+1));
-      d.addEventListener('click', ()=> goTo(i, true));
-      dotsWrap.appendChild(d);
-    }
+    dotsWrap.innerHTML='';
+    const pages=totalPages();
+    for(let i=0;i<pages;i++){const d=document.createElement('button');d.className='tratt-dot'+(i===0?' active':'');d.setAttribute('aria-label','Vai a pagina '+(i+1));d.addEventListener('click',()=>goTo(i,true));dotsWrap.appendChild(d);}
   }
-
-  function updateDots(){
-    Array.from(dotsWrap.children).forEach((d,i)=> d.classList.toggle('active', i === page));
-  }
-
-  function goTo(p, manual){
-    const pages = totalPages();
-    page = ((p % pages) + pages) % pages;
+  function updateDots(){Array.from(dotsWrap.children).forEach((d,i)=>d.classList.toggle('active',i===page));}
+  function goTo(p,manual){
+    const pages=totalPages();
+    page=((p%pages)+pages)%pages;
     measure();
-    const offset = page * perView * (cardWidth + gap);
-    track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
-    track.style.transform = `translateX(${-offset}px)`;
+    const offset=page*perView*(cardWidth+gap);
+    track.style.transition='transform .65s cubic-bezier(.4,.0,.2,1)';
+    track.style.transform=`translateX(${-offset}px)`;
     updateDots();
-    if(manual) restartAuto();
+    if(manual)restartAuto();
   }
-
-  function nextPage(){ goTo(page + 1); }
-  function prevPage(){ goTo(page - 1); }
-
-  function startAuto(){
-    clearInterval(autoTimer);
-    autoTimer = setInterval(()=>{ if(!isHover) nextPage(); }, 4500);
-  }
-  function restartAuto(){ startAuto(); }
-
-  // Mouse hover (desktop) — pause autoscroll
-  viewport.addEventListener('mouseenter', ()=> isHover = true);
-  viewport.addEventListener('mouseleave', ()=> isHover = false);
-
-  // Frecce
-  if(prev) prev.addEventListener('click', ()=>{ prevPage(); restartAuto(); });
-  if(next) next.addEventListener('click', ()=>{ nextPage(); restartAuto(); });
-
-  // ── Touch swipe LIVE (sul viewport, più affidabile di track) ──
-  let touchStartX = 0, touchCurrentX = 0, touchStartY = 0, isDragging = false, isVerticalScroll = false, isHorizontalSwipe = false;
-
-  viewport.addEventListener('touchstart', e=>{
-    if(e.touches.length !== 1) return;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchCurrentX = touchStartX;
-    isDragging = true;
-    isVerticalScroll = false;
-    isHorizontalSwipe = false;
-    isHover = true;
-    measure();
-    track.style.transition = 'none';
+  function nextPage(){goTo(page+1);}
+  function prevPage(){goTo(page-1);}
+  function startAuto(){clearInterval(autoTimer);autoTimer=setInterval(()=>{if(!isHover)nextPage();},4500);}
+  function restartAuto(){startAuto();}
+  viewport.addEventListener('mouseenter',()=>isHover=true);
+  viewport.addEventListener('mouseleave',()=>isHover=false);
+  if(prev)prev.addEventListener('click',()=>{prevPage();restartAuto();});
+  if(next)next.addEventListener('click',()=>{nextPage();restartAuto();});
+  let touchStartX=0,touchCurrentX=0,touchStartY=0,isDragging=false,isVerticalScroll=false,isHorizontalSwipe=false;
+  viewport.addEventListener('touchstart',e=>{
+    if(e.touches.length!==1)return;
+    touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;touchCurrentX=touchStartX;
+    isDragging=true;isVerticalScroll=false;isHorizontalSwipe=false;isHover=true;
+    measure();track.style.transition='none';
   },{passive:true});
-
-  // touchmove non passive: serve preventDefault per swipe orizzontale
-  viewport.addEventListener('touchmove', e=>{
-    if(!isDragging || e.touches.length !== 1) return;
-    touchCurrentX = e.touches[0].clientX;
-    const dx = touchCurrentX - touchStartX;
-    const dy = e.touches[0].clientY - touchStartY;
-
-    if(!isHorizontalSwipe && !isVerticalScroll){
-      if(Math.abs(dx) > 6 || Math.abs(dy) > 6){
-        if(Math.abs(dx) > Math.abs(dy)){
-          isHorizontalSwipe = true;
-          // Nascondi hint al primo swipe orizzontale
-          const hintM = document.getElementById('swipe-hint-mobile');
-          if(hintM && !hintM.classList.contains('hidden')){
-            hintM.classList.add('hidden');
-          }
-        } else {
-          isVerticalScroll = true;
-        }
+  viewport.addEventListener('touchmove',e=>{
+    if(!isDragging||e.touches.length!==1)return;
+    touchCurrentX=e.touches[0].clientX;
+    const dx=touchCurrentX-touchStartX;const dy=e.touches[0].clientY-touchStartY;
+    if(!isHorizontalSwipe&&!isVerticalScroll){
+      if(Math.abs(dx)>6||Math.abs(dy)>6){
+        if(Math.abs(dx)>Math.abs(dy)){
+          isHorizontalSwipe=true;
+          const hintM=document.getElementById('swipe-hint-mobile');
+          if(hintM&&!hintM.classList.contains('hidden'))hintM.classList.add('hidden');
+        }else{isVerticalScroll=true;}
       }
     }
-
-    if(isVerticalScroll) return;
-
-    if(isHorizontalSwipe){
-      e.preventDefault();
-      const baseOffset = page * perView * (cardWidth + gap);
-      track.style.transform = `translateX(${-baseOffset + dx}px)`;
-    }
+    if(isVerticalScroll)return;
+    if(isHorizontalSwipe){e.preventDefault();const baseOffset=page*perView*(cardWidth+gap);track.style.transform=`translateX(${-baseOffset+dx}px)`;}
   },{passive:false});
-
-  viewport.addEventListener('touchend', e=>{
-    if(!isDragging) return;
-    isDragging = false;
-    track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
-    const dx = touchCurrentX - touchStartX;
-
-    if(isVerticalScroll || !isHorizontalSwipe){
-      goTo(page);
-      isHover = false;
-      return;
-    }
-
-    if(Math.abs(dx) > 50){
-      if(dx < 0) nextPage();
-      else prevPage();
-    } else {
-      goTo(page);
-    }
-    restartAuto();
-    isHover = false;
+  viewport.addEventListener('touchend',e=>{
+    if(!isDragging)return;
+    isDragging=false;track.style.transition='transform .65s cubic-bezier(.4,.0,.2,1)';
+    const dx=touchCurrentX-touchStartX;
+    if(isVerticalScroll||!isHorizontalSwipe){goTo(page);isHover=false;return;}
+    if(Math.abs(dx)>50){if(dx<0)nextPage();else prevPage();}else goTo(page);
+    restartAuto();isHover=false;
   },{passive:true});
-
-  viewport.addEventListener('touchcancel', ()=>{
-    if(isDragging){
-      isDragging = false;
-      track.style.transition = 'transform .65s cubic-bezier(.4,.0,.2,1)';
-      goTo(page);
-      isHover = false;
-    }
+  viewport.addEventListener('touchcancel',()=>{
+    if(isDragging){isDragging=false;track.style.transition='transform .65s cubic-bezier(.4,.0,.2,1)';goTo(page);isHover=false;}
   },{passive:true});
-
-  // Resize
   let resizeTimer;
-  window.addEventListener('resize', ()=>{
+  window.addEventListener('resize',()=>{
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(()=>{
-      const oldPerView = perView;
-      updatePerView();
-      measure();
-      if(oldPerView !== perView){
-        page = 0;
-        buildDots();
-      }
-      goTo(page);
-    }, 150);
+    resizeTimer=setTimeout(()=>{const oldPerView=perView;updatePerView();measure();if(oldPerView!==perView){page=0;buildDots();}goTo(page);},150);
   });
-
-  // Init: aspetta render
-  function init(){
-    updatePerView();
-    measure();
-    buildDots();
-    goTo(0);
-    startAuto();
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    setTimeout(init, 50);
-  }
+  function init(){updatePerView();measure();buildDots();goTo(0);startAuto();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else setTimeout(init,50);
 })();
 
 /* ══ CONSENSO COOKIE v2 + LOG NETLIFY FORMS ══ */
 (function(){
+  var POLICY_VERSION = '2026-05';
+  var CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 12 mesi
+
   function getSessionId(){
-    var sid = localStorage.getItem('fisiomasia_sid');
-    if(!sid){
-      sid = 'sid_' + Math.random().toString(36).substr(2,9) + '_' + Date.now();
-      localStorage.setItem('fisiomasia_sid', sid);
-    }
+    var sid=localStorage.getItem('fisiomasia_sid');
+    if(!sid){sid='sid_'+Math.random().toString(36).substr(2,9)+'_'+Date.now();localStorage.setItem('fisiomasia_sid',sid);}
     return sid;
   }
 
   function updateGoogleConsent(granted){
-    var s = granted ? 'granted' : 'denied';
-    gtag('consent','update',{
-      'ad_storage':s,'analytics_storage':s,
-      'ad_user_data':s,'ad_personalization':s
-    });
+    var s=granted?'granted':'denied';
+    gtag('consent','update',{'ad_storage':s,'analytics_storage':s,'ad_user_data':s,'ad_personalization':s});
   }
 
   function logConsent(scelta){
-    var fd = new FormData();
-    fd.append('form-name',   'cookie-consent-log');
-    fd.append('scelta',      scelta);
-    fd.append('timestamp',   new Date().toISOString());
-    fd.append('sessione_id', getSessionId());
-    fd.append('pagina',      window.location.href);
+    var fd=new FormData();
+    fd.append('form-name','cookie-consent-log');
+    fd.append('scelta',scelta);
+    fd.append('timestamp',new Date().toISOString());
+    fd.append('sessione_id',getSessionId());
+    fd.append('pagina',window.location.href);
+    fd.append('policy_version',POLICY_VERSION);
     fetch('/',{method:'POST',body:fd}).catch(function(){});
   }
 
-  var banner = document.getElementById('cookie-banner');
-  var stored = localStorage.getItem('cookie_consent_v2');
+  var banner=document.getElementById('cookie-banner');
+  var stored=localStorage.getItem('cookie_consent_v2');
+  var expiry=localStorage.getItem('cookie_consent_expiry');
+  var isValid=stored&&expiry&&Date.now()<parseInt(expiry);
 
-  if(stored){
-    updateGoogleConsent(stored === 'granted');
-    if(banner) banner.style.display='none';
+  if(isValid){
+    updateGoogleConsent(stored==='granted');
+    if(banner)banner.style.display='none';
     return;
   }
 
-  if(banner) banner.style.display='block';
+  // consenso mancante o scaduto: mostra banner
+  if(banner)banner.style.display='block';
 
-  function accept(){
-    localStorage.setItem('cookie_consent_v2','granted');
-    updateGoogleConsent(true);
-    logConsent('accettato');
-    if(banner) banner.style.display='none';
-  }
-  function reject(){
-    localStorage.setItem('cookie_consent_v2','rifiutato');
-    updateGoogleConsent(false);
-    logConsent('rifiutato');
-    if(banner) banner.style.display='none';
+  function saveConsent(scelta,granted){
+    localStorage.setItem('cookie_consent_v2',scelta);
+    localStorage.setItem('cookie_consent_expiry',Date.now()+CONSENT_DURATION);
+    updateGoogleConsent(granted);
+    logConsent(scelta);
+    if(banner)banner.style.display='none';
   }
 
-  var btnA = document.getElementById('cookie-btn-accetta');
-  var btnR = document.getElementById('cookie-btn-rifiuta');
-  if(btnA) btnA.addEventListener('click',accept);
-  if(btnR) btnR.addEventListener('click',reject);
+  var btnA=document.getElementById('cookie-btn-accetta');
+  var btnR=document.getElementById('cookie-btn-rifiuta');
+  if(btnA)btnA.addEventListener('click',function(){saveConsent('granted',true);});
+  if(btnR)btnR.addEventListener('click',function(){saveConsent('rifiutato',false);});
 })();
 
-// Studio slideshow
+/* ══ STUDIO SLIDESHOW ══ */
 (function(){
-  var imgs = document.querySelectorAll('.studio-photo-frame img');
-  if(imgs.length < 2) return;
-  var cur = 0;
-  setInterval(function(){
-    imgs[cur].classList.remove('slide-active');
-    cur = (cur + 1) % imgs.length;
-    imgs[cur].classList.add('slide-active');
-  }, 5000);
+  var imgs=document.querySelectorAll('.studio-photo-frame img');
+  if(imgs.length<2)return;
+  var cur=0;
+  setInterval(function(){imgs[cur].classList.remove('slide-active');cur=(cur+1)%imgs.length;imgs[cur].classList.add('slide-active');},5000);
 })();
 </script>
 </body>
