@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="favicon.ico"/>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
-
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -18,6 +17,7 @@
     body{max-width:760px;margin:0 auto;padding:2rem 6vw 5rem;color:var(--ink)}
     h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;margin:2rem 0 .5rem;color:var(--ink)}
     h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin:2.2rem 0 .6rem;color:var(--ink)}
+    h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin:1.6rem 0 .4rem;color:var(--ink)}
     p,li{font-size:.95rem;line-height:1.8;color:var(--mid);margin-bottom:.8rem}
     ul{padding-left:1.4rem}
     li{margin-bottom:.4rem}
@@ -45,10 +45,10 @@
 <a href="index.html" class="back">← Torna al sito</a>
 
 <h1>Informativa sul trattamento dei dati personali</h1>
-<p style="font-size:.82rem;color:var(--light)">Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2025</p>
+<p style="font-size:.82rem;color:var(--light)">Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2026</p>
 
 <div class="box">
-  <p><strong>In sintesi:</strong> I dati che fornisci attraverso il modulo di contatto vengono utilizzati esclusivamente per risponderti. Non vengono ceduti a terzi, non vengono usati per marketing senza consenso esplicito, e vengono conservati per il tempo strettamente necessario.</p>
+  <p><strong>In sintesi:</strong> I dati che fornisci attraverso il modulo di contatto vengono utilizzati esclusivamente per risponderti. Il sito registra inoltre, in forma anonima, le scelte espresse sul banner cookie (incluso l'indirizzo IP registrato automaticamente da Netlify) ai soli fini di documentazione GDPR. Nessun dato viene ceduto a terzi per finalità proprie né usato per marketing senza consenso esplicito.</p>
 </div>
 
 <h2>1. Titolare del trattamento</h2>
@@ -61,6 +61,8 @@
 </ul>
 
 <h2>2. Dati raccolti e finalità</h2>
+
+<h3>2.1 Modulo di contatto</h3>
 <p>Attraverso il modulo di contatto presente sul sito vengono raccolti i seguenti dati:</p>
 <ul>
   <li>Nome e cognome</li>
@@ -70,30 +72,61 @@
 </ul>
 <p>Tali dati vengono trattati <strong>esclusivamente per rispondere alla tua richiesta</strong> e, se del caso, per fissare un appuntamento presso lo studio. Non vengono utilizzati per finalità di marketing, profilazione o invio di comunicazioni commerciali non richieste.</p>
 
-<h2>3. Base giuridica del trattamento</h2>
-<p>Il trattamento dei tuoi dati personali si fonda sul tuo <strong>consenso espresso</strong> (art. 6, par. 1, lett. a del GDPR), manifestato spuntando l'apposita casella nel modulo di contatto prima dell'invio.</p>
+<h3>2.2 Log dei consensi cookie</h3>
+<p>Al momento dell'interazione con il banner cookie (accettazione o rifiuto), il sito registra automaticamente un log tecnico contenente:</p>
+<ul>
+  <li>Data e ora della scelta</li>
+  <li>Tipo di scelta espressa (accettato / rifiutato)</li>
+  <li>Un identificatore di sessione casuale e anonimo (non collegabile all'identità dell'utente)</li>
+  <li>URL della pagina al momento della scelta</li>
+  <li>Versione della cookie policy in vigore al momento della scelta</li>
+  <li><strong>Indirizzo IP</strong> del visitatore, registrato automaticamente dalla piattaforma Netlify alla ricezione della submission del form</li>
+</ul>
+<p>Questa registrazione avviene sulla base del <strong>legittimo interesse del titolare</strong> (art. 6, par. 1, lett. f del GDPR) a documentare i consensi raccolti e a dimostrare la conformità al Regolamento, come richiesto dall'art. 7, par. 1 del GDPR. L'indirizzo IP non viene utilizzato per profilazione né per finalità diverse dalla documentazione tecnica del consenso.</p>
+<p>I dati del log vengono conservati per un periodo non superiore a <strong>24 mesi</strong>, trascorsi i quali vengono cancellati manualmente dal pannello di gestione Netlify.</p>
 
-<h2>4. Modalità del trattamento e conservazione</h2>
-<p>I dati vengono trattati in forma elettronica e sono gestiti tramite il servizio <strong>Formspree</strong> (formspree.io), che li recapita direttamente alla casella email del titolare. Formspree è un servizio conforme al GDPR; la sua informativa è consultabile su <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
-<p>I dati vengono conservati per il tempo strettamente necessario a gestire la tua richiesta e, in ogni caso, non oltre <strong>12 mesi</strong> dalla ricezione del messaggio.</p>
+<h3>2.3 Dati di navigazione (log tecnici)</h3>
+<p>I sistemi informatici del sito acquisiscono automaticamente alcuni dati la cui trasmissione è implicita nell'uso dei protocolli internet (indirizzo IP, tipo di browser, sistema operativo, pagine visitate, orari di accesso). Tali dati sono trattati dalla piattaforma di hosting Netlify per finalità di sicurezza e funzionamento tecnico del sito, e non sono comunicati al titolare come dato strutturato.</p>
+
+<h2>3. Base giuridica del trattamento</h2>
+<ul>
+  <li><strong>Modulo di contatto:</strong> consenso espresso dell'interessato (art. 6, par. 1, lett. a del GDPR), manifestato spuntando l'apposita casella prima dell'invio del modulo.</li>
+  <li><strong>Log dei consensi cookie:</strong> legittimo interesse del titolare (art. 6, par. 1, lett. f del GDPR) a documentare i consensi raccolti e a adempiere agli obblighi di accountability previsti dal GDPR.</li>
+  <li><strong>Cookie di misurazione Google Ads:</strong> consenso espresso tramite il banner cookie (art. 6, par. 1, lett. a del GDPR), revocabile in qualsiasi momento.</li>
+</ul>
+
+<h2>4. Modalità del trattamento e responsabili esterni</h2>
+<p>I dati vengono trattati in forma elettronica. I fornitori tecnici che trattano dati per conto del titolare, in qualità di responsabili del trattamento, sono:</p>
+<ul>
+  <li><strong>Formspree</strong> (formspree.io) — gestione e inoltro dei messaggi del modulo di contatto. Informativa: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></li>
+  <li><strong>Netlify</strong> (netlify.com) — hosting del sito e ricezione dei log dei consensi cookie. Netlify registra automaticamente l'indirizzo IP di ogni submission ricevuta. Informativa: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></li>
+  <li><strong>Google LLC</strong> — misurazione delle conversioni degli annunci Google Ads (solo con consenso dell'utente), tramite il tag AW-572548691 in modalità Consent Mode v2. Informativa: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+</ul>
 
 <h2>5. Comunicazione a terzi</h2>
-<p>I tuoi dati <strong>non vengono ceduti, venduti o comunicati a terzi</strong> per finalità proprie, fatta eccezione per i fornitori tecnici strettamente necessari all'erogazione del servizio (Formspree) che agiscono in qualità di responsabili del trattamento.</p>
+<p>I tuoi dati <strong>non vengono ceduti, venduti o comunicati a terzi</strong> per finalità proprie, fatta eccezione per i fornitori tecnici elencati alla sezione 4, che agiscono esclusivamente come responsabili del trattamento per conto del titolare e secondo le sue istruzioni.</p>
 
-<h2>6. Diritti dell'interessato</h2>
+<h2>6. Conservazione dei dati</h2>
+<ul>
+  <li><strong>Messaggi del modulo di contatto:</strong> conservati per il tempo strettamente necessario a gestire la richiesta e, in ogni caso, non oltre <strong>12 mesi</strong> dalla ricezione.</li>
+  <li><strong>Log dei consensi cookie:</strong> conservati per un massimo di <strong>24 mesi</strong>, trascorsi i quali vengono cancellati.</li>
+</ul>
+
+<h2>7. Diritti dell'interessato</h2>
 <p>Ai sensi degli artt. 15–22 del GDPR, hai il diritto di:</p>
 <ul>
   <li><strong>Accedere</strong> ai tuoi dati personali</li>
   <li><strong>Rettificare</strong> dati inesatti o incompleti</li>
   <li><strong>Cancellare</strong> i tuoi dati ("diritto all'oblio")</li>
   <li><strong>Limitare</strong> il trattamento</li>
+  <li><strong>Opporti</strong> al trattamento fondato su legittimo interesse (art. 21 GDPR)</li>
   <li><strong>Revocare il consenso</strong> in qualsiasi momento, senza pregiudicare la liceità del trattamento effettuato prima della revoca</li>
   <li><strong>Proporre reclamo</strong> al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>)</li>
 </ul>
-<p>Per esercitare i tuoi diritti, scrivi a <a href="mailto:fabiana.masia@gmail.com">fabiana.masia@gmail.com</a>.</p>
+<p>Per esercitare i tuoi diritti, scrivi a <a href="mailto:fabiana.masia@gmail.com">fabiana.masia@gmail.com</a>. Il titolare risponderà entro 30 giorni dalla ricezione della richiesta.</p>
 
 <hr/>
-<p style="font-size:.8rem;color:var(--light)">Questa informativa può essere aggiornata periodicamente per adeguarsi a modifiche normative o organizzative. La versione vigente è sempre disponibile su questa pagina.</p>
+<p style="font-size:.8rem;color:var(--light)">Questa informativa può essere aggiornata periodicamente per adeguarsi a modifiche normative o organizzative. La versione vigente è sempre disponibile su questa pagina con la data di ultimo aggiornamento.</p>
 
 <a href="index.html" class="back" style="margin-top:2rem">← Torna al sito</a>
 <p style="font-size:.8rem;color:var(--light);margin-top:1.5rem">Vedi anche: <a href="cookie-policy.html">Cookie Policy</a></p>
