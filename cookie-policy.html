@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="favicon.ico"/>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
-
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -28,11 +27,14 @@
     .back:hover{color:var(--plum-d)}
     .box{background:var(--off);border-radius:var(--r);padding:1.4rem 1.6rem;margin:2rem 0;border:1px solid var(--border)}
     .box p{margin:0;font-size:.88rem}
+    .box-warn{background:#fff8f0;border-color:#e8c99a}
     .table-wrap{overflow-x:auto;margin:1.2rem 0}
     table{width:100%;border-collapse:collapse;font-size:.88rem}
     th{background:var(--off);font-weight:600;color:var(--ink);text-align:left;padding:.7rem 1rem;border:1px solid var(--border)}
     td{padding:.65rem 1rem;border:1px solid var(--border);color:var(--mid);vertical-align:top;line-height:1.6}
     hr{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+    .badge-tecnico{display:inline-block;background:#e8f4f0;color:#2d7a65;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .55rem;border-radius:999px;vertical-align:middle;margin-left:.3rem}
+    .badge-marketing{display:inline-block;background:#f2ecf6;color:#6a3554;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .55rem;border-radius:999px;vertical-align:middle;margin-left:.3rem}
   </style>
 </head>
 <body>
@@ -50,66 +52,121 @@
 <a href="index.html" class="back">← Torna al sito</a>
 
 <h1>Cookie Policy</h1>
-<p style="font-size:.82rem;color:var(--light)">Ai sensi del D.Lgs. 69/2012 e del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2025</p>
+<p style="font-size:.82rem;color:var(--light)">Ai sensi del D.Lgs. 69/2012 e del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2026</p>
 
 <div class="box">
-  <p><strong>In sintesi:</strong> Questo sito utilizza esclusivamente cookie tecnici essenziali per il suo corretto funzionamento. Non vengono utilizzati cookie di profilazione, tracciamento o marketing di alcun tipo.</p>
+  <p><strong>In sintesi:</strong> Questo sito utilizza cookie tecnici essenziali per il suo funzionamento e, <strong>solo con il tuo esplicito consenso</strong>, cookie di misurazione di Google Ads per valutare l'efficacia degli annunci pubblicitari. Nessun cookie di profilazione comportamentale. Puoi accettare o rifiutare i cookie non essenziali tramite il banner che appare alla prima visita.</p>
 </div>
 
 <h2>1. Cosa sono i cookie</h2>
-<p>I cookie sono piccoli file di testo che i siti web salvano nel tuo browser quando li visiti. Vengono utilizzati per far funzionare correttamente il sito, ricordare le tue preferenze e, in alcuni casi, raccogliere informazioni statistiche o di marketing.</p>
+<p>I cookie sono piccoli file di testo che i siti web salvano nel tuo browser quando li visiti. Vengono utilizzati per far funzionare correttamente il sito, ricordare le tue preferenze e, in alcuni casi, raccogliere informazioni statistiche o di marketing. Oltre ai cookie HTTP tradizionali, questo sito utilizza anche <strong>localStorage</strong>, una tecnologia analoga che salva dati nel browser senza scadenza automatica.</p>
 
-<h2>2. Cookie utilizzati su questo sito</h2>
-<p>Il sito <strong>fisiomasia.it</strong> non utilizza cookie di profilazione o tracciamento. Vengono utilizzati esclusivamente cookie tecnici essenziali, necessari per il funzionamento del sito.</p>
+<h2>2. Tipologie di cookie utilizzati</h2>
 
-<h3>Cookie tecnici propri</h3>
+<h3>2.1 Cookie tecnici essenziali <span class="badge-tecnico">Tecnici</span></h3>
+<p>Questi cookie sono necessari per il funzionamento del sito e per ricordare le tue scelte. Non richiedono consenso.</p>
+
 <div class="table-wrap">
   <table>
     <thead>
-      <tr><th>Nome</th><th>Finalità</th><th>Durata</th></tr>
+      <tr><th>Nome</th><th>Tipo</th><th>Finalità</th><th>Durata</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><code>cookie_ok</code></td>
-        <td>Memorizza la scelta di chiusura del banner cookie (localStorage, non è un cookie HTTP)</td>
-        <td>Persistente (fino alla cancellazione manuale)</td>
+        <td><code>cookie_consent_v2</code></td>
+        <td>localStorage</td>
+        <td>Memorizza la scelta dell'utente sul banner cookie (accettato / rifiutato), per non mostrare il banner ad ogni visita</td>
+        <td>Persistente</td>
+      </tr>
+      <tr>
+        <td><code>fisiomasia_sid</code></td>
+        <td>localStorage</td>
+        <td>Identificatore di sessione anonimo e non collegabile all'identità dell'utente, utilizzato esclusivamente per registrare il log del consenso ai fini di conformità GDPR</td>
+        <td>Persistente</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<h3>Servizi di terze parti</h3>
-<p>Il sito si avvale di alcuni servizi tecnici di terze parti che potrebbero impostare cookie propri:</p>
+<h3>2.2 Cookie di misurazione pubblicitaria <span class="badge-marketing">Solo con consenso</span></h3>
+<p>Questi cookie vengono attivati <strong>solo se accetti</strong> tramite il banner. Se rifiuti, non vengono installati e Google Ads opera in modalità anonima (Consent Mode v2 con tutti i parametri impostati su "denied").</p>
 
 <div class="table-wrap">
   <table>
     <thead>
-      <tr><th>Servizio</th><th>Finalità</th><th>Informativa</th></tr>
+      <tr><th>Servizio</th><th>Cookie / Tag</th><th>Finalità</th><th>Durata</th><th>Informativa</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Google Ads</strong></td>
+        <td><code>_gcl_au</code>, <code>_gcl_aw</code>, tag AW-572548691</td>
+        <td>Misurazione delle conversioni degli annunci Google Ads (es. invio del modulo di contatto, clic sul numero di telefono). I dati sono aggregati e non identificano personalmente l'utente. Nessuna profilazione comportamentale.</td>
+        <td>90 giorni</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="box box-warn">
+  <p><strong>Consent Mode v2:</strong> Questo sito implementa Google Consent Mode v2. Se rifiuti i cookie, il tag Google viene comunque caricato in modalità "silenziosa" (tutti i parametri su <em>denied</em>) per consentire a Google di effettuare stime aggregate anonime del traffico, senza raccogliere dati personali e senza installare cookie sul tuo dispositivo.</p>
+</div>
+
+<h2>3. Servizi di terze parti tecnici</h2>
+<p>Il sito si avvale di alcuni servizi tecnici di terze parti che potrebbero effettuare richieste di rete proprie:</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Servizio</th><th>Finalità</th><th>Cookie</th><th>Informativa</th></tr>
     </thead>
     <tbody>
       <tr>
         <td><strong>Google Fonts</strong></td>
-        <td>Caricamento dei caratteri tipografici del sito. Google potrebbe registrare la richiesta HTTP (indirizzo IP), ma non imposta cookie di tracciamento.</td>
+        <td>Caricamento dei caratteri tipografici del sito. Google può registrare la richiesta HTTP (indirizzo IP), ma non imposta cookie di tracciamento.</td>
+        <td>Nessuno</td>
         <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
       </tr>
       <tr>
+        <td><strong>Google Maps</strong></td>
+        <td>Mappa interattiva per indicare la posizione dello studio. Il caricamento può comportare l'invio dell'indirizzo IP a Google.</td>
+        <td>Possibili cookie tecnici Google</td>
+        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+      </tr>
+      <tr>
+        <td><strong>Netlify</strong></td>
+        <td>Hosting del sito e gestione dei moduli (form di contatto e log consensi). I log dei consensi sono conservati in forma anonima (nessun dato personale, solo ID sessione casuale + timestamp + scelta).</td>
+        <td>Nessuno per i visitatori normali</td>
+        <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
+      </tr>
+      <tr>
         <td><strong>Netlify Identity</strong></td>
-        <td>Autenticazione per l'area di gestione interna (accessibile solo allo staff). Non coinvolge i visitatori normali del sito.</td>
+        <td>Autenticazione per l'area di gestione interna (accessibile solo allo staff). Non coinvolge i visitatori del sito.</td>
+        <td>Solo per utenti autenticati</td>
         <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
       </tr>
       <tr>
         <td><strong>Formspree</strong></td>
         <td>Gestione e inoltro dei messaggi inviati tramite il modulo di contatto. I dati vengono trattati come descritto nella <a href="privacy.html">Privacy Policy</a>.</td>
+        <td>Nessuno</td>
         <td><a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<h2>3. Google Maps</h2>
-<p>La pagina principale del sito include una mappa interattiva fornita da <strong>Google Maps</strong>. Il caricamento della mappa può comportare l'invio di dati a Google (tra cui l'indirizzo IP). Per maggiori informazioni consulta la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.</p>
+<h2>4. Gestione del consenso</h2>
+<p>Alla prima visita del sito viene mostrato un banner che ti consente di:</p>
+<ul>
+  <li><strong>Accettare</strong> tutti i cookie, inclusi quelli di misurazione di Google Ads</li>
+  <li><strong>Rifiutare</strong> i cookie non essenziali, mantenendo attivi solo i cookie tecnici</li>
+</ul>
+<p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive. Puoi revocare o modificare il tuo consenso in qualsiasi momento cancellando i dati di navigazione del tuo browser (localStorage e cookie) per il dominio <strong>fisiomasia.it</strong>: alla visita successiva il banner apparirà nuovamente.</p>
 
-<h2>4. Come gestire i cookie</h2>
+<h2>5. Log dei consensi</h2>
+<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata in forma anonima con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina. Nessun dato personale viene raccolto in questo registro.</p>
+
+<h2>6. Come gestire i cookie dal browser</h2>
 <p>Puoi controllare e gestire i cookie attraverso le impostazioni del tuo browser. Di seguito i link alle guide dei principali browser:</p>
 <ul>
   <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
@@ -117,18 +174,19 @@
   <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
   <li><a href="https://support.microsoft.com/it-it/microsoft-edge/eliminare-i-cookie-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
 </ul>
-<p>Tieni presente che la disabilitazione dei cookie tecnici potrebbe compromettere il corretto funzionamento del sito.</p>
+<p>Puoi inoltre opporti alla raccolta dati da parte di Google visitando <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</p>
 
-<h2>5. Contatti</h2>
+<h2>7. Titolare del trattamento</h2>
 <p>Per qualsiasi domanda relativa all'utilizzo dei cookie su questo sito, puoi contattare il titolare del trattamento:</p>
 <ul>
   <li><strong>Dott.ssa Fabiana Masia</strong></li>
+  <li>Corso Leone Giordano 5, 13046 Livorno Ferraris (VC)</li>
   <li>Email: <a href="mailto:fabiana.masia@gmail.com">fabiana.masia@gmail.com</a></li>
   <li>Tel: <a href="tel:+393493174624">349 317 4624</a></li>
 </ul>
 
 <hr/>
-<p style="font-size:.8rem;color:var(--light)">Questa Cookie Policy può essere aggiornata periodicamente. La versione vigente è sempre disponibile su questa pagina.</p>
+<p style="font-size:.8rem;color:var(--light)">Questa Cookie Policy può essere aggiornata periodicamente per recepire modifiche normative o tecniche. La versione vigente è sempre disponibile su questa pagina con la data di ultimo aggiornamento.</p>
 
 <a href="index.html" class="back" style="margin-top:2rem">← Torna al sito</a>
 
