@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+
+<!-- ═══ GOOGLE CONSENT MODE v2 ═══ -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage':         'denied',
+    'analytics_storage':  'denied',
+    'ad_user_data':       'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update':    800
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-572548691"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-572548691');
+</script>
+<!-- Snippet conversione clic telefono -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-572548691/OtyiCK2K_L8cENPMgZEC',
+    'value': 1.0,
+    'currency': 'EUR',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Pavimento Pelvico e Diastasi – Dott.ssa Fabiana Masia | Fisioterapista Specializzata</title>
+<meta name="description" content="Gli esercizi generici non bastano. La Dott.ssa Fabiana Masia offre trattamenti personalizzati per pavimento pelvico, diastasi addominale, incontinenza e riabilitazione post parto. Studio a Livorno Ferraris (VC)."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.fisiomasia.it/pavimento-pelvico.html"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+/* ── Token sistema ── */
+:root {
+  --plum:     #8b4d6e;
+  --plum-d:   #6e3a57;
+  --plum-l:   #f2ecf6;
+  --plum-pale:#faf5f8;
+  --mint:     #4a9e82;
+  --mint-l:   #e8f4f0;
+  --mint-d:   #2d7a65;
+  --ink:      #1a1018;
+  --mid:      #5a4f58;
+  --light:    #9a8e98;
+  --off:      #f8f5f7;
+  --white:    #ffffff;
+  --warm:     #f4ede8;
+  --border:   #e8dfe6;
+  --border-l: #f0e8ee;
+  --r:        12px;
+  --rs:       8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+}
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ── Utility ── */
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+.eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--mint); flex-shrink: 0; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: .82rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--plum);
+  color: var(--white);
+  padding: .75rem 1.8rem;
+}
+.btn-primary:hover { background: var(--plum-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,77,110,.3); }
+.btn-outline {
+  background: transparent;
+  color: var(--plum);
+  border: 1.5px solid var(--plum);
+  padding: .72rem 1.6rem;
+}
+.btn-outline:hover { background: var(--plum); color: var(--white); }
+.btn-call {
+  background: var(--mint);
+  color: var(--white);
+  padding: .75rem 1.8rem;
+  font-size: .88rem;
+}
+.btn-call:hover { background: var(--mint-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(74,158,130,.3); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 6vw;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.nav-logo { display: flex; align-items: center; gap: .7rem; }
+.nav-logo-text strong { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); display: block; line-height: 1.1; }
+.nav-logo-text span { font-size: .68rem; color: var(--light); letter-spacing: .1em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-tel { font-size: .82rem; font-weight: 600; color: var(--plum); }
+@media(max-width:600px) {
+  .nav-tel { display: none; }
+  nav { padding: 0 4vw; }
+}
+
+/* ── STICKY CTA MOBILE ── */
+.sticky-cta {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: .9rem 5vw;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+}
+.sticky-cta a { display: block; text-align: center; width: 100%; }
+@media(max-width:768px) { .sticky-cta { display: block; } }
+
+/* ── HERO ── */
+#hero {
+  padding-top: 64px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--plum-pale) 0%, var(--off) 60%, var(--mint-l) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  padding-bottom: 4rem;
+}
+.hero-inner { max-width: 760px; }
+.hero-inner .eyebrow { justify-content: center; margin-bottom: 1.2rem; }
+.hero-inner h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.hero-inner h1 em { color: var(--plum); font-style: italic; }
+.hero-inner .lead {
+  font-size: 1.08rem;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 1.6rem;
+}
+.hero-inner .lead strong { color: var(--ink); font-weight: 600; }
+.hero-actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.hero-badges { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: .35rem .85rem;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); flex-shrink: 0; }
+
+/* ── PROBLEMA ── */
+#problema {
+  padding: 5rem 6vw;
+  background: var(--white);
+}
+.problema-wrap { max-width: 900px; margin: 0 auto; }
+.problema-wrap .eyebrow { margin-bottom: 1rem; }
+.problema-wrap h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; margin-bottom: 1.4rem; }
+.problema-wrap h2 em { color: var(--plum); font-style: italic; }
+.problema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2rem; }
+.problema-card {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.problema-card .icon { font-size: 1.6rem; flex-shrink: 0; margin-top: .1rem; }
+.problema-card h4 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; margin-bottom: .3rem; color: var(--ink); }
+.problema-card p { font-size: .88rem; color: var(--mid); line-height: 1.65; }
+.problema-callout {
+  margin-top: 2rem;
+  background: var(--plum-l);
+  border-left: 3px solid var(--plum);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 1.2rem 1.6rem;
+}
+.problema-callout p { font-size: .95rem; color: var(--ink); line-height: 1.7; }
+.problema-callout p strong { color: var(--plum); }
+@media(max-width:640px) { .problema-grid { grid-template-columns: 1fr; } }
+
+/* ── TRATTAMENTI ── */
+#trattamenti {
+  padding: 5rem 6vw;
+  background: var(--off);
+}
+.tratt-wrap { max-width: 1000px; margin: 0 auto; }
+.tratt-wrap .eyebrow { margin-bottom: 1rem; }
+.tratt-wrap h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; margin-bottom: .6rem; }
+.tratt-wrap > p { color: var(--mid); font-size: .95rem; margin-bottom: 2.5rem; line-height: 1.8; }
+.tratt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.tratt-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.6rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.tratt-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(139,77,110,.1); }
+.tratt-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--plum), var(--mint)); opacity: 0; transition: opacity .2s; }
+.tratt-card:hover::after { opacity: 1; }
+.tratt-icon { font-size: 1.8rem; margin-bottom: .8rem; }
+.tratt-tag { display: inline-block; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: var(--mint-l); color: var(--mint-d); padding: .2rem .6rem; border-radius: 999px; margin-bottom: .6rem; }
+.tratt-card h4 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; margin-bottom: .5rem; color: var(--ink); line-height: 1.35; }
+.tratt-card p { font-size: .86rem; color: var(--mid); line-height: 1.65; }
+@media(max-width:900px) { .tratt-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:560px) { .tratt-grid { grid-template-columns: 1fr; } }
+
+/* ── CHI SONO ── */
+#chi-sono {
+  padding: 5rem 6vw;
+  background: var(--white);
+}
+.chisono-wrap { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
+.chisono-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 3/4; background: var(--warm); box-shadow: 0 12px 40px rgba(139,77,110,.12); }
+.chisono-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.chisono-text .eyebrow { margin-bottom: .8rem; }
+.chisono-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; margin-bottom: 1.2rem; }
+.chisono-text p { color: var(--mid); font-size: .95rem; line-height: 1.85; margin-bottom: .9rem; }
+.chisono-text p strong { color: var(--ink); font-weight: 600; }
+.chisono-pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.4rem; }
+.pill { font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--mint-l); color: var(--mint-d); padding: .3rem .75rem; border-radius: 999px; }
+.chisono-cta { margin-top: 1.6rem; display: flex; gap: .8rem; flex-wrap: wrap; }
+@media(max-width:760px) { .chisono-wrap { grid-template-columns: 1fr; } .chisono-photo { max-width: 260px; margin: 0 auto; } }
+
+/* ── PROCESSO ── */
+#processo {
+  padding: 5rem 6vw;
+  background: var(--plum-pale);
+}
+.processo-wrap { max-width: 860px; margin: 0 auto; }
+.processo-wrap .eyebrow { margin-bottom: 1rem; }
+.processo-wrap h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; margin-bottom: .6rem; }
+.processo-wrap > p { color: var(--mid); font-size: .95rem; margin-bottom: 2.5rem; line-height: 1.8; }
+.steps { display: flex; flex-direction: column; gap: 1rem; }
+.step {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--plum);
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-body h4 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; margin-bottom: .3rem; color: var(--ink); }
+.step-body p { font-size: .88rem; color: var(--mid); line-height: 1.65; }
+
+/* ── CTA BANNER ── */
+#cta-banner {
+  padding: 4rem 6vw;
+  background: var(--plum);
+  text-align: center;
+}
+#cta-banner h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 600; color: var(--white); margin-bottom: .8rem; }
+#cta-banner p { color: rgba(255,255,255,.8); font-size: .95rem; margin-bottom: 2rem; line-height: 1.7; }
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-white { background: var(--white); color: var(--plum); padding: .8rem 2rem; border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; transition: all .2s; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.5); padding: .77rem 1.8rem; border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; transition: all .2s; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+.btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+/* ── FORM CONTATTO ── */
+#contatti {
+  padding: 5rem 6vw;
+  background: var(--off);
+}
+.form-wrap { max-width: 680px; margin: 0 auto; }
+.form-wrap .eyebrow { margin-bottom: 1rem; }
+.form-wrap h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; margin-bottom: .5rem; }
+.form-wrap > p { color: var(--mid); font-size: .95rem; margin-bottom: 2.5rem; line-height: 1.75; }
+.contact-form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2.2rem;
+}
+.fg { margin-bottom: 1.2rem; }
+.fg label { display: block; font-size: .78rem; font-weight: 600; color: var(--mid); margin-bottom: .4rem; letter-spacing: .05em; text-transform: uppercase; }
+.fg input, .fg select, .fg textarea {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--rs);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .92rem;
+  color: var(--ink);
+  background: var(--white);
+  transition: border-color .2s;
+  appearance: none;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--plum); }
+.fg textarea { min-height: 100px; resize: vertical; }
+.fg-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:480px) { .fg-2 { grid-template-columns: 1fr; } }
+.form-privacy { display: flex; gap: .7rem; align-items: flex-start; margin: 1.2rem 0; font-size: .82rem; color: var(--mid); line-height: 1.6; cursor: pointer; }
+.form-privacy input { width: auto; flex-shrink: 0; margin-top: .2rem; accent-color: var(--plum); }
+.form-privacy a { color: var(--plum); text-decoration: underline; }
+.form-btn {
+  width: 100%;
+  padding: .9rem;
+  background: var(--plum);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.form-btn:hover { background: var(--plum-d); transform: translateY(-1px); }
+#form-ok { display: none; margin-top: 1rem; padding: 1rem; background: var(--mint-l); color: var(--mint-d); border: 1px solid var(--mint); border-radius: var(--rs); font-size: .88rem; font-weight: 500; text-align: center; }
+.form-note { font-size: .75rem; color: var(--light); margin-top: .8rem; text-align: center; line-height: 1.6; }
+.honeypot { display: none; }
+
+/* ── DOVE SIAMO ── */
+#dove-siamo {
+  padding: 3rem 6vw;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+}
+.dove-item { display: flex; align-items: center; gap: .7rem; }
+.dove-item svg { width: 18px; color: var(--plum); flex-shrink: 0; }
+.dove-item p { font-size: .88rem; color: var(--mid); line-height: 1.5; }
+.dove-item p strong { color: var(--ink); font-weight: 600; display: block; }
+
+/* ── FOOTER ── */
+footer {
+  background: #1a1018;
+  padding: 2rem 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+footer p { font-size: .78rem; color: rgba(255,255,255,.4); }
+footer a { font-size: .78rem; color: rgba(255,255,255,.5); text-decoration: underline; text-underline-offset: 3px; }
+footer a:hover { color: rgba(255,255,255,.8); }
+.foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+
+/* ── COOKIE BANNER ── */
+#cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 500;
+  background: rgba(30,26,26,.97);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(139,77,110,.25);
+  padding: .9rem 5vw;
+}
+.cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; }
+.cookie-inner p { font-size: .82rem; color: rgba(255,255,255,.72); line-height: 1.55; margin: 0; flex: 1; min-width: 200px; }
+.cookie-inner a { color: #4a9e82; text-decoration: underline; text-underline-offset: 3px; }
+.cookie-btns { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+.cookie-ok { background: var(--plum); color: #fff; border: none; border-radius: 999px; padding: .5rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+.cookie-ok:hover { background: var(--plum-d); }
+.cookie-reject { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 999px; padding: .5rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: border-color .2s, background .2s; white-space: nowrap; }
+.cookie-reject:hover { border-color: rgba(255,255,255,.9); background: rgba(255,255,255,.08); }
+
+/* ── Padding bottom mobile per sticky CTA ── */
+@media(max-width:768px) {
+  #contatti { padding-bottom: 7rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Form consensi log -->
+<form name="cookie-consent-log" data-netlify="true" netlify-honeypot="bot-field" style="display:none" aria-hidden="true">
+  <input type="hidden" name="form-name" value="cookie-consent-log"/>
+  <input type="hidden" name="scelta"/>
+  <input type="hidden" name="timestamp"/>
+  <input type="hidden" name="sessione_id"/>
+  <input type="hidden" name="pagina"/>
+  <input type="hidden" name="policy_version"/>
+  <input type="hidden" name="bot-field"/>
+</form>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-text">
+      <strong>Fabiana Masia</strong>
+      <span>Fisioterapista</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="tel:+393493174624" class="nav-tel" onclick="return gtag_report_conversion('tel:+393493174624')">349 317 4624</a>
+    <a href="#contatti" class="btn btn-primary" style="padding:.5rem 1.2rem;font-size:.75rem">Prenota</a>
+  </div>
+</nav>
+
+<!-- ══ STICKY CTA MOBILE ══ -->
+<div class="sticky-cta">
+  <a href="tel:+393493174624" class="btn btn-call" style="width:100%;justify-content:center;font-size:.92rem;padding:.85rem" onclick="return gtag_report_conversion('tel:+393493174624')">
+    📞 Chiama ora — 349 317 4624
+  </a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Fisioterapia Specializzata · Livorno Ferraris (VC)</span>
+    <h1>Gli esercizi generici<br><em>non bastano.</em></h1>
+    <p class="lead">Pavimento pelvico, diastasi, incontinenza e recupero post parto richiedono una <strong>valutazione individuale</strong> e un programma costruito su di te — non esercizi copiati da internet.</p>
+    <div class="hero-actions">
+      <a href="tel:+393493174624" class="btn btn-call" onclick="return gtag_report_conversion('tel:+393493174624')">📞 Chiama ora</a>
+      <a href="#contatti" class="btn btn-outline">Scrivi un messaggio</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-dot"></span>Fisioterapista abilitata</span>
+      <span class="badge"><span class="badge-dot"></span>Specializzata in pavimento pelvico</span>
+      <span class="badge"><span class="badge-dot"></span>Studio a Livorno Ferraris</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEMA ══ -->
+<section id="problema">
+  <div class="problema-wrap">
+    <span class="eyebrow">Il problema</span>
+    <h2>Perché gli esercizi da soli<br><em>non risolvono il problema</em></h2>
+    <p style="color:var(--mid);font-size:.95rem;line-height:1.8;margin-bottom:.5rem">Il pavimento pelvico è un sistema complesso. Un esercizio sbagliato può peggiorare la situazione invece di migliorarla. Senza una valutazione fisioterapica non sai:</p>
+    <div class="problema-grid">
+      <div class="problema-card">
+        <span class="icon">🔍</span>
+        <div>
+          <h4>Qual è la causa reale</h4>
+          <p>Incontinenza, diastasi e dolori pelvici hanno origini diverse che richiedono approcci diversi.</p>
+        </div>
+      </div>
+      <div class="problema-card">
+        <span class="icon">⚠️</span>
+        <div>
+          <h4>Se stai lavorando correttamente</h4>
+          <p>Gli esercizi di Kegel eseguiti male o nei momenti sbagliati possono aumentare la tensione invece di ridurla.</p>
+        </div>
+      </div>
+      <div class="problema-card">
+        <span class="icon">📋</span>
+        <div>
+          <h4>Di quale percorso hai bisogno</h4>
+          <p>Post parto, pre-menopausa, post-chirurgia: ogni fase della vita richiede un approccio specifico.</p>
+        </div>
+      </div>
+      <div class="problema-card">
+        <span class="icon">📈</span>
+        <div>
+          <h4>Come monitorare i progressi</h4>
+          <p>Senza un punto di riferimento professionale non sai se stai migliorando o stai solo "resistendo".</p>
+        </div>
+      </div>
+    </div>
+    <div class="problema-callout">
+      <p><strong>La fisioterapia specializzata non sostituisce gli esercizi — li rende efficaci.</strong> Una valutazione individuale identifica esattamente cosa fare, come farlo e con quale frequenza, eliminando il rischio di fare danni.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRATTAMENTI ══ -->
+<section id="trattamenti">
+  <div class="tratt-wrap">
+    <span class="eyebrow">Trattamenti</span>
+    <h2>Di cosa mi occupo</h2>
+    <p>Ogni trattamento inizia con una valutazione approfondita. Il programma viene costruito sulla tua storia, le tue esigenze e i tuoi obiettivi.</p>
+    <div class="tratt-grid">
+      <div class="tratt-card">
+        <div class="tratt-icon">🌸</div>
+        <span class="tratt-tag">Specializzazione</span>
+        <h4>Pavimento Pelvico</h4>
+        <p>Valutazione e riabilitazione per incontinenza, prolasso, dolori pelvici e ipertono. Ogni programma è costruito sulla tua situazione specifica.</p>
+      </div>
+      <div class="tratt-card">
+        <div class="tratt-icon">🤱</div>
+        <span class="tratt-tag">Post Parto</span>
+        <h4>Diastasi e Recupero Post Parto</h4>
+        <p>Riabilitazione della parete addominale dopo il parto, con recupero della forza, della postura e del benessere pelvico.</p>
+      </div>
+      <div class="tratt-card">
+        <div class="tratt-icon">🧘</div>
+        <span class="tratt-tag">Rieducazione</span>
+        <h4>Rieducazione Posturale Globale</h4>
+        <p>RPG e tecniche posturali per correggere squilibri muscolari e prevenire dolori ricorrenti a schiena, collo e articolazioni.</p>
+      </div>
+      <div class="tratt-card">
+        <div class="tratt-icon">🤸</div>
+        <span class="tratt-tag">Corsi</span>
+        <h4>Clinical Pilates e Ipopressiva</h4>
+        <p>Esercizio terapeutico supervisionato per rinforzare il core, migliorare la postura e supportare la riabilitazione del pavimento pelvico.</p>
+      </div>
+      <div class="tratt-card">
+        <div class="tratt-icon">🌿</div>
+        <span class="tratt-tag">Gravidanza</span>
+        <h4>Fisioterapia in Gravidanza</h4>
+        <p>Preparazione al parto, gestione dei dolori lombari e pelvici, lavoro sul pavimento pelvico in previsione del travaglio.</p>
+      </div>
+      <div class="tratt-card">
+        <div class="tratt-icon">💧</div>
+        <span class="tratt-tag">Specializzazione</span>
+        <h4>Incontinenza Urinaria</h4>
+        <p>Approccio fisioterapico per incontinenza da sforzo, urgenza e mista. Programmi personalizzati senza ricorrere subito alla chirurgia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHI SONO ══ -->
+<section id="chi-sono">
+  <div class="chisono-wrap">
+    <div class="chisono-photo">
+      <img src="fabiana_studio.jpg" alt="Dott.ssa Fabiana Masia – Fisioterapista specializzata in pavimento pelvico" loading="lazy"/>
+    </div>
+    <div class="chisono-text">
+      <span class="eyebrow">Chi sono</span>
+      <h2>Dott.ssa Fabiana Masia</h2>
+      <p>Sono una fisioterapista specializzata nel trattamento del <strong>pavimento pelvico, diastasi addominale e riabilitazione post parto</strong>. Lavoro a Livorno Ferraris (VC) e ricevo pazienti da tutto il Vercellese e dal Canavese.</p>
+      <p>Ogni percorso inizia con una valutazione approfondita. Non offro protocolli standard: costruisco un programma su misura che tiene conto della tua storia, del tuo corpo e dei tuoi obiettivi.</p>
+      <p>Sono iscritta all'Albo dei Fisioterapisti e mi aggiorno continuamente con corsi di formazione specialistica.</p>
+      <div class="chisono-pills">
+        <span class="pill">Pavimento Pelvico</span>
+        <span class="pill">Diastasi</span>
+        <span class="pill">Post Parto</span>
+        <span class="pill">RPG</span>
+        <span class="pill">Clinical Pilates</span>
+        <span class="pill">Ipopressiva</span>
+      </div>
+      <div class="chisono-cta">
+        <a href="tel:+393493174624" class="btn btn-primary" onclick="return gtag_report_conversion('tel:+393493174624')">Chiamami</a>
+        <a href="#contatti" class="btn btn-outline">Scrivimi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESSO ══ -->
+<section id="processo">
+  <div class="processo-wrap">
+    <span class="eyebrow">Come funziona</span>
+    <h2>Il tuo percorso in 3 passi</h2>
+    <p>Dal primo contatto alla fine del trattamento, ogni passo è pensato per farti sentire ascoltata e seguita.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Prima visita e valutazione</h4>
+          <p>Raccogliamo la tua storia clinica, valutiamo il problema e definiamo insieme gli obiettivi del percorso. Nessun trattamento senza prima capire la tua situazione specifica.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Programma personalizzato</h4>
+          <p>Costruiamo un percorso su misura: trattamenti in studio, esercizi da fare a casa e indicazioni pratiche per la vita quotidiana. Frequenza e durata dipendono dalla tua situazione.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Monitoraggio e risultati</h4>
+          <p>Verifichiamo i progressi ad ogni seduta e adattiamo il programma in base ai risultati. L'obiettivo è che tu raggiunga l'autonomia e non abbia più bisogno di tornare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BANNER ══ -->
+<section id="cta-banner">
+  <h2>Prenota la tua valutazione</h2>
+  <p>Una chiamata o un messaggio è tutto ciò che serve per iniziare. Rispondo personalmente entro 24 ore.</p>
+  <div class="cta-actions">
+    <a href="tel:+393493174624" class="btn-white" onclick="return gtag_report_conversion('tel:+393493174624')">📞 Chiama — 349 317 4624</a>
+    <a href="#contatti" class="btn-ghost">Scrivi un messaggio →</a>
+  </div>
+</section>
+
+<!-- ══ FORM CONTATTO ══ -->
+<section id="contatti">
+  <div class="form-wrap">
+    <span class="eyebrow">Contatti</span>
+    <h2>Scrivimi un messaggio</h2>
+    <p>Per informazioni o per fissare un appuntamento. Rispondo personalmente a ogni messaggio entro 24 ore.</p>
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mvzlpeag" method="POST">
+      <div class="honeypot"><label>Non compilare<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"/></label></div>
+      <div class="fg-2">
+        <div class="fg"><label for="f-nome">Nome *</label><input id="f-nome" type="text" name="nome" required autocomplete="given-name"/></div>
+        <div class="fg"><label for="f-cog">Cognome *</label><input id="f-cog" type="text" name="cognome" required autocomplete="family-name"/></div>
+      </div>
+      <div class="fg-2">
+        <div class="fg"><label for="f-tel">Telefono</label><input id="f-tel" type="tel" name="telefono" autocomplete="tel"/></div>
+        <div class="fg"><label for="f-mail">Email *</label><input id="f-mail" type="email" name="email" required autocomplete="email"/></div>
+      </div>
+      <div class="fg">
+        <label for="f-mot">Tipo di richiesta</label>
+        <select id="f-mot" name="motivo">
+          <option value="">Seleziona...</option>
+          <option>Pavimento pelvico</option>
+          <option>Diastasi addominale</option>
+          <option>Fisioterapia post parto</option>
+          <option>Fisioterapia in gravidanza</option>
+          <option>Incontinenza urinaria</option>
+          <option>Rieducazione posturale / RPG</option>
+          <option>Clinical Pilates / Ipopressiva</option>
+          <option>Informazioni generali</option>
+        </select>
+      </div>
+      <div class="fg"><label for="f-msg">Messaggio</label><textarea id="f-msg" name="messaggio" placeholder="Descrivi brevemente la tua situazione o la tua richiesta..."></textarea></div>
+      <label class="form-privacy">
+        <input type="checkbox" name="privacy_consenso" required/>
+        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e autorizzo il trattamento dei miei dati personali ai sensi del Reg. UE 2016/679 (GDPR). *</span>
+      </label>
+      <button type="submit" class="form-btn">Invia messaggio</button>
+      <p class="form-note">I tuoi dati non saranno condivisi con terze parti e verranno utilizzati esclusivamente per rispondere alla tua richiesta.</p>
+      <div id="form-ok">✓ Messaggio inviato! Ti risponderò al più presto.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ══ DOVE SIAMO ══ -->
+<div id="dove-siamo">
+  <div class="dove-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+    <p><strong>Studio</strong>Corso Leone Giordano 5, Livorno Ferraris (VC)</p>
+  </div>
+  <div class="dove-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+    <p><strong>Telefono</strong><a href="tel:+393493174624" onclick="return gtag_report_conversion('tel:+393493174624')">349 317 4624</a></p>
+  </div>
+  <div class="dove-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <p><strong>Orari</strong>Lun–Ven, su appuntamento</p>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>© 2026 Dott.ssa Fabiana Masia · Studio Fisiomasia · P.IVA/CF: Fabiana Masia</p>
+  <div class="foot-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="cookie-policy.html">Cookie Policy</a>
+    <a href="index.html">Sito principale →</a>
+  </div>
+</footer>
+
+<!-- ══ COOKIE BANNER ══ -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p>Questo sito usa cookie tecnici e, con il tuo consenso, cookie di Google Ads per misurare le conversioni. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy.html">Privacy</a></p>
+    <div class="cookie-btns">
+      <button id="cookie-btn-accetta" class="cookie-ok">Accetta</button>
+      <button id="cookie-btn-rifiuta" class="cookie-reject">Rifiuta</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ FORM SUBMIT ══ */
+const form = document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, { method: 'POST', body: data, headers: {'Accept':'application/json'} })
+      .then(r => {
+        if(r.ok){
+          document.getElementById('form-ok').style.display = 'block';
+          form.reset();
+          // Traccia conversione form
+          gtag('event', 'conversion', {
+            'send_to': 'AW-572548691/OtyiCK2K_L8cENPMgZEC',
+            'value': 1.0,
+            'currency': 'EUR'
+          });
+        }
+      })
+      .catch(() => {});
+  });
+}
+
+/* ══ COOKIE BANNER ══ */
+(function(){
+  var POLICY_VERSION = '2026-05';
+  var CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000;
+
+  function getSessionId(){
+    var sid = localStorage.getItem('fisiomasia_sid');
+    if(!sid){ sid = 'sid_' + Math.random().toString(36).substr(2,9) + '_' + Date.now(); localStorage.setItem('fisiomasia_sid', sid); }
+    return sid;
+  }
+  function updateGoogleConsent(granted){
+    var s = granted ? 'granted' : 'denied';
+    gtag('consent','update',{'ad_storage':s,'analytics_storage':s,'ad_user_data':s,'ad_personalization':s});
+  }
+  function logConsent(scelta){
+    var fd = new FormData();
+    fd.append('form-name','cookie-consent-log');
+    fd.append('scelta', scelta);
+    fd.append('timestamp', new Date().toISOString());
+    fd.append('sessione_id', getSessionId());
+    fd.append('pagina', window.location.href);
+    fd.append('policy_version', POLICY_VERSION);
+    fetch('/', {method:'POST', body:fd}).catch(function(){});
+  }
+
+  var banner = document.getElementById('cookie-banner');
+  var stored = localStorage.getItem('cookie_consent_v2');
+  var expiry = localStorage.getItem('cookie_consent_expiry');
+  var isValid = stored && expiry && Date.now() < parseInt(expiry);
+
+  if(isValid){
+    updateGoogleConsent(stored === 'granted');
+    if(banner) banner.style.display = 'none';
+    return;
+  }
+  if(banner) banner.style.display = 'block';
+
+  function saveConsent(scelta, granted){
+    localStorage.setItem('cookie_consent_v2', scelta);
+    localStorage.setItem('cookie_consent_expiry', Date.now() + CONSENT_DURATION);
+    updateGoogleConsent(granted);
+    logConsent(scelta);
+    if(banner) banner.style.display = 'none';
+  }
+  var btnA = document.getElementById('cookie-btn-accetta');
+  var btnR = document.getElementById('cookie-btn-rifiuta');
+  if(btnA) btnA.addEventListener('click', function(){ saveConsent('granted', true); });
+  if(btnR) btnR.addEventListener('click', function(){ saveConsent('rifiutato', false); });
+})();
+</script>
+</body>
+</html>
