@@ -197,6 +197,17 @@ nav {
   line-height: 1.15;
 }
 .hero-inner h1 em { color: var(--plum); font-style: italic; }
+.hero-photo-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.6rem;
+  border: 4px solid var(--white);
+  box-shadow: 0 8px 28px rgba(139,77,110,.22);
+  background: var(--warm);
+}
+.hero-photo-circle img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; }
 .hero-inner .lead {
   font-size: 1.08rem;
   color: var(--mid);
@@ -207,6 +218,7 @@ nav {
 .hero-inner .lead strong { color: var(--ink); font-weight: 600; }
 .hero-actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
 .hero-badges { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; }
+@media(max-width:600px){ .hero-photo-circle { width: 120px; height: 120px; } }
 .badge {
   display: inline-flex;
   align-items: center;
@@ -501,9 +513,12 @@ footer a:hover { color: rgba(255,255,255,.8); }
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-inner">
+    <div class="hero-photo-circle">
+      <img src="fabiana.jpg" alt="Dott.ssa Fabiana Masia – Fisioterapista specializzata in pavimento pelvico a Livorno Ferraris" loading="eager"/>
+    </div>
     <span class="eyebrow">Fisioterapia Specializzata · Livorno Ferraris (VC)</span>
     <h1>Gli esercizi generici<br><em>non bastano.</em></h1>
-    <p class="lead">Pavimento pelvico, diastasi, incontinenza e recupero post parto richiedono una <strong>valutazione individuale</strong> e un programma costruito su di te — non esercizi copiati da internet.</p>
+    <p class="lead">Pavimento pelvico, diastasi, incontinenza e recupero post parto richiedono una <strong>valutazione individuale</strong> e un programma costruito su di te — non un protocollo preso da internet, uguale per tutte, senza nessuno che verifichi che lo stai eseguendo correttamente.</p>
     <div class="hero-actions">
       <a href="tel:+393493174624" class="btn btn-call" onclick="return gtag_report_conversion('tel:+393493174624')">📞 Chiama ora</a>
       <a href="#contatti" class="btn btn-outline">Scrivi un messaggio</a>
@@ -581,7 +596,7 @@ footer a:hover { color: rgba(255,255,255,.8); }
         <div class="tratt-icon">🧘</div>
         <span class="tratt-tag">Rieducazione</span>
         <h4>Rieducazione Posturale Globale</h4>
-        <p>RPG e tecniche posturali per correggere squilibri muscolari e prevenire dolori ricorrenti a schiena, collo e articolazioni.</p>
+        <p>Tecniche posturali per correggere squilibri muscolari e prevenire dolori ricorrenti a schiena, collo e articolazioni.</p>
       </div>
       <div class="tratt-card">
         <div class="tratt-icon">🤸</div>
@@ -621,7 +636,7 @@ footer a:hover { color: rgba(255,255,255,.8); }
         <span class="pill">Pavimento Pelvico</span>
         <span class="pill">Diastasi</span>
         <span class="pill">Post Parto</span>
-        <span class="pill">RPG</span>
+        <span class="pill">Rieducazione Posturale</span>
         <span class="pill">Clinical Pilates</span>
         <span class="pill">Ipopressiva</span>
       </div>
@@ -700,7 +715,7 @@ footer a:hover { color: rgba(255,255,255,.8); }
           <option>Fisioterapia post parto</option>
           <option>Fisioterapia in gravidanza</option>
           <option>Incontinenza urinaria</option>
-          <option>Rieducazione posturale / RPG</option>
+          <option>Rieducazione posturale globale</option>
           <option>Clinical Pilates / Ipopressiva</option>
           <option>Informazioni generali</option>
         </select>
