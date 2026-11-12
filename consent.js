@@ -139,7 +139,7 @@
   window.fmCookiePrefs = function () { showBanner(); return false; };
 
   function addFooterLink() {
-    var links = document.querySelectorAll('footer a[href$="cookie-policy.html"]');
+    var links = document.querySelectorAll('footer a[href*="cookie-policy"]');
     for (var i = 0; i < links.length; i++) {
       var a = links[i];
       if (a.parentNode.querySelector("[data-cookie-prefs]")) continue;
