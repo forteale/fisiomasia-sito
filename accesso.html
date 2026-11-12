@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>Accesso · Studio Fisiomasia</title>
+<style>
+  :root{--ink:#2a2226;--bone:#f6f1ee;--wine:#8b4d6e;--soft:#6B5E4F;--line:rgba(36,32,23,.16)}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--ink);background:#faf7f2;display:flex;align-items:center;justify-content:center;padding:24px}
+  .box{width:100%;max-width:360px}
+  .brand{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:26px}
+  .brand img{height:34px;width:auto;display:block}
+  .brand b{font-weight:600;letter-spacing:.02em;font-size:1.05rem}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px 24px;
+    box-shadow:0 10px 30px rgba(36,32,23,.06)}
+  h1{font-size:1.15rem;margin:0 0 4px}
+  .sub{color:var(--soft);font-size:.86rem;margin:0 0 20px}
+  label{display:block;font-size:.8rem;color:var(--soft);margin:0 0 6px;font-weight:600}
+  input[type=email],input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--line);
+    border-radius:9px;font-size:.95rem;background:#fdfbf8;color:var(--ink);margin-bottom:15px}
+  input:focus{outline:none;border-color:var(--wine);background:#fff}
+  button{width:100%;padding:12px;border:0;border-radius:9px;background:var(--ink);color:#f5ede4;
+    font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.02em}
+  button:hover{background:#332c20}
+  .msg{font-size:.83rem;border-radius:9px;padding:10px 12px;margin-bottom:16px;display:none}
+  .msg.err{display:block;background:#f7e7e2;color:#8a3b2a}
+  .msg.ok{display:block;background:#e6efe6;color:#2c6b3c}
+  .foot{text-align:center;margin-top:16px;font-size:.8rem}
+  .foot a{color:var(--soft);text-decoration:none}
+  .foot a:hover{color:var(--wine)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .back{display:block;text-align:center;margin-top:18px;font-size:.8rem;color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--wine)}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="brand"><img src="/favicon-32x32.png" alt=""><b>Studio Fisiomasia</b></div>
+    <div class="card">
+      <h1>Accesso gestione</h1>
+      <p class="sub">Area riservata al registro consensi del sito.</p>
+      <div id="msg" class="msg"></div>
+      <form method="POST" action="/.netlify/functions/auth-login" autocomplete="on">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="username" placeholder="nome@dominio.it">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="••••••••">
+        <!-- honeypot antispam: lasciare vuoto -->
+        <div class="hp" aria-hidden="true"><label>Non compilare<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit">Entra</button>
+      </form>
+      <div class="foot"><a href="#" id="forgot">Password dimenticata?</a></div>
+    </div>
+    <a class="back" href="/">&larr; Torna al sito</a>
+  </div>
+<script>
+  (function(){
+    var p=new URLSearchParams(location.search), m=document.getElementById('msg');
+    function show(t,ok){m.textContent=t;m.className='msg '+(ok?'ok':'err');}
+    if(p.get('err')==='lock') show('Troppi tentativi di accesso. Riprova tra qualche minuto.');
+    else if(p.get('err')) show('Email o password non corretti.');
+    else if(p.get('out')) show('Sei uscito dall’area gestione.',true);
+    document.getElementById('forgot').addEventListener('click',function(e){
+      e.preventDefault();
+      show('Per reimpostare la password contatta lo sviluppatore del sito.',true);
+    });
+  })();
+</script>
+</body>
+</html>

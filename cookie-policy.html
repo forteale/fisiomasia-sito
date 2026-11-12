@@ -92,7 +92,7 @@
       <tr>
         <td><code>fisiomasia_sid</code></td>
         <td>localStorage</td>
-        <td>Identificatore di sessione anonimo e non collegabile all'identità dell'utente, utilizzato esclusivamente per registrare il log del consenso ai fini di conformità GDPR</td>
+        <td>Identificatore casuale del browser, non collegabile all'identità dell'utente, usato esclusivamente per registrare il consenso ai fini di conformità GDPR</td>
         <td>Persistente</td>
       </tr>
     </tbody>
@@ -100,7 +100,7 @@
 </div>
 
 <h3>2.2 Cookie di misurazione pubblicitaria <span class="badge-marketing">Solo con consenso</span></h3>
-<p>Questi cookie vengono attivati <strong>solo se accetti</strong> tramite il banner. Se rifiuti, non vengono installati e Google Ads opera in modalità anonima (Consent Mode v2 con tutti i parametri impostati su "denied").</p>
+<p>Questi cookie vengono attivati <strong>solo se accetti</strong> tramite il banner. Se rifiuti, o finché non scegli, il tag di Google Ads <strong>non viene caricato</strong>: nessun dato viene inviato a Google.</p>
 
 <div class="table-wrap">
   <table>
@@ -120,7 +120,7 @@
 </div>
 
 <div class="box box-warn">
-  <p><strong>Consent Mode v2:</strong> Questo sito implementa Google Consent Mode v2. Se rifiuti i cookie, il tag Google viene comunque caricato in modalità "silenziosa" (tutti i parametri su <em>denied</em>) per consentire a Google di effettuare stime aggregate anonime del traffico, senza raccogliere dati personali e senza installare cookie sul tuo dispositivo.</p>
+  <p><strong>Google Consent Mode:</strong> questo sito usa la modalità «di base» del Consent Mode di Google: il tag di Google Ads si carica solo dopo che hai accettato, e a quel punto riceve anche la tua scelta. Se rifiuti o non scegli, al tag Google non arriva nulla, nemmeno segnali anonimi.</p>
 </div>
 
 <h3>2.3 Mappa Google Maps <span class="badge-marketing">Solo con consenso</span></h3>
@@ -137,9 +137,9 @@
     <tbody>
       <tr>
         <td><strong>Netlify</strong></td>
-        <td>Hosting del sito e gestione dei moduli (form di contatto e log consensi cookie). I log dei consensi contengono: timestamp, scelta, ID sessione anonimo, URL, versione policy.</td>
+        <td>Hosting del sito e conservazione del registro dei consensi cookie (Netlify Functions e Netlify Blobs). Il registro contiene: data e ora, scelta, identificatore casuale del browser, pagina, versione della policy, IP abbreviato e user-agent.</td>
         <td>Nessuno per i visitatori normali</td>
-        <td>Per ogni submission ricevuta tramite Netlify Forms, Netlify registra automaticamente l'indirizzo IP del mittente, che risulta <strong>visibile al titolare del sito</strong> nel pannello di gestione Forms. Tale trattamento è dichiarato nell'<a href="privacy.html">Informativa Privacy</a> ed è fondato sul legittimo interesse del titolare alla documentazione dei consensi (art. 6.1.f GDPR). I log di hosting generici (access log del server) sono invece gestiti internamente da Netlify e non sono accessibili al titolare.</td>
+        <td>L'indirizzo IP viene <strong>abbreviato prima del salvataggio</strong> (ultima parte azzerata): l'IP completo non viene conservato. Il registro è consultabile solo dal titolare in un'area protetta da password ed è cancellato automaticamente dopo 24 mesi; il trattamento è fondato sul legittimo interesse del titolare alla documentazione dei consensi (art. 6.1.f GDPR). I log di hosting generici (access log del server) sono gestiti internamente da Netlify e non sono accessibili al titolare.</td>
         <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
       </tr>
       <tr>
@@ -171,7 +171,7 @@
 <p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive per un periodo di <strong>12 mesi</strong>, trascorsi i quali il banner viene nuovamente presentato. Puoi revocare o modificare il tuo consenso in qualsiasi momento con il link <strong>«Preferenze cookie»</strong> presente in fondo a ogni pagina (oppure <a href="#" data-cookie-prefs>qui</a>): il banner viene riproposto e, se rifiuti, i cookie di Google Ads già presenti vengono cancellati.</p>
 
 <h2>5. Log dei consensi</h2>
-<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina, versione della cookie policy in vigore al momento della scelta. Netlify, che riceve il registro, memorizza anche l'indirizzo IP del mittente (vedi la tabella sopra e l'<a href="privacy.html">Informativa Privacy</a>).</p>
+<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore casuale del browser (non collegabile all'identità dell'utente), pagina, versione della cookie policy in vigore al momento della scelta, indirizzo IP abbreviato (ultima parte azzerata) e tipo di browser. I dati sono conservati per 24 mesi e poi cancellati automaticamente (vedi l'<a href="privacy.html">Informativa Privacy</a>).</p>
 
 <h2>6. Come gestire i cookie dal browser</h2>
 <p>Puoi controllare e gestire i cookie attraverso le impostazioni del tuo browser. Di seguito i link alle guide dei principali browser:</p>

@@ -4,6 +4,11 @@
 [build]
   command = "node build-articoli.js"
   publish = "."
+  # registro consensi cookie (consent-log, pannello consent-admin, pulizia automatica)
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
 
 # I redirect SEO sono nel file _redirects (priorità maggiore)
 
@@ -36,3 +41,9 @@
   for = "/style.css"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# Pagina di accesso al registro consensi: fuori dai motori di ricerca
+[[headers]]
+  for = "/accesso.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

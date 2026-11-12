@@ -1,0 +1,9 @@
+{
+  "name": "fisiomasia-sito",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito Studio Fisiomasia + registro consensi cookie (Netlify Functions + Blobs)",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

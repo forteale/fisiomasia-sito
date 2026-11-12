@@ -47,7 +47,7 @@
 <p style="font-size:.82rem;color:var(--light)">Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: 12 novembre 2026</p>
 
 <div class="box">
-  <p><strong>In sintesi:</strong> I dati che fornisci attraverso il modulo di contatto vengono utilizzati esclusivamente per risponderti. Il sito registra inoltre, in forma anonima, le scelte espresse sul banner cookie (incluso l'indirizzo IP registrato automaticamente da Netlify) ai soli fini di documentazione GDPR. Nessun dato viene ceduto a terzi per finalità proprie né usato per marketing senza consenso esplicito.</p>
+  <p><strong>In sintesi:</strong> I dati che fornisci attraverso il modulo di contatto vengono utilizzati esclusivamente per risponderti. Il sito registra inoltre le scelte espresse sul banner cookie, con l'indirizzo IP abbreviato, ai soli fini di documentazione GDPR. Nessun dato viene ceduto a terzi per finalità proprie né usato per marketing senza consenso esplicito.</p>
 </div>
 
 <h2>1. Titolare del trattamento</h2>
@@ -77,13 +77,15 @@
 <ul>
   <li>Data e ora della scelta</li>
   <li>Tipo di scelta espressa (accettato / rifiutato)</li>
-  <li>Un identificatore di sessione casuale e anonimo (non collegabile all'identità dell'utente)</li>
-  <li>URL della pagina al momento della scelta</li>
+  <li>Un identificatore casuale del browser (non collegabile all'identità dell'utente)</li>
+  <li>Pagina e lingua al momento della scelta, pagina di provenienza</li>
   <li>Versione della cookie policy in vigore al momento della scelta</li>
-  <li><strong>Indirizzo IP</strong> del visitatore, registrato automaticamente dalla piattaforma Netlify alla ricezione della submission del form</li>
+  <li><strong>Indirizzo IP abbreviato</strong>: l'ultima parte dell'indirizzo viene azzerata prima del salvataggio (es. 93.45.12.0), quindi l'IP completo non viene mai conservato</li>
+  <li>Tipo di browser e sistema operativo (user-agent)</li>
 </ul>
+<p>Il registro è conservato su Netlify (Netlify Blobs) ed è consultabile solo dal titolare tramite un'area protetta da password.</p>
 <p>Questa registrazione avviene sulla base del <strong>legittimo interesse del titolare</strong> (art. 6, par. 1, lett. f del GDPR) a documentare i consensi raccolti e a dimostrare la conformità al Regolamento, come richiesto dall'art. 7, par. 1 del GDPR. L'indirizzo IP non viene utilizzato per profilazione né per finalità diverse dalla documentazione tecnica del consenso.</p>
-<p>I dati del log vengono conservati per un periodo non superiore a <strong>24 mesi</strong>, trascorsi i quali vengono cancellati manualmente dal pannello di gestione Netlify.</p>
+<p>I dati del log vengono conservati per un periodo non superiore a <strong>24 mesi</strong>, trascorsi i quali vengono cancellati automaticamente.</p>
 
 <h3>2.3 Dati di navigazione (log tecnici)</h3>
 <p>I sistemi informatici del sito acquisiscono automaticamente alcuni dati la cui trasmissione è implicita nell'uso dei protocolli internet (indirizzo IP, tipo di browser, sistema operativo, pagine visitate, orari di accesso). Tali dati sono trattati dalla piattaforma di hosting Netlify per finalità di sicurezza e funzionamento tecnico del sito, e non sono comunicati al titolare come dato strutturato.</p>
@@ -99,8 +101,8 @@
 <p>I dati vengono trattati in forma elettronica. I fornitori tecnici che trattano dati per conto del titolare, in qualità di responsabili del trattamento, sono:</p>
 <ul>
   <li><strong>Formspree</strong> (formspree.io) — gestione e inoltro dei messaggi del modulo di contatto. Informativa: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></li>
-  <li><strong>Netlify</strong> (netlify.com) — hosting del sito, font e ricezione dei log dei consensi cookie. Netlify registra automaticamente l'indirizzo IP di ogni submission ricevuta. Il servizio di accesso Netlify Identity è usato solo per l'area di gestione del sito (/admin/) e non riguarda i visitatori. Informativa: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></li>
-  <li><strong>Google Ireland Ltd / Google LLC</strong> — misurazione delle conversioni degli annunci Google Ads tramite il tag AW-572548691 in modalità Consent Mode v2 (cookie solo con il consenso dell'utente) e mappa Google Maps (caricata solo con il consenso o su richiesta). Google agisce come titolare autonomo per i dati raccolti con i propri cookie. Informativa: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+  <li><strong>Netlify</strong> (netlify.com) — hosting del sito, font e conservazione del registro dei consensi cookie (con IP abbreviato). Il servizio di accesso Netlify Identity è usato solo per l'area di gestione del sito (/admin/) e non riguarda i visitatori. Informativa: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></li>
+  <li><strong>Google Ireland Ltd / Google LLC</strong> — misurazione delle conversioni degli annunci Google Ads tramite il tag AW-572548691, che viene caricato solo dopo il consenso dell'utente e mappa Google Maps (caricata solo con il consenso o su richiesta). Google agisce come titolare autonomo per i dati raccolti con i propri cookie. Informativa: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
 </ul>
 
 <p><strong>Trasferimenti fuori dall'Unione europea:</strong> Netlify, Formspree e Google hanno sede negli Stati Uniti e possono trattare i dati anche lì. I trasferimenti avvengono sulla base della decisione di adeguatezza EU-U.S. Data Privacy Framework, per i fornitori che vi aderiscono, e/o delle Clausole Contrattuali Standard approvate dalla Commissione europea.</p>

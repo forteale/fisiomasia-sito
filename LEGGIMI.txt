@@ -99,3 +99,27 @@ Ottimizzazioni già fatte:
 DOPO IL DEPLOY:
   - Google Search Console → invia sitemap.xml
   - Google Business Profile → aggiorna URL sito
+
+
+═══════════════════════════════════════════════════════════
+   5. COOKIE E REGISTRO CONSENSI (da novembre 2026)
+═══════════════════════════════════════════════════════════
+
+Banner:  consent.js (unico per tutte le pagine). «Accetta» = Google Ads
+         + mappa Google Maps. Il tag Google Ads si carica solo dopo il
+         consenso (Consent Mode di base). Link «Preferenze cookie» in
+         fondo alle pagine per cambiare idea.
+         Se cambi l'informativa in modo sostanziale, aumenta
+         POLICY_VERSION in consent.js (e la stessa stringa nell'head di
+         index.html e pavimento-pelvico.html): il banner viene riproposto.
+
+Registro: Netlify Function netlify/functions/consent-log.mjs salva ogni
+         scelta in Netlify Blobs (store "consents") con IP abbreviato
+         (ultimo numero azzerato). consent-purge.mjs cancella ogni giorno
+         i record più vecchi di 24 mesi.
+
+Pannello: https://www.fisiomasia.it/accesso.html
+         Su Netlify → Site configuration → Environment variables:
+           ADMIN_PASSWORD = <password lunga>          (obbligatoria)
+           ADMIN_EMAIL    = <email di accesso>         (default fabiana.masia@gmail.com)
+         Dal pannello: filtri per data, export CSV/JSON.

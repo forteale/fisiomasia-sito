@@ -1,8 +1,10 @@
 /* ============================================================
    Studio Fisiomasia — banner e consenso cookie (unico per tutte le pagine)
    - Accetta / Rifiuta con pari evidenza; scelta valida 12 mesi
-   - Consenso = misurazione Google Ads (Consent Mode v2) + mappa Google Maps
-   - Registro consensi su Netlify Forms (form "cookie-consent-log")
+   - Consenso = misurazione Google Ads + mappa Google Maps
+   - Google Ads in Consent Mode "di base": il tag Google si carica SOLO dopo «Accetta»
+     (window.fmLoadGtag, definita nell'head delle pagine con il tag)
+   - Registro consensi: Netlify Function consent-log (IP abbreviato), pannello /accesso.html
    - Link «Preferenze cookie» aggiunto in fondo a ogni pagina per cambiare idea
    - Mappe: <iframe data-consent-src="..."> si carica solo con il consenso
      oppure al clic su «Mostra la mappa» (solo per quella volta)
@@ -35,21 +37,28 @@
     if (!s) { s = "sid_" + Math.random().toString(36).slice(2, 11) + "_" + Date.now(); ls(K_SID, s); }
     return s;
   }
-  function log(scelta) {
+  function log(ok) {
     try {
-      var fd = new FormData();
-      fd.append("form-name", "cookie-consent-log");
-      fd.append("scelta", scelta);
-      fd.append("timestamp", new Date().toISOString());
-      fd.append("sessione_id", sid());
-      fd.append("pagina", location.href);
-      fd.append("policy_version", POLICY_VERSION);
-      fetch("/", { method: "POST", body: fd }).catch(function () {});
+      fetch("/.netlify/functions/consent-log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          consentId: sid(),
+          analytics: !!ok,   // nel pannello: colonna «Google Ads»
+          ads: !!ok,         // nel pannello: colonna «Mappa Google»
+          version: POLICY_VERSION,
+          page: location.pathname,
+          ref: document.referrer || "",
+          lang: document.documentElement.lang || ""
+        })
+      }).catch(function () {});
     } catch (e) {}
   }
   function googleConsent(ok) {
     var s = ok ? "granted" : "denied";
     window.gtag("consent", "update", { ad_storage: s, analytics_storage: s, ad_user_data: s, ad_personalization: s });
+    if (ok && typeof window.fmLoadGtag === "function") window.fmLoadGtag();
   }
   function clearGoogleCookies() {
     try {
@@ -130,7 +139,7 @@
     ls(K_VER, POLICY_VERSION);
     googleConsent(ok);
     if (!ok) clearGoogleCookies();
-    log(ok ? "granted" : "rifiutato");
+    log(ok);
     hideBanner();
     setupMaps();
   }

@@ -15,19 +15,29 @@
     'wait_for_update':    800
   });
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-572548691"></script>
+<!-- Tag Google Ads: caricato SOLO dopo il consenso (Consent Mode di base). Lo chiama consent.js. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-572548691');
+  window.fmLoadGtag=function(){
+    if(window.__fmGtag) return; window.__fmGtag=1;
+    var s=document.createElement('script'); s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=AW-572548691';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'AW-572548691');
+  };
+  try{ if(localStorage.getItem('cookie_consent_v2')==='granted' && localStorage.getItem('cookie_consent_version')==='2026-11' && Date.now()<parseInt(localStorage.getItem('cookie_consent_expiry')||'0',10)) fmLoadGtag(); }catch(e){}
 </script>
 <!-- Snippet conversione clic telefono -->
 <script>
 function gtag_report_conversion(url) {
+  var done = false;
   var callback = function () {
+    if (done) return; done = true;
     if (typeof(url) != 'undefined') { window.location = url; }
   };
+  // senza consenso il tag Google non è caricato: la chiamata parte subito, senza misurare
+  if (!window.__fmGtag) { callback(); return false; }
+  setTimeout(callback, 1000); // se Google non risponde, la chiamata parte comunque
   gtag('event', 'conversion', {
     'send_to': 'AW-572548691/OtyiCK2K_L8cENPMgZEC',
     'value': 1.0,
@@ -457,16 +467,6 @@ footer a:hover { color: rgba(255,255,255,.8); }
 </head>
 <body>
 
-<!-- Form consensi log -->
-<form name="cookie-consent-log" data-netlify="true" netlify-honeypot="bot-field" style="display:none" aria-hidden="true">
-  <input type="hidden" name="form-name" value="cookie-consent-log"/>
-  <input type="hidden" name="scelta"/>
-  <input type="hidden" name="timestamp"/>
-  <input type="hidden" name="sessione_id"/>
-  <input type="hidden" name="pagina"/>
-  <input type="hidden" name="policy_version"/>
-  <input type="hidden" name="bot-field"/>
-</form>
 
 <!-- ══ NAV ══ -->
 <nav>
