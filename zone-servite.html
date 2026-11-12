@@ -41,9 +41,7 @@
 ]}
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
 <link rel="stylesheet" href="style.css"/>
 <style>
 #hero-z{padding:9rem 7vw 4rem;background:var(--off);text-align:center}
@@ -86,17 +84,9 @@
 }
 @media(max-width:580px){.zone-grid{grid-template-columns:1fr}}
 </style>
-<!-- Netlify Identity: gestisce recovery/invite token -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- Inviti e recupero password del CMS: il widget Netlify Identity si carica solo in /admin/ -->
 <script>
-  if(window.netlifyIdentity){
-    window.netlifyIdentity.on("init",function(user){
-      if(!user){ window.netlifyIdentity.on("login",function(){ document.location.href="/admin/"; }); }
-    });
-    if(window.location.hash.indexOf("recovery_token")!==-1||window.location.hash.indexOf("invite_token")!==-1){
-      window.netlifyIdentity.open();
-    }
-  }
+  if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){ location.replace('/admin/'+location.hash); }
 </script>
 </head>
 <body>
@@ -237,7 +227,7 @@
     </div>
     <div class="mappa-frame">
       <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Corso+Leone+Giordano+5+Livorno+Ferraris&output=embed"
+        data-consent-src="https://www.google.com/maps?q=Corso+Leone+Giordano+5+Livorno+Ferraris&output=embed"
         title="Mappa: Studio Fisiomasia, Livorno Ferraris"></iframe>
     </div>
   </div>
@@ -274,5 +264,6 @@
 </footer>
 
 <script>window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));</script>
+<script src="/consent.js" defer></script>
 </body>
 </html>

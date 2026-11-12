@@ -46,9 +46,7 @@ function gtag_report_conversion(url) {
 <link rel="shortcut icon" href="favicon.ico"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
 
 <style>
 /* ── Token sistema ── */
@@ -450,25 +448,6 @@ footer a { font-size: .78rem; color: rgba(255,255,255,.5); text-decoration: unde
 footer a:hover { color: rgba(255,255,255,.8); }
 .foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 
-/* ── COOKIE BANNER ── */
-#cookie-banner {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 500;
-  background: rgba(30,26,26,.97);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid rgba(139,77,110,.25);
-  padding: .9rem 5vw;
-}
-.cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between; }
-.cookie-inner p { font-size: .82rem; color: rgba(255,255,255,.72); line-height: 1.55; margin: 0; flex: 1; min-width: 200px; }
-.cookie-inner a { color: #4a9e82; text-decoration: underline; text-underline-offset: 3px; }
-.cookie-btns { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
-.cookie-ok { background: var(--plum); color: #fff; border: none; border-radius: 999px; padding: .5rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
-.cookie-ok:hover { background: var(--plum-d); }
-.cookie-reject { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 999px; padding: .5rem 1.4rem; font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: border-color .2s, background .2s; white-space: nowrap; }
-.cookie-reject:hover { border-color: rgba(255,255,255,.9); background: rgba(255,255,255,.08); }
 
 /* ── Padding bottom mobile per sticky CTA ── */
 @media(max-width:768px) {
@@ -723,7 +702,7 @@ footer a:hover { color: rgba(255,255,255,.8); }
       <div class="fg"><label for="f-msg">Messaggio</label><textarea id="f-msg" name="messaggio" placeholder="Descrivi brevemente la tua situazione o la tua richiesta..."></textarea></div>
       <label class="form-privacy">
         <input type="checkbox" name="privacy_consenso" required/>
-        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e autorizzo il trattamento dei miei dati personali ai sensi del Reg. UE 2016/679 (GDPR). *</span>
+        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e autorizzo il trattamento dei miei dati personali, compresi gli eventuali dati sulla mia salute che scelgo di indicare, ai sensi del Reg. UE 2016/679 (GDPR). *</span>
       </label>
       <button type="submit" class="form-btn">Invia messaggio</button>
       <p class="form-note">I tuoi dati non saranno condivisi con terze parti e verranno utilizzati esclusivamente per rispondere alla tua richiesta.</p>
@@ -758,16 +737,6 @@ footer a:hover { color: rgba(255,255,255,.8); }
   </div>
 </footer>
 
-<!-- ══ COOKIE BANNER ══ -->
-<div id="cookie-banner">
-  <div class="cookie-inner">
-    <p>Questo sito usa cookie tecnici e, con il tuo consenso, cookie di Google Ads per misurare le conversioni. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy.html">Privacy</a></p>
-    <div class="cookie-btns">
-      <button id="cookie-btn-accetta" class="cookie-ok">Accetta</button>
-      <button id="cookie-btn-rifiuta" class="cookie-reject">Rifiuta</button>
-    </div>
-  </div>
-</div>
 
 <script>
 /* ══ FORM SUBMIT ══ */
@@ -793,55 +762,7 @@ if(form){
   });
 }
 
-/* ══ COOKIE BANNER ══ */
-(function(){
-  var POLICY_VERSION = '2026-05';
-  var CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000;
-
-  function getSessionId(){
-    var sid = localStorage.getItem('fisiomasia_sid');
-    if(!sid){ sid = 'sid_' + Math.random().toString(36).substr(2,9) + '_' + Date.now(); localStorage.setItem('fisiomasia_sid', sid); }
-    return sid;
-  }
-  function updateGoogleConsent(granted){
-    var s = granted ? 'granted' : 'denied';
-    gtag('consent','update',{'ad_storage':s,'analytics_storage':s,'ad_user_data':s,'ad_personalization':s});
-  }
-  function logConsent(scelta){
-    var fd = new FormData();
-    fd.append('form-name','cookie-consent-log');
-    fd.append('scelta', scelta);
-    fd.append('timestamp', new Date().toISOString());
-    fd.append('sessione_id', getSessionId());
-    fd.append('pagina', window.location.href);
-    fd.append('policy_version', POLICY_VERSION);
-    fetch('/', {method:'POST', body:fd}).catch(function(){});
-  }
-
-  var banner = document.getElementById('cookie-banner');
-  var stored = localStorage.getItem('cookie_consent_v2');
-  var expiry = localStorage.getItem('cookie_consent_expiry');
-  var isValid = stored && expiry && Date.now() < parseInt(expiry);
-
-  if(isValid){
-    updateGoogleConsent(stored === 'granted');
-    if(banner) banner.style.display = 'none';
-    return;
-  }
-  if(banner) banner.style.display = 'block';
-
-  function saveConsent(scelta, granted){
-    localStorage.setItem('cookie_consent_v2', scelta);
-    localStorage.setItem('cookie_consent_expiry', Date.now() + CONSENT_DURATION);
-    updateGoogleConsent(granted);
-    logConsent(scelta);
-    if(banner) banner.style.display = 'none';
-  }
-  var btnA = document.getElementById('cookie-btn-accetta');
-  var btnR = document.getElementById('cookie-btn-rifiuta');
-  if(btnA) btnA.addEventListener('click', function(){ saveConsent('granted', true); });
-  if(btnR) btnR.addEventListener('click', function(){ saveConsent('rifiutato', false); });
-})();
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>

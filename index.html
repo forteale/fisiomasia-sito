@@ -77,9 +77,7 @@
 "priceRange":"€€"}
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
 <link rel="stylesheet" href="style.css"/>
 
 <style>
@@ -276,17 +274,9 @@
 }
 .cookie-reject:hover{border-color:rgba(255,255,255,.9);background:rgba(255,255,255,.08)}
 </style>
-<!-- Netlify Identity -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- Inviti e recupero password del CMS: il widget Netlify Identity si carica solo in /admin/ -->
 <script>
-  if(window.netlifyIdentity){
-    window.netlifyIdentity.on('init',user=>{
-      if(!user){window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';})}
-    });
-    if(window.location.hash.includes('recovery_token')||window.location.hash.includes('invite_token')){
-      window.netlifyIdentity.open();
-    }
-  }
+  if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){ location.replace('/admin/'+location.hash); }
 </script>
 </head>
 <body>
@@ -489,7 +479,7 @@
     </div>
     <div class="dove-map">
       <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Corso+Leone+Giordano+5+Livorno+Ferraris&output=embed"
+        data-consent-src="https://www.google.com/maps?q=Corso+Leone+Giordano+5+Livorno+Ferraris&output=embed"
         title="Mappa: Studio Fisiomasia, Corso Leone Giordano 5, Livorno Ferraris"></iframe>
     </div>
   </div>
@@ -529,7 +519,7 @@
       <div class="fg"><label for="f-msg">Messaggio</label><textarea id="f-msg" name="messaggio" placeholder="Descrivi brevemente il tuo problema o la tua richiesta..."></textarea></div>
       <label class="form-privacy">
         <input type="checkbox" name="privacy_consenso" required/>
-        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e <strong>autorizzo il trattamento dei miei dati personali</strong> ai sensi del Reg. UE 2016/679 (GDPR) per essere ricontattata/o dallo studio in merito alla mia richiesta. *</span>
+        <span>Ho letto l'<a href="privacy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e <strong>autorizzo il trattamento dei miei dati personali</strong>, compresi gli eventuali dati sulla mia salute che scelgo di indicare, ai sensi del Reg. UE 2016/679 (GDPR) per essere ricontattata/o dallo studio in merito alla mia richiesta. *</span>
       </label>
       <button type="submit" class="form-btn">Invia messaggio</button>
       <p class="form-note">I tuoi dati non saranno condivisi con terze parti e verranno utilizzati esclusivamente per rispondere alla tua richiesta. Form protetto da anti-spam.</p>
@@ -573,16 +563,6 @@
   <div class="foot-bot"><p>© 2026 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
 </footer>
 
-<!-- ══ COOKIE BANNER ══ -->
-<div id="cookie-banner">
-  <div class="cookie-inner">
-    <p>Questo sito usa cookie tecnici e, con il tuo consenso, cookie di Google Ads per misurare le conversioni degli annunci. Nessuna profilazione personale. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy.html">Privacy</a></p>
-    <div class="cookie-btns">
-      <button id="cookie-btn-accetta" class="cookie-ok">Accetta</button>
-      <button id="cookie-btn-rifiuta" class="cookie-reject">Rifiuta</button>
-    </div>
-  </div>
-</div>
 
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
@@ -706,60 +686,6 @@ loadPosts(posts=>{document.getElementById('blog-preview').innerHTML=posts.slice(
   else setTimeout(init,50);
 })();
 
-/* ══ CONSENSO COOKIE v2 + LOG NETLIFY FORMS ══ */
-(function(){
-  var POLICY_VERSION = '2026-05';
-  var CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 12 mesi
-
-  function getSessionId(){
-    var sid=localStorage.getItem('fisiomasia_sid');
-    if(!sid){sid='sid_'+Math.random().toString(36).substr(2,9)+'_'+Date.now();localStorage.setItem('fisiomasia_sid',sid);}
-    return sid;
-  }
-
-  function updateGoogleConsent(granted){
-    var s=granted?'granted':'denied';
-    gtag('consent','update',{'ad_storage':s,'analytics_storage':s,'ad_user_data':s,'ad_personalization':s});
-  }
-
-  function logConsent(scelta){
-    var fd=new FormData();
-    fd.append('form-name','cookie-consent-log');
-    fd.append('scelta',scelta);
-    fd.append('timestamp',new Date().toISOString());
-    fd.append('sessione_id',getSessionId());
-    fd.append('pagina',window.location.href);
-    fd.append('policy_version',POLICY_VERSION);
-    fetch('/',{method:'POST',body:fd}).catch(function(){});
-  }
-
-  var banner=document.getElementById('cookie-banner');
-  var stored=localStorage.getItem('cookie_consent_v2');
-  var expiry=localStorage.getItem('cookie_consent_expiry');
-  var isValid=stored&&expiry&&Date.now()<parseInt(expiry);
-
-  if(isValid){
-    updateGoogleConsent(stored==='granted');
-    if(banner)banner.style.display='none';
-    return;
-  }
-
-  // consenso mancante o scaduto: mostra banner
-  if(banner)banner.style.display='block';
-
-  function saveConsent(scelta,granted){
-    localStorage.setItem('cookie_consent_v2',scelta);
-    localStorage.setItem('cookie_consent_expiry',Date.now()+CONSENT_DURATION);
-    updateGoogleConsent(granted);
-    logConsent(scelta);
-    if(banner)banner.style.display='none';
-  }
-
-  var btnA=document.getElementById('cookie-btn-accetta');
-  var btnR=document.getElementById('cookie-btn-rifiuta');
-  if(btnA)btnA.addEventListener('click',function(){saveConsent('granted',true);});
-  if(btnR)btnR.addEventListener('click',function(){saveConsent('rifiutato',false);});
-})();
 
 /* ══ STUDIO SLIDESHOW ══ */
 (function(){
@@ -769,5 +695,6 @@ loadPosts(posts=>{document.getElementById('blog-preview').innerHTML=posts.slice(
   setInterval(function(){imgs[cur].classList.remove('slide-active');cur=(cur+1)%imgs.length;imgs[cur].classList.add('slide-active');},5000);
 })();
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>

@@ -10,8 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
     body{max-width:760px;margin:0 auto;padding:2rem 6vw 5rem;color:var(--ink)}
@@ -52,10 +51,10 @@
 <a href="index.html" class="back">← Torna al sito</a>
 
 <h1>Cookie Policy</h1>
-<p style="font-size:.82rem;color:var(--light)">Ai sensi del D.Lgs. 69/2012 e del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2026</p>
+<p style="font-size:.82rem;color:var(--light)">Ai sensi del D.Lgs. 69/2012 e del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: 12 novembre 2026</p>
 
 <div class="box">
-  <p><strong>In sintesi:</strong> Questo sito utilizza cookie tecnici essenziali per il suo funzionamento e, <strong>solo con il tuo esplicito consenso</strong>, cookie di misurazione di Google Ads per valutare l'efficacia degli annunci pubblicitari. Nessun cookie di profilazione comportamentale. Puoi accettare o rifiutare i cookie non essenziali tramite il banner che appare alla prima visita.</p>
+  <p><strong>In sintesi:</strong> Questo sito utilizza cookie tecnici essenziali per il suo funzionamento e, <strong>solo con il tuo esplicito consenso</strong>, cookie di misurazione di Google Ads per valutare l'efficacia degli annunci pubblicitari e la mappa di Google Maps. Nessun cookie di profilazione comportamentale. Puoi accettare o rifiutare i cookie non essenziali tramite il banner che appare alla prima visita e cambiare idea in ogni momento dal link <a href="#" data-cookie-prefs>Preferenze cookie</a>.</p>
 </div>
 
 <h2>1. Cosa sono i cookie</h2>
@@ -82,6 +81,12 @@
         <td><code>cookie_consent_expiry</code></td>
         <td>localStorage</td>
         <td>Memorizza la data di scadenza del consenso espresso, per richiedere nuovamente il consenso dopo 12 mesi</td>
+        <td>12 mesi</td>
+      </tr>
+      <tr>
+        <td><code>cookie_consent_version</code></td>
+        <td>localStorage</td>
+        <td>Memorizza la versione di questa informativa al momento della scelta: se l'informativa cambia in modo sostanziale, il banner viene riproposto</td>
         <td>12 mesi</td>
       </tr>
       <tr>
@@ -118,6 +123,9 @@
   <p><strong>Consent Mode v2:</strong> Questo sito implementa Google Consent Mode v2. Se rifiuti i cookie, il tag Google viene comunque caricato in modalità "silenziosa" (tutti i parametri su <em>denied</em>) per consentire a Google di effettuare stime aggregate anonime del traffico, senza raccogliere dati personali e senza installare cookie sul tuo dispositivo.</p>
 </div>
 
+<h3>2.3 Mappa Google Maps <span class="badge-marketing">Solo con consenso</span></h3>
+<p>Nella home page e nella pagina «Zone servite» c'è una mappa interattiva dello studio fornita da Google Maps. Viene caricata <strong>solo se accetti</strong> tramite il banner, oppure se clicchi «Mostra la mappa» (in questo caso solo per quella volta). Una volta caricata, Google riceve il tuo indirizzo IP e può impostare cookie propri (ad esempio <code>NID</code>, <code>AEC</code>), che tratta come titolare autonomo secondo la sua <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">informativa</a>. Senza consenso puoi sempre usare il pulsante «Apri in Google Maps», che apre la mappa sul sito di Google.</p>
+
 <h2>3. Servizi di terze parti tecnici</h2>
 <p>Il sito si avvale di alcuni servizi tecnici di terze parti che potrebbero effettuare richieste di rete proprie:</p>
 
@@ -128,20 +136,6 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Google Fonts</strong></td>
-        <td>Caricamento dei caratteri tipografici del sito.</td>
-        <td>Nessuno</td>
-        <td>Google può registrare la richiesta HTTP (indirizzo IP) nei propri log di sistema.</td>
-        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-      </tr>
-      <tr>
-        <td><strong>Google Maps</strong></td>
-        <td>Mappa interattiva per indicare la posizione dello studio.</td>
-        <td>Possibili cookie tecnici Google</td>
-        <td>Il caricamento può comportare l'invio dell'indirizzo IP a Google.</td>
-        <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-      </tr>
-      <tr>
         <td><strong>Netlify</strong></td>
         <td>Hosting del sito e gestione dei moduli (form di contatto e log consensi cookie). I log dei consensi contengono: timestamp, scelta, ID sessione anonimo, URL, versione policy.</td>
         <td>Nessuno per i visitatori normali</td>
@@ -150,7 +144,7 @@
       </tr>
       <tr>
         <td><strong>Netlify Identity</strong></td>
-        <td>Autenticazione per l'area di gestione interna (accessibile solo allo staff). Non coinvolge i visitatori del sito.</td>
+        <td>Autenticazione per l'area di gestione interna (accessibile solo allo staff). Il relativo script si carica solo nella pagina /admin/: non coinvolge i visitatori del sito.</td>
         <td>Solo per utenti autenticati</td>
         <td>—</td>
         <td><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></td>
@@ -166,16 +160,18 @@
   </table>
 </div>
 
+<p>I <strong>caratteri tipografici</strong> (Cormorant Garamond e DM Sans) sono ospitati direttamente su questo sito: per il loro caricamento non viene effettuata alcuna richiesta a Google o ad altri servizi esterni.</p>
+
 <h2>4. Gestione del consenso</h2>
 <p>Alla prima visita del sito viene mostrato un banner che ti consente di:</p>
 <ul>
-  <li><strong>Accettare</strong> tutti i cookie, inclusi quelli di misurazione di Google Ads</li>
+  <li><strong>Accettare</strong> tutti i cookie, inclusi quelli di misurazione di Google Ads e la mappa di Google Maps</li>
   <li><strong>Rifiutare</strong> i cookie non essenziali, mantenendo attivi solo i cookie tecnici</li>
 </ul>
-<p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive per un periodo di <strong>12 mesi</strong>, trascorsi i quali il banner viene nuovamente presentato. Puoi revocare o modificare il tuo consenso in qualsiasi momento cancellando i dati di navigazione del tuo browser (localStorage e cookie) per il dominio <strong>fisiomasia.it</strong>: alla visita successiva il banner apparirà nuovamente.</p>
+<p>La tua scelta viene salvata nel browser tramite <code>localStorage</code> e rispettata per tutte le visite successive per un periodo di <strong>12 mesi</strong>, trascorsi i quali il banner viene nuovamente presentato. Puoi revocare o modificare il tuo consenso in qualsiasi momento con il link <strong>«Preferenze cookie»</strong> presente in fondo a ogni pagina (oppure <a href="#" data-cookie-prefs>qui</a>): il banner viene riproposto e, se rifiuti, i cookie di Google Ads già presenti vengono cancellati.</p>
 
 <h2>5. Log dei consensi</h2>
-<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata in forma anonima con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina, versione della cookie policy in vigore al momento della scelta. Nessun dato personale identificativo viene raccolto in questo registro dal titolare.</p>
+<p>Per adempiere agli obblighi di documentazione previsti dal GDPR (art. 7), ogni scelta espressa tramite il banner viene registrata con i seguenti dati: data e ora della scelta, tipo di scelta (accettato/rifiutato), identificatore di sessione casuale (non collegabile all'identità dell'utente), URL della pagina, versione della cookie policy in vigore al momento della scelta. Netlify, che riceve il registro, memorizza anche l'indirizzo IP del mittente (vedi la tabella sopra e l'<a href="privacy.html">Informativa Privacy</a>).</p>
 
 <h2>6. Come gestire i cookie dal browser</h2>
 <p>Puoi controllare e gestire i cookie attraverso le impostazioni del tuo browser. Di seguito i link alle guide dei principali browser:</p>
@@ -201,5 +197,6 @@
 
 <a href="index.html" class="back" style="margin-top:2rem">← Torna al sito</a>
 
+<script src="/consent.js" defer></script>
 </body>
 </html>

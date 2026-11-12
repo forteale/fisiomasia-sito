@@ -10,8 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/fonts/fonts.css"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
     body{max-width:760px;margin:0 auto;padding:2rem 6vw 5rem;color:var(--ink)}
@@ -45,7 +44,7 @@
 <a href="index.html" class="back">← Torna al sito</a>
 
 <h1>Informativa sul trattamento dei dati personali</h1>
-<p style="font-size:.82rem;color:var(--light)">Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: maggio 2026</p>
+<p style="font-size:.82rem;color:var(--light)">Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) &mdash; Ultimo aggiornamento: 12 novembre 2026</p>
 
 <div class="box">
   <p><strong>In sintesi:</strong> I dati che fornisci attraverso il modulo di contatto vengono utilizzati esclusivamente per risponderti. Il sito registra inoltre, in forma anonima, le scelte espresse sul banner cookie (incluso l'indirizzo IP registrato automaticamente da Netlify) ai soli fini di documentazione GDPR. Nessun dato viene ceduto a terzi per finalità proprie né usato per marketing senza consenso esplicito.</p>
@@ -70,6 +69,7 @@
   <li>Numero di telefono (facoltativo)</li>
   <li>Il contenuto del messaggio liberamente inserito</li>
 </ul>
+<p>Nella scelta del tipo di richiesta (ad esempio «Pavimento pelvico» o «Continuazione terapia») e nel testo del messaggio puoi indicare informazioni sulla tua salute. Si tratta di <strong>categorie particolari di dati</strong> (art. 9 GDPR): le trattiamo solo per rispondere e organizzare l'eventuale appuntamento, con il tuo <strong>consenso esplicito</strong>, che dai spuntando la casella del modulo. Ti chiediamo di scrivere solo quanto serve per la richiesta: i dettagli clinici li vedremo insieme in studio.</p>
 <p>Tali dati vengono trattati <strong>esclusivamente per rispondere alla tua richiesta</strong> e, se del caso, per fissare un appuntamento presso lo studio. Non vengono utilizzati per finalità di marketing, profilazione o invio di comunicazioni commerciali non richieste.</p>
 
 <h3>2.2 Log dei consensi cookie</h3>
@@ -90,18 +90,20 @@
 
 <h2>3. Base giuridica del trattamento</h2>
 <ul>
-  <li><strong>Modulo di contatto:</strong> consenso espresso dell'interessato (art. 6, par. 1, lett. a del GDPR), manifestato spuntando l'apposita casella prima dell'invio del modulo.</li>
+  <li><strong>Modulo di contatto:</strong> consenso espresso dell'interessato (art. 6, par. 1, lett. a del GDPR), manifestato spuntando l'apposita casella prima dell'invio del modulo; per gli eventuali dati sulla salute, consenso esplicito (art. 9, par. 2, lett. a del GDPR) espresso con la stessa casella.</li>
   <li><strong>Log dei consensi cookie:</strong> legittimo interesse del titolare (art. 6, par. 1, lett. f del GDPR) a documentare i consensi raccolti e a adempiere agli obblighi di accountability previsti dal GDPR.</li>
-  <li><strong>Cookie di misurazione Google Ads:</strong> consenso espresso tramite il banner cookie (art. 6, par. 1, lett. a del GDPR), revocabile in qualsiasi momento.</li>
+  <li><strong>Cookie di misurazione Google Ads e mappa Google Maps:</strong> consenso espresso tramite il banner cookie (art. 6, par. 1, lett. a del GDPR), revocabile in qualsiasi momento dal link «Preferenze cookie» in fondo a ogni pagina. La mappa si può anche mostrare una sola volta con il pulsante «Mostra la mappa».</li>
 </ul>
 
 <h2>4. Modalità del trattamento e responsabili esterni</h2>
 <p>I dati vengono trattati in forma elettronica. I fornitori tecnici che trattano dati per conto del titolare, in qualità di responsabili del trattamento, sono:</p>
 <ul>
   <li><strong>Formspree</strong> (formspree.io) — gestione e inoltro dei messaggi del modulo di contatto. Informativa: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></li>
-  <li><strong>Netlify</strong> (netlify.com) — hosting del sito e ricezione dei log dei consensi cookie. Netlify registra automaticamente l'indirizzo IP di ogni submission ricevuta. Informativa: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></li>
-  <li><strong>Google LLC</strong> — misurazione delle conversioni degli annunci Google Ads (solo con consenso dell'utente), tramite il tag AW-572548691 in modalità Consent Mode v2. Informativa: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+  <li><strong>Netlify</strong> (netlify.com) — hosting del sito, font e ricezione dei log dei consensi cookie. Netlify registra automaticamente l'indirizzo IP di ogni submission ricevuta. Il servizio di accesso Netlify Identity è usato solo per l'area di gestione del sito (/admin/) e non riguarda i visitatori. Informativa: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a></li>
+  <li><strong>Google Ireland Ltd / Google LLC</strong> — misurazione delle conversioni degli annunci Google Ads tramite il tag AW-572548691 in modalità Consent Mode v2 (cookie solo con il consenso dell'utente) e mappa Google Maps (caricata solo con il consenso o su richiesta). Google agisce come titolare autonomo per i dati raccolti con i propri cookie. Informativa: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
 </ul>
+
+<p><strong>Trasferimenti fuori dall'Unione europea:</strong> Netlify, Formspree e Google hanno sede negli Stati Uniti e possono trattare i dati anche lì. I trasferimenti avvengono sulla base della decisione di adeguatezza EU-U.S. Data Privacy Framework, per i fornitori che vi aderiscono, e/o delle Clausole Contrattuali Standard approvate dalla Commissione europea.</p>
 
 <h2>5. Comunicazione a terzi</h2>
 <p>I tuoi dati <strong>non vengono ceduti, venduti o comunicati a terzi</strong> per finalità proprie, fatta eccezione per i fornitori tecnici elencati alla sezione 4, che agiscono esclusivamente come responsabili del trattamento per conto del titolare e secondo le sue istruzioni.</p>
@@ -120,7 +122,7 @@
   <li><strong>Cancellare</strong> i tuoi dati ("diritto all'oblio")</li>
   <li><strong>Limitare</strong> il trattamento</li>
   <li><strong>Opporti</strong> al trattamento fondato su legittimo interesse (art. 21 GDPR)</li>
-  <li><strong>Revocare il consenso</strong> in qualsiasi momento, senza pregiudicare la liceità del trattamento effettuato prima della revoca</li>
+  <li><strong>Revocare il consenso</strong> in qualsiasi momento, senza pregiudicare la liceità del trattamento effettuato prima della revoca (per i cookie: link <a href="#" data-cookie-prefs>Preferenze cookie</a>)</li>
   <li><strong>Proporre reclamo</strong> al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>)</li>
 </ul>
 <p>Per esercitare i tuoi diritti, scrivi a <a href="mailto:fabiana.masia@gmail.com">fabiana.masia@gmail.com</a>. Il titolare risponderà entro 30 giorni dalla ricezione della richiesta.</p>
@@ -131,5 +133,6 @@
 <a href="index.html" class="back" style="margin-top:2rem">← Torna al sito</a>
 <p style="font-size:.8rem;color:var(--light);margin-top:1.5rem">Vedi anche: <a href="cookie-policy.html">Cookie Policy</a></p>
 
+<script src="/consent.js" defer></script>
 </body>
 </html>

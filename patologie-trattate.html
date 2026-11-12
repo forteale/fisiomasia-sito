@@ -25,9 +25,7 @@
 "mainEntity":{"@type":"Physiotherapist","name":"Dott.ssa Fabiana Masia","telephone":"+393493174624","address":{"@type":"PostalAddress","streetAddress":"Corso Leone Giordano 5","addressLocality":"Livorno Ferraris","addressRegion":"VC","postalCode":"13046","addressCountry":"IT"}}}
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/fonts/fonts.css"/>
 <link rel="stylesheet" href="style.css"/>
 
 <style>
@@ -69,17 +67,9 @@
 
 @media(max-width:900px){.pat-grid{grid-template-columns:1fr}}
 </style>
-<!-- Netlify Identity: gestisce recovery/invite token -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- Inviti e recupero password del CMS: il widget Netlify Identity si carica solo in /admin/ -->
 <script>
-  if(window.netlifyIdentity){
-    window.netlifyIdentity.on("init",function(user){
-      if(!user){ window.netlifyIdentity.on("login",function(){ document.location.href="/admin/"; }); }
-    });
-    if(window.location.hash.indexOf("recovery_token")!==-1||window.location.hash.indexOf("invite_token")!==-1){
-      window.netlifyIdentity.open();
-    }
-  }
+  if(/(invite|recovery|confirmation|email_change)_token=/.test(location.hash)){ location.replace('/admin/'+location.hash); }
 </script>
 </head>
 <body>
@@ -298,21 +288,10 @@
   <div class="foot-bot"><p>© 2026 Dott.ssa Fabiana Masia · Studio Fisiomasia</p><div style="display:flex;gap:1.4rem;flex-wrap:wrap"><a href="privacy.html">Privacy Policy</a><a href="cookie-policy.html">Cookie Policy</a></div></div>
 </footer>
 
-<!-- ══ COOKIE BANNER ══ -->
-<div id="cookie-banner">
-  <div class="cookie-inner">
-    <p>Questo sito utilizza solo cookie tecnici essenziali per il suo funzionamento. Nessun cookie di profilazione o marketing. <a href="cookie-policy.html">Cookie Policy</a></p>
-    <div class="cookie-btns">
-      <button onclick="closeCookieBanner()" class="cookie-ok">Ho capito</button>
-      <a href="cookie-policy.html" class="cookie-more">Maggiori info</a>
-    </div>
-  </div>
-</div>
 
 <script>
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>10));
-(function(){if(!localStorage.getItem('cookie_ok')){document.getElementById('cookie-banner').style.display='block';}})();
-function closeCookieBanner(){localStorage.setItem('cookie_ok','1');document.getElementById('cookie-banner').style.display='none';}
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>
